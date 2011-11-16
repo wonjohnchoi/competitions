@@ -1,0 +1,88 @@
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashSet;
+
+/**
+ * Starter bot implementation.
+ */
+public class MyBot extends Bot {
+    /**
+     * Main method executed by the game engine for starting the bot.
+     * 
+     * @param args command line arguments
+     * 
+     * @throws IOException if an I/O error occurs
+     */
+    public static void main(String[] args) throws IOException {
+        new MyBot().readSystemInput();
+    }
+    
+    
+    static class Node {
+        Node prev = null;
+        Node next = null;
+        Tile tile;
+        Node(Tile tile) {
+            this.tile = tile;
+        }
+    }
+    
+    /**
+     * Returns nearest Tile and ITS moves needed of TYPE near LOC.
+     * 
+     * @param loc
+     * @param type
+     */
+    public Object[] near(Tile loc, Ilk type) {
+        Ants ants = getAnts();
+        
+        HashSet<Tile> visited = new HashSet<Tile>();
+        ArrayList<Node> frontiers = new ArrayList<Tile>();
+        
+        frontiers.add(loc);
+        
+        while (!frontiers.isEmpty()) {
+            Tile tile = frontiers.remove(0);
+            if (!visited.contains(tile)) {
+                visited.add(tile);
+                if (ants.getIlk(tile) == type) {
+                    
+                }
+            }
+            
+        }
+        
+        ants.getIlk(loc);
+        ants.
+    }
+    
+    
+    /**
+     * For each visible food,
+     *      Find the most close ant.
+     * 			If the ant is busy, skip.
+     * 		    Else Make the ant go closer to food.
+     * For each unexplored tile,
+     *      Find the most close ant.
+     *          If the ant is busy, skip.
+     *          else Make the ant go close to tile.
+     * 
+     */
+    @Override
+    public void doTurn() {
+        Ants ants = getAnts();
+        for(Tile food: ants.getFoodTiles()) {
+            near(food, Ilk.MY_ANT)
+        }
+        /*
+        for (Tile myAnt : ants.getMyAnts()) {
+            for (Aim direction : Aim.values()) {
+                if (ants.getIlk(myAnt, direction).isPassable()) {
+                    ants.issueOrder(myAnt, direction);
+                    break;
+                }
+            }
+        }*/
+        
+    }
+}

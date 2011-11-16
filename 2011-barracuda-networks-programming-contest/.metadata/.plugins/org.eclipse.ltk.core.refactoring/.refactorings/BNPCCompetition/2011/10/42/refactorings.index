@@ -1,0 +1,116 @@
+1318646006043	Move compilation unit
+1318646069106	Rename package 'test'
+1318646182169	Move file
+1318646205601	Move file
+1318646341227	Delete element
+1318646377573	Rename type 'Test'
+1318646423951	Move file
+1318646425398	Move file
+1318646426881	Copy compilation unit
+1318646432415	Move compilation unit
+1318646458313	Move compilation unit
+1318646460254	Move file
+1318646495521	Rename package 'webserver'
+1318646510968	Rename package 'server'
+1318646563111	Delete element
+1318646607245	Rename type 'Test'
+1318646895663	Rename package 'myserver'
+1318646907026	Rename package 'server'
+1318646910256	Move compilation unit
+1318646912116	Move file
+1318646930023	Move compilation unit
+1318647058860	Delete element
+1318647230101	Move file
+1318647371475	Move file
+1318647722990	Move file
+1318647734431	Move file
+1318647776043	Delete element
+1318648164258	Rename type 'Calculator'
+1318653317562	Rename method 'report'
+1318653324222	Rename method 'report'
+1318653376215	Rename method 'reportln'
+1318657424274	Rename type 'Handler'
+1318657429859	Copy compilation unit
+1318657444163	Rename type 'Handler1'
+1318657542737	Rename type 'Handler'
+1318657552207	Rename type 'Handler_debug'
+1318657555650	Rename type 'Handler_skeleton'
+1318657559210	Copy compilation unit
+1318661431546	Rename type 'Handler'
+1318661437134	Rename type 'Handler1'
+1318661490606	Rename type 'Handler'
+1318661493217	Rename type 'Handler3'
+1318663213359	Rename type 'Handler'
+1318663215748	Rename type 'Handler1'
+1318663254691	Rename type 'Handler'
+1318663256948	Rename type 'Handler3'
+1318666170995	Delete element
+1318669600963	Copy compilation unit
+1318669763903	Rename type 'Engine'
+1318669766401	Rename type 'Engine2'
+1318670412490	Rename type 'Engine'
+1318670418456	Copy compilation unit
+1318676810582	Rename type 'Engine'
+1318676815860	Copy compilation unit
+1318677249007	Delete elements
+1318677257306	Rename type 'Engine'
+1318677261561	Rename type 'Engine2'
+1318677290248	Rename type 'Engine'
+1318677293844	Rename type 'Engine4'
+1318679603276	Rename type 'Engine'
+1318679608356	Copy compilation unit
+1318680254884	Rename type 'Handler'
+1318680316151	Rename type 'Handler4'
+1318680337431	Copy compilation unit
+1318680369451	Rename type 'Handler3'
+1318681589111	Rename type 'Handler'
+1318681598599	Rename type 'Handler4'
+1318681610783	Rename type 'Engine'
+1318681621052	Rename type 'Engine1'
+1318681631708	Rename type 'Engine'
+1318681697443	Rename type 'Engine3'
+1318681724957	Rename type 'Handler'
+1318681750156	Rename type 'Handler2'
+1318682045772	Rename type 'Engine'
+1318682055581	Rename type 'Handler'
+1318682061833	Rename type 'Engine5'
+1318682066633	Rename type 'Handler5'
+1318682691991	Rename type 'Engine'
+1318682696463	Copy compilation unit
+1318684054438	Rename type 'Handler'
+1318684059838	Copy compilation unit
+1318684068671	Rename type 'Handler6'
+1318686626278	Rename type 'Handler'
+1318686637573	Rename type 'Handler6'
+1318686647725	Rename type 'Engine'
+1318686658026	Copy compilation unit
+1318686670243	Copy compilation unit
+1318686675555	Copy compilation unit
+1318686710542	Delete element
+1318688500301	Rename type 'Handler'
+1318688507308	Rename type 'Handler2'
+1318688519287	Rename type 'Engine'
+1318688529568	Rename type 'Engine2'
+1318688750178	Rename type 'Engine'
+1318688755947	Rename type 'Handler'
+1318688762782	Copy compilation unit
+1318688774055	Copy compilation unit
+1318688785226	Rename type 'Engine8'
+1318688789795	Rename type 'Handler8'
+1318697769942	Rename type 'Engine'
+1318697776966	Rename type 'Handler'
+1318697794370	Rename type 'Handler7'
+1318697803331	Rename type 'Engine7'
+1318698261142	Copy compilation unit
+1318698269922	Copy compilation unit
+1318698570017	Rename type 'Handler'
+1318698578307	Rename type 'Engine'
+1318699231201	Rename type 'Engine8'
+1318699239810	Rename type 'Handler8'
+1318700506471	Rename type 'Engine'
+1318700518178	Rename type 'Handler'
+1318700523661	Delete elements
+1318700816733	Copy compilation unit
+1318700828934	Rename type 'Handler8'
+1318700838328	Rename type 'Engine9'
+1318700848768	Rename type 'Handler9'

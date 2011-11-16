@@ -1,0 +1,20 @@
+package choi.server;
+import org.apache.xmlrpc.XmlRpcClient;
+import java.util.Vector;
+
+public class CrudePing {
+
+    public static void main( String args[] ) throws Exception {
+
+        XmlRpcClient client = new XmlRpcClient( "http://test.xmlrpc.wordtracker.com/" );
+
+        Vector params = new Vector();
+        params.addElement( "guest" );
+
+        Object result = client.execute( "ping", params );
+
+        if ( result != null )
+            System.out.println( "Successfully pinged guest account." );
+    }
+}
+          

@@ -1,0 +1,1357 @@
+Entering ping...
+Input
+ping
+Output:
+pong
+Exiting ping...
+
+Entering start_game...
+Input:
+{other_player_id:2}
+{game_id:23423}
+{initial_discard:58}
+{player_id:0}
+Output:
+
+Exiting start_game...
+
+Entering get_move...
+Input:
+{game_id:23423}
+{remaining_microseconds:1000000}
+{other_player_moves:[]}
+{rack:[35, 33, 9, 31, 39, 37, 4, 22, 16, 26, 55, 44, 20, 38, 14, 78, 1, 11, 74, 66]}
+{discard:58}
+Output:
+{idx:14}
+{move:request_discard}
+Exiting get_move...
+
+Entering move_result...
+Input:
+{game_id:23423}
+{move:next_player_turn}
+Output:
+
+Exiting move_result...
+
+Entering get_move...
+Input:
+{game_id:23423}
+{remaining_microseconds:1085250}
+{other_player_moves:[[1, {idx=8, move=take_discard}]]}
+{rack:[35, 33, 9, 31, 39, 37, 4, 22, 16, 26, 55, 44, 20, 38, 58, 78, 1, 11, 74, 66]}
+{discard:32}
+Output:
+{idx:8}
+{move:request_discard}
+Exiting get_move...
+
+Entering move_result...
+Input:
+{game_id:23423}
+{move:next_player_turn}
+Output:
+
+Exiting move_result...
+
+Entering get_move...
+Input:
+{game_id:23423}
+{remaining_microseconds:1172918}
+{other_player_moves:[[1, {idx=16, move=take_discard}]]}
+{rack:[35, 33, 9, 31, 39, 37, 4, 22, 32, 26, 55, 44, 20, 38, 58, 78, 1, 11, 74, 66]}
+{discard:3}
+Output:
+{idx:0}
+{move:request_discard}
+Exiting get_move...
+
+Entering move_result...
+Input:
+{game_id:23423}
+{move:next_player_turn}
+Output:
+
+Exiting move_result...
+
+Entering get_move...
+Input:
+{game_id:23423}
+{remaining_microseconds:1262656}
+{other_player_moves:[[1, {idx=6, move=take_deck}]]}
+{rack:[3, 33, 9, 31, 39, 37, 4, 22, 32, 26, 55, 44, 20, 38, 58, 78, 1, 11, 74, 66]}
+{discard:13}
+Output:
+{idx:4}
+{move:request_discard}
+Exiting get_move...
+
+Entering move_result...
+Input:
+{game_id:23423}
+{move:next_player_turn}
+Output:
+
+Exiting move_result...
+
+Entering get_move...
+Input:
+{game_id:23423}
+{remaining_microseconds:1318722}
+{other_player_moves:[[1, {idx=10, move=take_discard}]]}
+{rack:[3, 33, 9, 31, 13, 37, 4, 22, 32, 26, 55, 44, 20, 38, 58, 78, 1, 11, 74, 66]}
+{discard:12}
+Output:
+{idx:3}
+{move:request_discard}
+Exiting get_move...
+
+Entering move_result...
+Input:
+{game_id:23423}
+{move:next_player_turn}
+Output:
+
+Exiting move_result...
+
+Entering get_move...
+Input:
+{game_id:23423}
+{remaining_microseconds:1400333}
+{other_player_moves:[[1, {idx=6, move=take_discard}]]}
+{rack:[3, 33, 9, 12, 13, 37, 4, 22, 32, 26, 55, 44, 20, 38, 58, 78, 1, 11, 74, 66]}
+{discard:42}
+Output:
+{idx:10}
+{move:request_discard}
+Exiting get_move...
+
+Entering move_result...
+Input:
+{game_id:23423}
+{move:next_player_turn}
+Output:
+
+Exiting move_result...
+
+Entering get_move...
+Input:
+{game_id:23423}
+{remaining_microseconds:1482245}
+{other_player_moves:[[1, {idx=0, move=take_discard}]]}
+{rack:[3, 33, 9, 12, 13, 37, 4, 22, 32, 26, 42, 44, 20, 38, 58, 78, 1, 11, 74, 66]}
+{discard:75}
+Output:
+{idx:19}
+{move:request_discard}
+Exiting get_move...
+
+Entering move_result...
+Input:
+{game_id:23423}
+{move:next_player_turn}
+Output:
+
+Exiting move_result...
+
+Entering get_move...
+Input:
+{game_id:23423}
+{remaining_microseconds:1569564}
+{other_player_moves:[[1, {idx=10, move=take_discard}]]}
+{rack:[3, 33, 9, 12, 13, 37, 4, 22, 32, 26, 42, 44, 20, 38, 58, 78, 1, 11, 74, 75]}
+{discard:39}
+Output:
+{idx:9}
+{move:request_discard}
+Exiting get_move...
+
+Entering move_result...
+Input:
+{game_id:23423}
+{move:next_player_turn}
+Output:
+
+Exiting move_result...
+
+Entering get_move...
+Input:
+{game_id:23423}
+{remaining_microseconds:1659460}
+{other_player_moves:[[1, {idx=15, move=take_deck}]]}
+{rack:[3, 33, 9, 12, 13, 37, 4, 22, 32, 39, 42, 44, 20, 38, 58, 78, 1, 11, 74, 75]}
+{discard:76}
+Output:
+{idx:19}
+{move:request_discard}
+Exiting get_move...
+
+Entering move_result...
+Input:
+{game_id:23423}
+{move:next_player_turn}
+Output:
+
+Exiting move_result...
+
+Entering get_move...
+Input:
+{game_id:23423}
+{remaining_microseconds:1741461}
+{other_player_moves:[[1, {idx=12, move=take_discard}]]}
+{rack:[3, 33, 9, 12, 13, 37, 4, 22, 32, 39, 42, 44, 20, 38, 58, 78, 1, 11, 74, 76]}
+{discard:63}
+Output:
+{idx:16}
+{move:request_discard}
+Exiting get_move...
+
+Entering move_result...
+Input:
+{game_id:23423}
+{move:next_player_turn}
+Output:
+
+Exiting move_result...
+
+Entering get_move...
+Input:
+{game_id:23423}
+{remaining_microseconds:1832767}
+{other_player_moves:[[1, {idx=9, move=take_deck}]]}
+{rack:[3, 33, 9, 12, 13, 37, 4, 22, 32, 39, 42, 44, 20, 38, 58, 78, 63, 11, 74, 76]}
+{discard:43}
+Output:
+{idx:11}
+{move:request_discard}
+Exiting get_move...
+
+Entering move_result...
+Input:
+{game_id:23423}
+{move:next_player_turn}
+Output:
+
+Exiting move_result...
+
+Entering get_move...
+Input:
+{game_id:23423}
+{remaining_microseconds:1923699}
+{other_player_moves:[[1, {idx=15, move=take_deck}]]}
+{rack:[3, 33, 9, 12, 13, 37, 4, 22, 32, 39, 42, 43, 20, 38, 58, 78, 63, 11, 74, 76]}
+{discard:51}
+Output:
+{idx:13}
+{move:request_discard}
+Exiting get_move...
+
+Entering move_result...
+Input:
+{game_id:23423}
+{move:next_player_turn}
+Output:
+
+Exiting move_result...
+
+Entering get_move...
+Input:
+{game_id:23423}
+{remaining_microseconds:2012286}
+{other_player_moves:[[1, {idx=6, move=take_deck}]]}
+{rack:[3, 33, 9, 12, 13, 37, 4, 22, 32, 39, 42, 43, 20, 51, 58, 78, 63, 11, 74, 76]}
+{discard:31}
+Output:
+{idx:7}
+{move:request_discard}
+Exiting get_move...
+
+Entering move_result...
+Input:
+{game_id:23423}
+{move:next_player_turn}
+Output:
+
+Exiting move_result...
+
+Entering get_move...
+Input:
+{game_id:23423}
+{remaining_microseconds:2095909}
+{other_player_moves:[[1, {idx=13, move=take_discard}]]}
+{rack:[3, 33, 9, 12, 13, 37, 4, 31, 32, 39, 42, 43, 20, 51, 58, 78, 63, 11, 74, 76]}
+{discard:27}
+Output:
+{idx:6}
+{move:request_discard}
+Exiting get_move...
+
+Entering move_result...
+Input:
+{game_id:23423}
+{move:next_player_turn}
+Output:
+
+Exiting move_result...
+
+Entering get_move...
+Input:
+{game_id:23423}
+{remaining_microseconds:2188074}
+{other_player_moves:[[1, {idx=12, move=take_deck}]]}
+{rack:[3, 33, 9, 12, 13, 37, 27, 31, 32, 39, 42, 43, 20, 51, 58, 78, 63, 11, 74, 76]}
+{discard:75}
+Output:
+{idx:19}
+{move:request_discard}
+Exiting get_move...
+
+Entering move_result...
+Input:
+{game_id:23423}
+{move:next_player_turn}
+Output:
+
+Exiting move_result...
+
+Entering get_move...
+Input:
+{game_id:23423}
+{remaining_microseconds:2279603}
+{other_player_moves:[[1, {idx=11, move=take_deck}]]}
+{rack:[3, 33, 9, 12, 13, 37, 27, 31, 32, 39, 42, 43, 20, 51, 58, 78, 63, 11, 74, 75]}
+{discard:73}
+Output:
+{idx:17}
+{move:request_discard}
+Exiting get_move...
+
+Entering move_result...
+Input:
+{game_id:23423}
+{move:next_player_turn}
+Output:
+
+Exiting move_result...
+
+Entering get_move...
+Input:
+{game_id:23423}
+{remaining_microseconds:2361524}
+{other_player_moves:[[1, {idx=0, move=take_discard}]]}
+{rack:[3, 33, 9, 12, 13, 37, 27, 31, 32, 39, 42, 43, 20, 51, 58, 78, 63, 73, 74, 75]}
+{discard:55}
+Output:
+{idx:14}
+{move:request_discard}
+Exiting get_move...
+
+Entering move_result...
+Input:
+{game_id:23423}
+{move:next_player_turn}
+Output:
+
+Exiting move_result...
+
+Entering get_move...
+Input:
+{game_id:23423}
+{remaining_microseconds:2453721}
+{other_player_moves:[[1, {idx=2, move=take_deck}]]}
+{rack:[3, 33, 9, 12, 13, 37, 27, 31, 32, 39, 42, 43, 20, 51, 55, 78, 63, 73, 74, 75]}
+{discard:28}
+Output:
+{idx:7}
+{move:request_discard}
+Exiting get_move...
+
+Entering move_result...
+Input:
+{game_id:23423}
+{move:next_player_turn}
+Output:
+
+Exiting move_result...
+
+Entering get_move...
+Input:
+{game_id:23423}
+{remaining_microseconds:2546041}
+{other_player_moves:[[1, {idx=13, move=take_discard}]]}
+{rack:[3, 33, 9, 12, 13, 37, 27, 28, 32, 39, 42, 43, 20, 51, 55, 78, 63, 73, 74, 75]}
+{discard:22}
+Output:
+{idx:5}
+{move:request_discard}
+Exiting get_move...
+
+Entering move_result...
+Input:
+{game_id:23423}
+{move:next_player_turn}
+Output:
+
+Exiting move_result...
+
+Entering get_move...
+Input:
+{game_id:23423}
+{remaining_microseconds:2613804}
+{other_player_moves:[[1, {idx=1, move=take_deck}]]}
+{rack:[3, 33, 9, 12, 13, 22, 27, 28, 32, 39, 42, 43, 20, 51, 55, 78, 63, 73, 74, 75]}
+{discard:71}
+Output:
+{idx:17}
+{move:request_discard}
+Exiting get_move...
+
+Entering move_result...
+Input:
+{game_id:23423}
+{move:next_player_turn}
+Output:
+
+Exiting move_result...
+
+Entering get_move...
+Input:
+{game_id:23423}
+{remaining_microseconds:2708488}
+{other_player_moves:[[1, {idx=13, move=take_deck}]]}
+{rack:[3, 33, 9, 12, 13, 22, 27, 28, 32, 39, 42, 43, 20, 51, 55, 78, 63, 71, 74, 75]}
+{discard:31}
+Output:
+{idx:8}
+{move:request_discard}
+Exiting get_move...
+
+Entering move_result...
+Input:
+{game_id:23423}
+{move:next_player_turn}
+Output:
+
+Exiting move_result...
+
+Entering get_move...
+Input:
+{game_id:23423}
+{remaining_microseconds:2794900}
+{other_player_moves:[[1, {idx=8, move=take_discard}]]}
+{rack:[3, 33, 9, 12, 13, 22, 27, 28, 31, 39, 42, 43, 20, 51, 55, 78, 63, 71, 74, 75]}
+{discard:14}
+Output:
+{idx:5}
+{move:request_discard}
+Exiting get_move...
+
+Entering move_result...
+Input:
+{game_id:23423}
+{move:next_player_turn}
+Output:
+
+Exiting move_result...
+
+Entering get_move...
+Input:
+{game_id:23423}
+{remaining_microseconds:2885768}
+{other_player_moves:[[1, {idx=13, move=take_deck}]]}
+{rack:[3, 33, 9, 12, 13, 14, 27, 28, 31, 39, 42, 43, 20, 51, 55, 78, 63, 71, 74, 75]}
+{discard:68}
+Output:
+{idx:17}
+{move:request_discard}
+Exiting get_move...
+
+Entering move_result...
+Input:
+{game_id:23423}
+{move:next_player_turn}
+Output:
+
+Exiting move_result...
+
+Entering get_move...
+Input:
+{game_id:23423}
+{remaining_microseconds:2962140}
+{other_player_moves:[[1, {idx=17, move=take_deck}]]}
+{rack:[3, 33, 9, 12, 13, 14, 27, 28, 31, 39, 42, 43, 20, 51, 55, 78, 63, 68, 74, 75]}
+{discard:64}
+Output:
+{idx:17}
+{move:request_discard}
+Exiting get_move...
+
+Entering move_result...
+Input:
+{game_id:23423}
+{move:next_player_turn}
+Output:
+
+Exiting move_result...
+
+Entering get_move...
+Input:
+{game_id:23423}
+{remaining_microseconds:3054341}
+{other_player_moves:[[1, {idx=3, move=take_deck}]]}
+{rack:[3, 33, 9, 12, 13, 14, 27, 28, 31, 39, 42, 43, 20, 51, 55, 78, 63, 64, 74, 75]}
+{discard:41}
+Output:
+{idx:10}
+{move:request_discard}
+Exiting get_move...
+
+Entering move_result...
+Input:
+{game_id:23423}
+{move:next_player_turn}
+Output:
+
+Exiting move_result...
+
+Entering get_move...
+Input:
+{game_id:23423}
+{remaining_microseconds:3148311}
+{other_player_moves:[[1, {idx=4, move=take_discard}]]}
+{rack:[3, 33, 9, 12, 13, 14, 27, 28, 31, 39, 41, 43, 20, 51, 55, 78, 63, 64, 74, 75]}
+{discard:7}
+Output:
+{idx:1}
+{move:request_discard}
+Exiting get_move...
+
+Entering move_result...
+Input:
+{game_id:23423}
+{move:next_player_turn}
+Output:
+
+Exiting move_result...
+
+Entering get_move...
+Input:
+{game_id:23423}
+{remaining_microseconds:3235746}
+{other_player_moves:[[1, {idx=15, move=take_deck}]]}
+{rack:[3, 7, 9, 12, 13, 14, 27, 28, 31, 39, 41, 43, 20, 51, 55, 78, 63, 64, 74, 75]}
+{discard:5}
+Output:
+{idx:1}
+{move:request_discard}
+Exiting get_move...
+
+Entering move_result...
+Input:
+{game_id:23423}
+{move:next_player_turn}
+Output:
+
+Exiting move_result...
+
+Entering get_move...
+Input:
+{game_id:23423}
+{remaining_microseconds:3324131}
+{other_player_moves:[[1, {idx=17, move=take_discard}]]}
+{rack:[3, 5, 9, 12, 13, 14, 27, 28, 31, 39, 41, 43, 20, 51, 55, 78, 63, 64, 74, 75]}
+{discard:54}
+Output:
+{idx:14}
+{move:request_discard}
+Exiting get_move...
+
+Entering move_result...
+Input:
+{game_id:23423}
+{move:next_player_turn}
+Output:
+
+Exiting move_result...
+
+Entering get_move...
+Input:
+{game_id:23423}
+{remaining_microseconds:3409220}
+{other_player_moves:[[1, {idx=16, move=take_deck}]]}
+{rack:[3, 5, 9, 12, 13, 14, 27, 28, 31, 39, 41, 43, 20, 51, 54, 78, 63, 64, 74, 75]}
+{discard:16}
+Output:
+{idx:6}
+{move:request_discard}
+Exiting get_move...
+
+Entering move_result...
+Input:
+{game_id:23423}
+{move:next_player_turn}
+Output:
+
+Exiting move_result...
+
+Entering get_move...
+Input:
+{game_id:23423}
+{remaining_microseconds:3494006}
+{other_player_moves:[[1, {idx=12, move=take_deck}]]}
+{rack:[3, 5, 9, 12, 13, 14, 16, 28, 31, 39, 41, 43, 20, 51, 54, 78, 63, 64, 74, 75]}
+{discard:24}
+Output:
+{idx:7}
+{move:request_discard}
+Exiting get_move...
+
+Entering move_result...
+Input:
+{game_id:23423}
+{move:next_player_turn}
+Output:
+
+Exiting move_result...
+
+Entering get_move...
+Input:
+{game_id:23423}
+{remaining_microseconds:3582932}
+{other_player_moves:[[1, {idx=17, move=take_discard}]]}
+{rack:[3, 5, 9, 12, 13, 14, 16, 24, 31, 39, 41, 43, 20, 51, 54, 78, 63, 64, 74, 75]}
+{discard:7}
+Output:
+{idx:2}
+{move:request_discard}
+Exiting get_move...
+
+Entering move_result...
+Input:
+{game_id:23423}
+{move:next_player_turn}
+Output:
+
+Exiting move_result...
+
+Entering get_move...
+Input:
+{game_id:23423}
+{remaining_microseconds:3673074}
+{other_player_moves:[[1, {idx=19, move=take_deck}]]}
+{rack:[3, 5, 7, 12, 13, 14, 16, 24, 31, 39, 41, 43, 20, 51, 54, 78, 63, 64, 74, 75]}
+{discard:6}
+Output:
+{idx:2}
+{move:request_discard}
+Exiting get_move...
+
+Entering move_result...
+Input:
+{game_id:23423}
+{move:next_player_turn}
+Output:
+
+Exiting move_result...
+
+Entering get_move...
+Input:
+{game_id:23423}
+{remaining_microseconds:3765361}
+{other_player_moves:[[1, {idx=7, move=take_discard}]]}
+{rack:[3, 5, 6, 12, 13, 14, 16, 24, 31, 39, 41, 43, 20, 51, 54, 78, 63, 64, 74, 75]}
+{discard:8}
+Output:
+{idx:3}
+{move:request_discard}
+Exiting get_move...
+
+Entering move_result...
+Input:
+{game_id:23423}
+{move:next_player_turn}
+Output:
+
+Exiting move_result...
+
+Entering get_move...
+Input:
+{game_id:23423}
+{remaining_microseconds:3849546}
+{other_player_moves:[[1, {idx=6, move=take_deck}]]}
+{rack:[3, 5, 6, 8, 13, 14, 16, 24, 31, 39, 41, 43, 20, 51, 54, 78, 63, 64, 74, 75]}
+{discard:50}
+Output:
+{idx:12}
+{move:request_discard}
+Exiting get_move...
+
+Entering move_result...
+Input:
+{game_id:23423}
+{move:next_player_turn}
+Output:
+
+Exiting move_result...
+
+Entering get_move...
+Input:
+{game_id:23423}
+{remaining_microseconds:3942078}
+{other_player_moves:[[1, {idx=14, move=take_discard}]]}
+{rack:[3, 5, 6, 8, 13, 14, 16, 24, 31, 39, 41, 43, 50, 51, 54, 78, 63, 64, 74, 75]}
+{discard:45}
+Output:
+{idx:12}
+{move:request_discard}
+Exiting get_move...
+
+Entering move_result...
+Input:
+{game_id:23423}
+{move:next_player_turn}
+Output:
+
+Exiting move_result...
+
+Entering get_move...
+Input:
+{game_id:23423}
+{remaining_microseconds:4036525}
+{other_player_moves:[[1, {idx=4, move=take_deck}]]}
+{rack:[3, 5, 6, 8, 13, 14, 16, 24, 31, 39, 41, 43, 45, 51, 54, 78, 63, 64, 74, 75]}
+{discard:42}
+Output:
+{idx:11}
+{move:request_discard}
+Exiting get_move...
+
+Entering move_result...
+Input:
+{game_id:23423}
+{move:next_player_turn}
+Output:
+
+Exiting move_result...
+
+Entering get_move...
+Input:
+{game_id:23423}
+{remaining_microseconds:4130917}
+{other_player_moves:[[1, {idx=13, move=take_discard}]]}
+{rack:[3, 5, 6, 8, 13, 14, 16, 24, 31, 39, 41, 42, 45, 51, 54, 78, 63, 64, 74, 75]}
+{discard:80}
+Output:
+{idx:19}
+{move:request_discard}
+Exiting get_move...
+
+Entering move_result...
+Input:
+{game_id:23423}
+{move:next_player_turn}
+Output:
+
+Exiting move_result...
+
+Entering get_move...
+Input:
+{game_id:23423}
+{remaining_microseconds:4226140}
+{other_player_moves:[[1, {idx=12, move=take_deck}]]}
+{rack:[3, 5, 6, 8, 13, 14, 16, 24, 31, 39, 41, 42, 45, 51, 54, 78, 63, 64, 74, 80]}
+{discard:2}
+Output:
+{idx:0}
+{move:request_discard}
+Exiting get_move...
+
+Entering move_result...
+Input:
+{game_id:23423}
+{move:next_player_turn}
+Output:
+
+Exiting move_result...
+
+Entering get_move...
+Input:
+{game_id:23423}
+{remaining_microseconds:4320186}
+{other_player_moves:[[1, {idx=3, move=take_discard}]]}
+{rack:[2, 5, 6, 8, 13, 14, 16, 24, 31, 39, 41, 42, 45, 51, 54, 78, 63, 64, 74, 80]}
+{discard:15}
+Output:
+{idx:6}
+{move:request_discard}
+Exiting get_move...
+
+Entering move_result...
+Input:
+{game_id:23423}
+{move:next_player_turn}
+Output:
+
+Exiting move_result...
+
+Entering get_move...
+Input:
+{game_id:23423}
+{remaining_microseconds:4390025}
+{other_player_moves:[[1, {idx=16, move=take_deck}]]}
+{rack:[2, 5, 6, 8, 13, 14, 15, 24, 31, 39, 41, 42, 45, 51, 54, 78, 63, 64, 74, 80]}
+{discard:21}
+Output:
+{idx:7}
+{move:request_discard}
+Exiting get_move...
+
+Entering move_result...
+Input:
+{game_id:23423}
+{move:next_player_turn}
+Output:
+
+Exiting move_result...
+
+Entering get_move...
+Input:
+{game_id:23423}
+{remaining_microseconds:4482744}
+{other_player_moves:[[1, {idx=2, move=take_discard}]]}
+{rack:[2, 5, 6, 8, 13, 14, 15, 21, 31, 39, 41, 42, 45, 51, 54, 78, 63, 64, 74, 80]}
+{discard:70}
+Output:
+{idx:18}
+{move:request_discard}
+Exiting get_move...
+
+Entering move_result...
+Input:
+{game_id:23423}
+{move:next_player_turn}
+Output:
+
+Exiting move_result...
+
+Entering get_move...
+Input:
+{game_id:23423}
+{remaining_microseconds:4578075}
+{other_player_moves:[[1, {idx=2, move=take_discard}]]}
+{rack:[2, 5, 6, 8, 13, 14, 15, 21, 31, 39, 41, 42, 45, 51, 54, 78, 63, 64, 70, 80]}
+{discard:24}
+Output:
+{idx:8}
+{move:request_discard}
+Exiting get_move...
+
+Entering move_result...
+Input:
+{game_id:23423}
+{move:next_player_turn}
+Output:
+
+Exiting move_result...
+
+Entering get_move...
+Input:
+{game_id:23423}
+{remaining_microseconds:4672152}
+{other_player_moves:[[1, {idx=15, move=take_discard}]]}
+{rack:[2, 5, 6, 8, 13, 14, 15, 21, 24, 39, 41, 42, 45, 51, 54, 78, 63, 64, 70, 80]}
+{discard:49}
+Output:
+{idx:13}
+{move:request_discard}
+Exiting get_move...
+
+Entering move_result...
+Input:
+{game_id:23423}
+{move:next_player_turn}
+Output:
+
+Exiting move_result...
+
+Entering get_move...
+Input:
+{game_id:23423}
+{remaining_microseconds:4767738}
+{other_player_moves:[[1, {idx=12, move=take_deck}]]}
+{rack:[2, 5, 6, 8, 13, 14, 15, 21, 24, 39, 41, 42, 45, 49, 54, 78, 63, 64, 70, 80]}
+{discard:61}
+Output:
+{idx:15}
+{move:request_discard}
+Exiting get_move...
+
+Entering move_result...
+Input:
+{game_id:23423}
+{move:next_player_turn}
+Output:
+
+Exiting move_result...
+
+Entering get_move...
+Input:
+{game_id:23423}
+{remaining_microseconds:4862260}
+{other_player_moves:[[1, {idx=19, move=take_discard}]]}
+{rack:[2, 5, 6, 8, 13, 14, 15, 21, 24, 39, 41, 42, 45, 49, 54, 61, 63, 64, 70, 80]}
+{discard:72}
+Output:
+{idx:19}
+{move:request_discard}
+Exiting get_move...
+
+Entering move_result...
+Input:
+{game_id:23423}
+{move:next_player_turn}
+Output:
+
+Exiting move_result...
+
+Entering get_move...
+Input:
+{game_id:23423}
+{remaining_microseconds:4956877}
+{other_player_moves:[[1, {idx=9, move=take_deck}]]}
+{rack:[2, 5, 6, 8, 13, 14, 15, 21, 24, 39, 41, 42, 45, 49, 54, 61, 63, 64, 70, 72]}
+{discard:69}
+Output:
+{idx:18}
+{move:request_discard}
+Exiting get_move...
+
+Entering move_result...
+Input:
+{game_id:23423}
+{move:next_player_turn}
+Output:
+
+Exiting move_result...
+
+Entering get_move...
+Input:
+{game_id:23423}
+{remaining_microseconds:5052436}
+{other_player_moves:[[1, {idx=6, move=take_discard}]]}
+{rack:[2, 5, 6, 8, 13, 14, 15, 21, 24, 39, 41, 42, 45, 49, 54, 61, 63, 64, 69, 72]}
+{discard:17}
+Output:
+{idx:7}
+{move:request_discard}
+Exiting get_move...
+
+Entering move_result...
+Input:
+{game_id:23423}
+{move:next_player_turn}
+Output:
+
+Exiting move_result...
+
+Entering get_move...
+Input:
+{game_id:23423}
+{remaining_microseconds:5148051}
+{other_player_moves:[[1, {idx=19, move=take_discard}]]}
+{rack:[2, 5, 6, 8, 13, 14, 15, 17, 24, 39, 41, 42, 45, 49, 54, 61, 63, 64, 69, 72]}
+{discard:78}
+Output:
+{idx:19}
+{move:request_discard}
+Exiting get_move...
+
+Entering move_result...
+Input:
+{game_id:23423}
+{move:next_player_turn}
+Output:
+
+Exiting move_result...
+
+Entering get_move...
+Input:
+{game_id:23423}
+{remaining_microseconds:5244017}
+{other_player_moves:[[1, {idx=16, move=take_discard}]]}
+{rack:[2, 5, 6, 8, 13, 14, 15, 17, 24, 39, 41, 42, 45, 49, 54, 61, 63, 64, 69, 78]}
+{discard:48}
+Output:
+{idx:13}
+{move:request_discard}
+Exiting get_move...
+
+Entering move_result...
+Input:
+{game_id:23423}
+{move:next_player_turn}
+Output:
+
+Exiting move_result...
+
+Entering get_move...
+Input:
+{game_id:23423}
+{remaining_microseconds:5337374}
+{other_player_moves:[[1, {idx=17, move=take_deck}]]}
+{rack:[2, 5, 6, 8, 13, 14, 15, 17, 24, 39, 41, 42, 45, 48, 54, 61, 63, 64, 69, 78]}
+{discard:28}
+Output:
+{idx:9}
+{move:request_discard}
+Exiting get_move...
+
+Entering move_result...
+Input:
+{game_id:23423}
+{move:next_player_turn}
+Output:
+
+Exiting move_result...
+
+Entering get_move...
+Input:
+{game_id:23423}
+{remaining_microseconds:5431054}
+{other_player_moves:[[1, {idx=14, move=take_discard}]]}
+{rack:[2, 5, 6, 8, 13, 14, 15, 17, 24, 28, 41, 42, 45, 48, 54, 61, 63, 64, 69, 78]}
+{discard:20}
+Output:
+{idx:8}
+{move:request_discard}
+Exiting get_move...
+
+Entering move_result...
+Input:
+{game_id:23423}
+{move:next_player_turn}
+Output:
+
+Exiting move_result...
+
+Entering get_move...
+Input:
+{game_id:23423}
+{remaining_microseconds:5526992}
+{other_player_moves:[[1, {idx=3, move=take_discard}]]}
+{rack:[2, 5, 6, 8, 13, 14, 15, 17, 20, 28, 41, 42, 45, 48, 54, 61, 63, 64, 69, 78]}
+{discard:3}
+Output:
+{idx:1}
+{move:request_discard}
+Exiting get_move...
+
+Entering move_result...
+Input:
+{game_id:23423}
+{move:next_player_turn}
+Output:
+
+Exiting move_result...
+
+Entering get_move...
+Input:
+{game_id:23423}
+{remaining_microseconds:5619057}
+{other_player_moves:[[1, {idx=6, move=take_deck}]]}
+{rack:[2, 3, 6, 8, 13, 14, 15, 17, 20, 28, 41, 42, 45, 48, 54, 61, 63, 64, 69, 78]}
+{discard:70}
+Output:
+{idx:19}
+{move:request_discard}
+Exiting get_move...
+
+Entering move_result...
+Input:
+{game_id:23423}
+{move:next_player_turn}
+Output:
+
+Exiting move_result...
+
+Entering get_move...
+Input:
+{game_id:23423}
+{remaining_microseconds:5711572}
+{other_player_moves:[[1, {idx=11, move=take_discard}]]}
+{rack:[2, 3, 6, 8, 13, 14, 15, 17, 20, 28, 41, 42, 45, 48, 54, 61, 63, 64, 69, 70]}
+{discard:47}
+Output:
+{idx:13}
+{move:request_discard}
+Exiting get_move...
+
+Entering move_result...
+Input:
+{game_id:23423}
+{move:next_player_turn}
+Output:
+
+Exiting move_result...
+
+Entering get_move...
+Input:
+{game_id:23423}
+{remaining_microseconds:5800463}
+{other_player_moves:[[1, {idx=2, move=take_deck}]]}
+{rack:[2, 3, 6, 8, 13, 14, 15, 17, 20, 28, 41, 42, 45, 47, 54, 61, 63, 64, 69, 70]}
+{discard:74}
+Output:
+{idx:19}
+{move:request_discard}
+Exiting get_move...
+
+Entering move_result...
+Input:
+{game_id:23423}
+{move:next_player_turn}
+Output:
+
+Exiting move_result...
+
+Entering get_move...
+Input:
+{game_id:23423}
+{remaining_microseconds:5895169}
+{other_player_moves:[[1, {idx=7, move=take_deck}]]}
+{rack:[2, 3, 6, 8, 13, 14, 15, 17, 20, 28, 41, 42, 45, 47, 54, 61, 63, 64, 69, 74]}
+{discard:7}
+Output:
+{idx:3}
+{move:request_discard}
+Exiting get_move...
+
+Entering move_result...
+Input:
+{game_id:23423}
+{move:next_player_turn}
+Output:
+
+Exiting move_result...
+
+Entering get_move...
+Input:
+{game_id:23423}
+{remaining_microseconds:5987751}
+{other_player_moves:[[1, {idx=17, move=take_discard}]]}
+{rack:[2, 3, 6, 7, 13, 14, 15, 17, 20, 28, 41, 42, 45, 47, 54, 61, 63, 64, 69, 74]}
+{discard:30}
+Output:
+{idx:10}
+{move:request_discard}
+Exiting get_move...
+
+Entering move_result...
+Input:
+{game_id:23423}
+{move:next_player_turn}
+Output:
+
+Exiting move_result...
+
+Entering get_move...
+Input:
+{game_id:23423}
+{remaining_microseconds:6082473}
+{other_player_moves:[[1, {idx=10, move=take_discard}]]}
+{rack:[2, 3, 6, 7, 13, 14, 15, 17, 20, 28, 30, 42, 45, 47, 54, 61, 63, 64, 69, 74]}
+{discard:66}
+Output:
+{idx:18}
+{move:request_discard}
+Exiting get_move...
+
+Entering move_result...
+Input:
+{game_id:23423}
+{move:next_player_turn}
+Output:
+
+Exiting move_result...
+
+Entering get_move...
+Input:
+{game_id:23423}
+{remaining_microseconds:6175708}
+{other_player_moves:[[1, {idx=2, move=take_discard}]]}
+{rack:[2, 3, 6, 7, 13, 14, 15, 17, 20, 28, 30, 42, 45, 47, 54, 61, 63, 64, 66, 74]}
+{discard:53}
+Output:
+{idx:14}
+{move:request_discard}
+Exiting get_move...
+
+Entering move_result...
+Input:
+{game_id:23423}
+{move:next_player_turn}
+Output:
+
+Exiting move_result...
+
+Entering get_move...
+Input:
+{game_id:23423}
+{remaining_microseconds:6269928}
+{other_player_moves:[[1, {idx=4, move=take_discard}]]}
+{rack:[2, 3, 6, 7, 13, 14, 15, 17, 20, 28, 30, 42, 45, 47, 53, 61, 63, 64, 66, 74]}
+{discard:52}
+Output:
+{idx:14}
+{move:request_discard}
+Exiting get_move...
+
+Entering move_result...
+Input:
+{game_id:23423}
+{move:next_player_turn}
+Output:
+
+Exiting move_result...
+
+Entering get_move...
+Input:
+{game_id:23423}
+{remaining_microseconds:6353542}
+{other_player_moves:[[1, {idx=5, move=take_deck}]]}
+{rack:[2, 3, 6, 7, 13, 14, 15, 17, 20, 28, 30, 42, 45, 47, 52, 61, 63, 64, 66, 74]}
+{discard:25}
+Output:
+{idx:9}
+{move:request_discard}
+Exiting get_move...
+
+Entering move_result...
+Input:
+{game_id:23423}
+{move:next_player_turn}
+Output:
+
+Exiting move_result...
+
+Entering get_move...
+Input:
+{game_id:23423}
+{remaining_microseconds:6448090}
+{other_player_moves:[[1, {idx=13, move=take_deck}]]}
+{rack:[2, 3, 6, 7, 13, 14, 15, 17, 20, 25, 30, 42, 45, 47, 52, 61, 63, 64, 66, 74]}
+{discard:43}
+Output:
+{idx:12}
+{move:request_discard}
+Exiting get_move...
+
+Entering move_result...
+Input:
+{game_id:23423}
+{move:next_player_turn}
+Output:
+
+Exiting move_result...
+
+Entering get_move...
+Input:
+{game_id:23423}
+{remaining_microseconds:6538363}
+{other_player_moves:[[1, {idx=16, move=take_deck}]]}
+{rack:[2, 3, 6, 7, 13, 14, 15, 17, 20, 25, 30, 42, 43, 47, 52, 61, 63, 64, 66, 74]}
+{discard:72}
+Output:
+{idx:19}
+{move:request_discard}
+Exiting get_move...
+
+Entering move_result...
+Input:
+{game_id:23423}
+{move:next_player_turn}
+Output:
+
+Exiting move_result...
+
+Entering get_move...
+Input:
+{game_id:23423}
+{remaining_microseconds:6634144}
+{other_player_moves:[[1, {idx=4, move=take_discard}]]}
+{rack:[2, 3, 6, 7, 13, 14, 15, 17, 20, 25, 30, 42, 43, 47, 52, 61, 63, 64, 66, 72]}
+{discard:54}
+Output:
+{idx:15}
+{move:request_discard}
+Exiting get_move...
+
+Entering move_result...
+Input:
+{game_id:23423}
+{move:next_player_turn}
+Output:
+
+Exiting move_result...
+
+Entering get_move...
+Input:
+{game_id:23423}
+{remaining_microseconds:6724572}
+{other_player_moves:[[1, {idx=11, move=take_deck}]]}
+{rack:[2, 3, 6, 7, 13, 14, 15, 17, 20, 25, 30, 42, 43, 47, 52, 54, 63, 64, 66, 72]}
+{discard:78}
+Output:
+{idx:19}
+{move:request_discard}
+Exiting get_move...
+
+Entering move_result...
+Input:
+{game_id:23423}
+{move:next_player_turn}
+Output:
+
+Exiting move_result...
+
+Entering get_move...
+Input:
+{game_id:23423}
+{remaining_microseconds:6819847}
+{other_player_moves:[[1, {idx=4, move=take_discard}]]}
+{rack:[2, 3, 6, 7, 13, 14, 15, 17, 20, 25, 30, 42, 43, 47, 52, 54, 63, 64, 66, 78]}
+{discard:74}
+Output:
+{idx:19}
+{move:request_discard}
+Exiting get_move...
+
+Entering move_result...
+Input:
+{game_id:23423}
+{move:next_player_turn}
+Output:
+
+Exiting move_result...
+
+Entering get_move...
+Input:
+{game_id:23423}
+{remaining_microseconds:6911877}
+{other_player_moves:[[1, {idx=12, move=take_deck}]]}
+{rack:[2, 3, 6, 7, 13, 14, 15, 17, 20, 25, 30, 42, 43, 47, 52, 54, 63, 64, 66, 74]}
+{discard:19}
+Output:
+{idx:8}
+{move:request_discard}
+Exiting get_move...
+
+Entering move_result...
+Input:
+{game_id:23423}
+{move:next_player_turn}
+Output:
+
+Exiting move_result...
+

@@ -1,0 +1,109 @@
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashSet;
+
+/**
+ * Starter bot implementation.
+ */
+public class MyBot extends Bot {
+    /**
+     * Main method executed by the game engine for starting the bot.
+     * 
+     * @param args command line arguments
+     * 
+     * @throws IOException if an I/O error occurs
+     */
+    public static void main(String[] args) throws IOException {
+        new MyBot().readSystemInput();
+    }
+    
+    
+    class Node implements Comparable<Node> {
+        int depth;
+        Node prev = null;
+        Node next = null;
+        Tile tile;
+        Node(Tile tile) {
+            this(tile, 1);
+        }
+        Node(Tile tile, int depth) {
+            this.depth = depth;
+            this.tile = tile;   
+        }
+        
+        Node next(Aim dir) {
+            int maxRow = getAnts().getRows();
+            int maxCol = getAnts().getCols();
+            int row = tile.getRow()+dir.getRowDelta();
+            int col = tile.getCol()+dir.getColDelta();
+            Node n = new Node(
+                    new Tile((row+maxRow) % maxRow, (col + maxCol) % maxCol), depth + 1);
+            n.prev = this;
+            return n;
+        }
+        @Override
+        public int compareTo(Node n) {
+            return depth - n.depth;
+        }
+    }
+    /**
+     * Returns nearest Tile and ITS moves needed of TYPE near LOC.
+     * 
+     * @param loc
+     * @param type
+     */
+    public Node near(Tile loc, Ilk type) {
+        Ants ants = getAnts();
+        
+        HashSet<Tile> visited = new HashSet<Tile>();
+        ArrayList<Node> frontiers = new ArrayList<Node>();
+        
+        frontiers.add(new Node(loc));
+        
+        while (!frontiers.isEmpty()) {
+            Node node = frontiers.remove(0);
+            if (!visited.contains(node.tile) 
+                && ants.getIlk(node.tile).isPassable()) {
+                visited.add(node.tile);
+                if (ants.getIlk(node.tile) == type) {
+                    return node;
+                }
+                for (Aim d: Aim.values()) {
+                    frontiers.add(node.next(d));
+                }
+            }
+            
+        }
+        return null;
+    }
+    
+    
+    /**
+     * For each visible food,
+     *      Find the most close ant.
+     * 			If the ant is busy, skip.
+     * 		    Else Make the ant go closer to food.
+     * For each unexplored tile,
+     *      Find the most close ant.
+     *          If the ant is busy, skip.
+     *          else Make the ant go close to tile.
+     * 
+     */
+    @Override
+    public void doTurn() {
+        Ants ants = getAnts();
+        for(Tile food: ants.getFoodTiles()) {
+            near(food, Ilk.MY_ANT)
+        }
+        /*
+        for (Tile myAnt : ants.getMyAnts()) {
+            for (Aim direction : Aim.values()) {
+                if (ants.getIlk(myAnt, direction).isPassable()) {
+                    ants.issueOrder(myAnt, direction);
+                    break;
+                }
+            }
+        }*/
+        
+    }
+}

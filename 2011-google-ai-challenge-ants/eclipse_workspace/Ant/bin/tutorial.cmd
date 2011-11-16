@@ -1,0 +1,2 @@
+python tools/playgame.py "java -jar MyBot.jar" "python tools/sample_bots/python/HunterBot.py" --map_file tools/maps/multi_hill_maze/maze_02p_01.map --log_dir game_logs --engine_seed 42 --player_seed 42 --end_wait=0.25 --verbose --turns 400
+@pause

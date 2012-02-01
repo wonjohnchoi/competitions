@@ -1,0 +1,80 @@
+Entering ping...
+Input
+ping
+Output:
+pong
+Exiting ping...
+
+Entering start_game...
+Input:
+{other_player_id:4}
+{game_id:29452}
+{initial_discard:19}
+{player_id:0}
+Output:
+
+Exiting start_game...
+
+Entering get_move...
+Input:
+{game_id:29452}
+{remaining_microseconds:1000000}
+{other_player_moves:[]}
+{rack:[73, 60, 76, 31, 15, 40, 30, 5, 59, 78, 8, 51, 67, 24, 42, 25, 18, 6, 34, 37]}
+{discard:19}
+Entering move_result...
+Input:
+{game_id:29452}
+{move:next_player_turn}
+Output:
+
+Exiting move_result...
+
+Entering get_move...
+Input:
+{game_id:29452}
+{remaining_microseconds:1037114}
+{other_player_moves:[[1, {idx=11, move=take_deck}]]}
+{rack:[73, 60, 76, 31, 15, 40, 30, 5, 59, 78, 8, 51, 67, 24, 42, 25, 18, 6, 34, 37]}
+{discard:62}
+Entering move_result...
+Input:
+{game_id:29452}
+{move:next_player_turn}
+Output:
+
+Exiting move_result...
+
+Entering get_move...
+Input:
+{game_id:29452}
+{remaining_microseconds:1127910}
+{other_player_moves:[[1, {idx=11, move=take_discard}]]}
+{rack:[73, 60, 76, 31, 15, 40, 30, 5, 59, 78, 8, 51, 67, 24, 42, 25, 18, 6, 34, 37]}
+{discard:54}
+Entering move_result...
+Input:
+{reason:Too many failures}
+{game_id:29452}
+{move:move_ended_game}
+Output:
+
+Exiting move_result...
+
+Entering game_result...
+Input:
+{your_score:0}
+{reason:Too many failures}
+{game_id:29452}
+{other_score:150}
+Output:
+
+Exiting game_result...
+
+Game #: 1
+Score: 0
+Total Score: 0
+Avg. Score: 0
+Wins: 0
+Ties: 0
+Loses: 1

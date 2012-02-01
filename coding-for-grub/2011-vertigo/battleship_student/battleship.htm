@@ -1,0 +1,487 @@
+<html>
+<head>
+<title>Code for Grub - Battleship!</title>
+    <script src='myAlgorithm.js'></script>
+    <script src='easyComputer.js'></script>
+</head>
+<body BGCOLOR="#000000" TEXT="#6699FF" LINK="#6699FF" ALINK="#6699FF" VLINK="#6699FF">
+<center>
+<h1>Code for Grub - Battleship!</h1>
+<br>
+<p id="Status"></p>
+<br>
+<SCRIPT LANGUAGE="JavaScript">
+<!-- Original Code:  Jason Hotchkiss (jasonhotchkiss@home.com) -->
+<!-- Web Site:  http://www.members.home.com/jasonhotchkiss -->
+<!-- Begin
+
+var player1Object = new Player1();
+var player2Object = new Player2();
+
+/* Information used to draw the ships
+*/
+var ship =  [[[1,5], [1,2,5], [1,2,3,5], [1,2,3,4,5]], [[6,10], [6,7,10], [6,7,8,10], [6,7,8,9,10]]];
+
+/* Information used to draw sunk ships
+*/
+var dead = [[[201,203], [201,202,203], [201,202,202,203], [201,202,202,202,203]], [[204,206], [204,205,206], [204,205,205,206], [204,205,205,205,206]]];
+
+var gameover = false;
+/* Information used to describe ships
+*/
+var shiptypes = [["Minesweeper",2,4],["Frigate",3,4],[ "Cruiser",4,2],[ "Battleship",5,1]];
+
+var gridx = 16, gridy = 16;
+var player1 = [], player2 = [], player1ships = [], player2ships = [];
+var opponent;
+var player1TurnCount = 0;
+var player2TurnCount = 0;
+var player1lives = 0, player2lives = 0, playflag=true, statusmsg="", sinkThisTurn=false;
+var invalidShipPosition = false;
+
+/* Function to preload all the images, to prevent delays during play
+*/
+var preloaded = [];
+function imagePreload() {
+var i,ids = [1,2,3,4,5,6,7,8,9,10,100,101,102,103,201,202,203,204,205,206];
+window.status = "Preloading images...please wait";
+for (i=0;i<ids.length;++i) {
+var img = new Image, name = "batt"+ids[i]+".gif";
+img.src = name;
+preloaded[i] = img;
+}
+window.status = "";
+}
+
+/* Function to place the ships in the grid
+*/
+function setupPlayerRandomShips(isplayer2) 
+{
+    var y,x;
+    grid = [];
+
+    for (y=0;y<gridx;++y) 
+    {
+        grid[y] = [];
+        for (x=0;x<gridx;++x)
+        grid[y][x] = [100,-1,0];
+    }
+
+    var shipno = 0;
+    var s;
+    for (s=shiptypes.length-1;s>=0;--s) 
+    {
+        var i;
+        for (i=0;i<shiptypes[s][2];++i) 
+        {
+            var d = Math.floor(Math.random()*2);
+            var len = shiptypes[s][1], lx=gridx, ly=gridy, dx=0, dy=0;
+            
+            if ( d==0) 
+            {
+                lx = gridx-len;
+                dx=1;
+            }
+            else 
+            {
+                ly = gridy-len;
+                dy=1;
+            }
+            
+            var x,y,ok;
+
+            do 
+            {
+                y = Math.floor(Math.random()*ly);
+                x = Math.floor(Math.random()*lx);
+                var j,cx=x,cy=y;
+                ok = true;
+                for (j=0;j<len;++j) 
+                {
+                    if (grid[cy][cx][0] < 100) 
+                    {
+                        ok=false;
+                        break;
+                    }
+                    cx+=dx;
+                    cy+=dy;
+                }
+            }             
+            while(!ok);
+
+            var j,cx=x,cy=y;
+            for (j=0;j<len;++j) 
+            {
+                grid[cy][cx][0] = ship[d][s][j];
+                grid[cy][cx][1] = shipno;
+                grid[cy][cx][2] = dead[d][s][j];
+                cx+=dx;
+                cy+=dy;
+            }
+
+            if (isplayer2) 
+            {
+                player2ships[shipno] = [s,shiptypes[s][1]];
+                player2lives++;
+            }
+            else 
+            {
+                player1ships[shipno] = [s,shiptypes[s][1]];
+                player1lives++;
+            }
+            shipno++;
+        }
+    }
+    return grid;
+}
+
+function setupPlayerShips(shipLocations,isplayer2) 
+{
+    invalidShipPosition = false;
+    var y,x;
+    grid = [];
+
+    for (y=0;y<gridx;++y) 
+    {
+        grid[y] = [];
+        for (x=0;x<gridx;++x)
+        grid[y][x] = [100,-1,0];
+    }
+     
+    var shipindex;
+
+    for (shipindex=0;shipindex<shipLocations.length;++shipindex) 
+    {
+        var shiptype = shipLocations[shipindex][0];
+        var shiplength = shiptypes[shiptype][1];
+        var xposition = shipLocations[shipindex][2];
+        var yposition = shipLocations[shipindex][1];
+        var direction = shipLocations[shipindex][3];
+        
+        for (shiplengthindex=0;shiplengthindex<shiplength;++shiplengthindex) 
+        {
+            if (xposition > 15 || yposition > 15 || xposition < 0 || yposition < 0)
+            {
+                invalidShipPosition = true;
+            }
+            else if (grid[yposition][xposition][0] != 100)
+            {
+                invalidShipPosition = true;
+            }
+            else
+            {
+                grid[yposition][xposition][0] = ship[direction][shiptype][shiplengthindex];
+                grid[yposition][xposition][1] = shipindex;
+                grid[yposition][xposition][2] = dead[direction][shiptype][shiplengthindex];
+            
+                if (direction == 0)
+                    xposition++;
+                else
+                    yposition++;
+            }
+        }
+
+        if (isplayer2) 
+        {
+            player2ships[shipindex] = [shiptype,shiplength];
+            player2lives++;
+        }
+        else 
+        {
+            player1ships[shipindex] = [shiptype,shiplength];
+            player1lives++;
+        }
+        
+    }
+
+    return grid;
+}
+
+/* Function to change an image shown on a grid
+*/
+function setImage(y,x,id,isplayer2) {
+if ( isplayer2 ) {
+player2[y][x][0] = id;
+document.images["player2"+y+"_"+x].src = "batt"+id+".gif";
+}
+else {
+player1[y][x][0] = id;
+document.images["player1"+y+"_"+x].src = "batt"+id+".gif";
+   }
+}
+
+/* Function to insert HTML source for a grid
+*/
+function showGrid(isplayer2) {
+var y,x;
+for (y=0;y<gridy;++y) {
+for (x=0;x<gridx;++x) {
+if ( isplayer2 )
+document.write ('<a href="javascript:void(0);"><img name="player2'+y+'_'+x+'" src="batt'+player2[y][x][0]+'.gif" width=16 height=16></a>');
+else
+document.write ('<a href="javascript:void(0);"><img name="player1'+y+'_'+x+'" src="batt'+player1[y][x][0]+'.gif" width=16 height=16></a>');
+}
+document.write('<br>');
+   }
+}
+
+/* When whole ship is hit, show it using changed graphics
+*/
+function sinkShip(grid,shipno,isplayer2) {
+var y,x;
+for (y=0;y<gridx;++y) {
+for (x=0;x<gridx;++x) {
+if ( grid[y][x][1] == shipno )
+if (isplayer2) setImage(y,x,player2[y][x][2],true);
+else setImage(y,x,player1[y][x][2],false);
+      }
+   }
+}
+
+function start() {
+    SetOpponent();
+    player1TurnCount++;
+    player1Object.SelectTarget();
+    playflag = !playflag;
+    nextmove();
+}
+
+/*Clear out private information about the opponent, 
+and set the Hit/Missed/Unknown status*/
+function SetOpponent()
+{
+    opponent = [];
+
+    if(playflag)    
+    {
+        //opponent = player2;  
+        for (y=0;y<gridy;++y) 
+        {
+            opponent[y] = [];
+            for (x=0;x<gridx;++x)
+            {
+                if (player2[y][x][0] < 102)
+                    opponent[y][x] = "Unknown";
+                else if (player2[y][x][0] < 103)
+                    opponent[y][x] = "Miss";
+                else if (player2[y][x][0] >= 103)
+                    opponent[y][x] = "Hit";
+            }
+        }
+    }
+    else
+    {
+        //opponent = player1;
+        for (y=0;y<gridy;++y) 
+        {
+            opponent[y] = [];
+            for (x=0;x<gridx;++x)
+            {
+                if (player1[y][x][0] < 102)
+                    opponent[y][x] = "Unknown";
+                else if (player1[y][x][0] < 103)
+                    opponent[y][x] = "Miss";
+                else if (player1[y][x][0] >= 103)
+                    opponent[y][x] = "Hit";
+            }
+        }
+    }
+    
+
+
+}
+
+function nextmove() {
+    
+    SetOpponent();
+
+    if (playflag)
+    {
+        player1TurnCount++;
+        player1Object.SelectTarget();
+    }
+    else
+    {
+        player2TurnCount++;
+        player2Object.SelectTarget();
+    }    
+
+    playflag = !playflag;
+
+    if (!gameover)
+    {
+        if (sinkThisTurn)
+        {
+            sinkThisTurn = false;
+            setTimeout("nextmove()",100);
+        }
+        else  
+            setTimeout("nextmove()",25);           
+            //nextmove();
+    }
+}
+
+function fire(shoty,shotx)
+{
+    if (playflag)
+        fireAndProcessResultsPlayer1(shoty,shotx);
+    else
+        fireAndProcessResultsPlayer2(shoty,shotx);
+}
+
+function fireAndProcessResultsPlayer1(shoty,shotx)
+{
+    if (player2[shoty][shotx][0] < 100) {
+    /* Hit something
+    */
+    setImage(shoty,shotx,103,true);
+    var shipno = player2[shoty][shotx][1];
+    if ( --player2ships[shipno][1] == 0 ) {
+    sinkShip(player2,shipno,true);
+    statusmsg = player1Object.TeamName + " sank " + player2Object.TeamName + "'s "+shiptypes[player2ships[shipno][0]][0]+"!";
+    setStatus();
+    sinkThisTurn = true;
+
+    if ( --player2lives == 0 ) {
+    gameover = true;
+    statusmsg = player1Object.TeamName + " wins in " + player1TurnCount + " turns!";
+    setStatus();
+          }
+       }
+    }
+    else {
+    /* Missed
+    */
+    setImage(shoty,shotx,102,true);
+       }    
+}
+
+function fireAndProcessResultsPlayer2(shoty,shotx)
+{
+    if (player1[shoty][shotx][0] < 100) {
+    /* Hit something
+    */
+    setImage(shoty,shotx,103,false);
+    var shipno = player1[shoty][shotx][1];
+    if ( --player1ships[shipno][1] == 0 ) {
+    sinkShip(player1,shipno,false);
+    statusmsg = player2Object.TeamName + " sank " + player1Object.TeamName + "'s "+shiptypes[player1ships[shipno][0]][0]+"!";
+    setStatus();
+    sinkThisTurn = true;
+
+    if ( --player1lives == 0 ) {
+    gameover = true;
+    statusmsg = player2Object.TeamName + " wins in " + player2TurnCount + " turns!";
+    setStatus();
+          }
+       }
+    }
+    else {
+    /* Missed
+    */
+    setImage(shoty,shotx,102,false);
+       }    
+}
+
+function setStatus() {
+    window.status = statusmsg;
+    document.getElementById('Status').innerHTML = statusmsg;
+}
+
+function ValidateShips(shipLocations)
+{
+    var minesweepers=0,frigates=0,crusiers=0,battleships=0;
+
+    var i;
+    for(i=0;i<shipLocations.length;i++)
+    {
+        if (shiptypes[shipLocations[i][0]][0] == "Minesweeper")
+            minesweepers++;
+        if (shiptypes[shipLocations[i][0]][0] == "Frigate")
+            frigates++;
+        if (shiptypes[shipLocations[i][0]][0] == "Cruiser")
+            crusiers++;
+        if (shiptypes[shipLocations[i][0]][0] == "Battleship")
+            battleships++;        
+    }
+
+    if((shiptypes[0][2] != minesweepers) ||
+    (shiptypes[1][2] != frigates) ||
+    (shiptypes[2][2] != crusiers) ||
+    (shiptypes[3][2] != battleships))
+        return false;
+
+    else
+        return true;    
+}
+
+/* Start the game!
+*/
+imagePreload();
+
+var player1ShipLocations = player1Object.SetCustomShipLocations();
+if (player1ShipLocations == null)
+    player1 = setupPlayerRandomShips(false);
+else
+{
+    if (player1ShipLocations.length != 11)
+    {
+        alert("Incorrect number of ships for " + player1Object.TeamName + "! Reverting to random placement.");
+        player1 = setupPlayerRandomShips(false);
+    }
+    else if (!ValidateShips(player1ShipLocations))
+    {
+        alert("Incorrect ship types for " + player1Object.TeamName + "! Reverting to random placement.");
+        player1 = setupPlayerRandomShips(false);
+    }
+    else
+        player1 = setupPlayerShips(player1ShipLocations,false);
+
+    if (invalidShipPosition)
+    {
+        alert("Ship positioning for " + player1Object.TeamName + " invalid! Reverting to random placement.");
+        player1lives = 0;
+        player1 = setupPlayerRandomShips(false);
+    }
+}
+
+var player2ShipLocations = player2Object.SetCustomShipLocations();
+if (player2ShipLocations == null)
+    player2 = setupPlayerRandomShips(true);
+else
+{
+    if (player2ShipLocations.length != 11)
+    {
+        alert("Incorrect number of ships for " + player2Object.TeamName + "! Reverting to random placement.");
+        player2 = setupPlayerRandomShips(true);
+    }
+    else if (!ValidateShips(player2ShipLocations))
+    {
+        alert("Incorrect ship types for " + player2Object.TeamName + "! Reverting to random placement.");
+        player2 = setupPlayerRandomShips(true);
+    }
+    else
+        player2 = setupPlayerShips(player2ShipLocations,true);
+
+    if (invalidShipPosition)
+    {
+        alert("Ship positioning for " + player2Object.TeamName + " invalid! Reverting to random placement.");
+        player2lives = 0;
+        player2 = setupPlayerRandomShips(true);
+    }
+}    
+
+document.write("<center><table><tr><td align=center><p class='heading'>" + player1Object.TeamName + "'s Fleet</p></td>"+
+"<td align=center><p class='heading'>" + player2Object.TeamName + "'s Fleet</p></td></tr><tr><td>");
+showGrid(false);
+document.write("</td><td>");
+showGrid(true);
+
+document.write("</td></tr></table></center>");
+
+start();
+//  End -->
+</script>
+</center>
+</body>
+</html>

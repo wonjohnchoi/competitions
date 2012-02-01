@@ -1,0 +1,306 @@
+Entering ping...
+Input
+ping
+Output:
+pong
+Exiting ping...
+
+Entering start_game...
+Input:
+{other_player_id:30}
+{game_id:29395}
+{initial_discard:73}
+{player_id:1}
+Output:
+
+Exiting start_game...
+
+Entering get_move...
+Input:
+{game_id:29395}
+{remaining_microseconds:1000000}
+{other_player_moves:[[0, {idx=7, move=take_discard}]]}
+{rack:[53, 63, 1, 26, 75, 49, 6, 59, 38, 45, 34, 47, 50, 7, 3, 9, 64, 24, 35, 42]}
+{discard:76}
+Entering move_result...
+Input:
+{game_id:29395}
+{move:next_player_turn}
+Output:
+
+Exiting move_result...
+
+Entering get_move...
+Input:
+{game_id:29395}
+{remaining_microseconds:1033515}
+{other_player_moves:[[0, {idx=19, move=take_discard}]]}
+{rack:[53, 63, 1, 26, 75, 49, 6, 59, 38, 45, 34, 47, 50, 7, 3, 9, 64, 24, 35, 42]}
+{discard:11}
+Entering move_result...
+Input:
+{game_id:29395}
+{move:next_player_turn}
+Output:
+
+Exiting move_result...
+
+Entering get_move...
+Input:
+{game_id:29395}
+{remaining_microseconds:1104861}
+{other_player_moves:[[0, {idx=1, move=take_discard}]]}
+{rack:[53, 63, 1, 26, 75, 49, 6, 59, 38, 45, 34, 47, 50, 7, 3, 9, 64, 24, 35, 42]}
+{discard:17}
+Entering move_result...
+Input:
+{reason:Too many failures}
+{game_id:29395}
+{move:move_ended_game}
+Output:
+
+Exiting move_result...
+
+Entering game_result...
+Input:
+{your_score:0}
+{reason:Too many failures}
+{game_id:29395}
+{other_score:150}
+Output:
+
+Exiting game_result...
+
+Game #: 1
+Score: 0
+Total Score: 0
+Avg. Score: 0
+Wins: 0
+Ties: 0
+Loses: 1
+Entering start_game...
+Input:
+{other_player_id:30}
+{game_id:29397}
+{initial_discard:22}
+{player_id:0}
+Output:
+
+Exiting start_game...
+
+Entering get_move...
+Input:
+{game_id:29397}
+{remaining_microseconds:1000000}
+{other_player_moves:[]}
+{rack:[76, 49, 74, 13, 56, 15, 33, 67, 47, 60, 65, 24, 58, 63, 45, 77, 9, 55, 11, 37]}
+{discard:22}
+Entering move_result...
+Input:
+{game_id:29397}
+{move:next_player_turn}
+Output:
+
+Exiting move_result...
+
+Entering get_move...
+Input:
+{game_id:29397}
+{remaining_microseconds:1058706}
+{other_player_moves:[[1, {idx=0, move=take_discard}]]}
+{rack:[76, 49, 74, 13, 56, 15, 33, 67, 47, 60, 65, 24, 58, 63, 45, 77, 9, 55, 11, 37]}
+{discard:59}
+Entering move_result...
+Input:
+{game_id:29397}
+{move:next_player_turn}
+Output:
+
+Exiting move_result...
+
+Entering get_move...
+Input:
+{game_id:29397}
+{remaining_microseconds:1076789}
+{other_player_moves:[[1, {idx=5, move=take_discard}]]}
+{rack:[76, 49, 74, 13, 56, 15, 33, 67, 47, 60, 65, 24, 58, 63, 45, 77, 9, 55, 11, 37]}
+{discard:79}
+Entering move_result...
+Input:
+{reason:Too many failures}
+{game_id:29397}
+{move:move_ended_game}
+Output:
+
+Exiting move_result...
+
+Entering game_result...
+Input:
+{your_score:0}
+{reason:Too many failures}
+{game_id:29397}
+{other_score:150}
+Output:
+
+Exiting game_result...
+
+Game #: 2
+Score: 0
+Total Score: 0
+Avg. Score: 0
+Wins: 0
+Ties: 0
+Loses: 2
+Entering start_game...
+Input:
+{other_player_id:30}
+{game_id:29398}
+{initial_discard:51}
+{player_id:1}
+Output:
+
+Exiting start_game...
+
+Entering get_move...
+Input:
+{game_id:29398}
+{remaining_microseconds:1000000}
+{other_player_moves:[[0, {idx=0, move=take_discard}]]}
+{rack:[59, 60, 8, 23, 69, 12, 30, 11, 25, 44, 52, 6, 50, 21, 33, 9, 19, 46, 15, 80]}
+{discard:70}
+Entering move_result...
+Input:
+{game_id:29398}
+{move:next_player_turn}
+Output:
+
+Exiting move_result...
+
+Entering get_move...
+Input:
+{game_id:29398}
+{remaining_microseconds:1091350}
+{other_player_moves:[[0, {idx=4, move=take_discard}]]}
+{rack:[59, 60, 8, 23, 69, 12, 30, 11, 25, 44, 52, 6, 50, 21, 33, 9, 19, 46, 15, 80]}
+{discard:76}
+Entering move_result...
+Input:
+{game_id:29398}
+{move:next_player_turn}
+Output:
+
+Exiting move_result...
+
+Entering get_move...
+Input:
+{game_id:29398}
+{remaining_microseconds:1183044}
+{other_player_moves:[[0, {idx=19, move=take_discard}]]}
+{rack:[59, 60, 8, 23, 69, 12, 30, 11, 25, 44, 52, 6, 50, 21, 33, 9, 19, 46, 15, 80]}
+{discard:45}
+Entering move_result...
+Input:
+{reason:Too many failures}
+{game_id:29398}
+{move:move_ended_game}
+Output:
+
+Exiting move_result...
+
+Entering game_result...
+Input:
+{your_score:0}
+{reason:Too many failures}
+{game_id:29398}
+{other_score:150}
+Output:
+
+Exiting game_result...
+
+Game #: 3
+Score: 0
+Total Score: 0
+Avg. Score: 0
+Wins: 0
+Ties: 0
+Loses: 3
+Entering ping...
+Input
+ping
+Output:
+pong
+Exiting ping...
+
+Entering start_game...
+Input:
+{other_player_id:4}
+{game_id:29410}
+{initial_discard:75}
+{player_id:0}
+Output:
+
+Exiting start_game...
+
+Entering get_move...
+Input:
+{game_id:29410}
+{remaining_microseconds:1000000}
+{other_player_moves:[]}
+{rack:[27, 36, 52, 3, 11, 55, 50, 9, 16, 31, 68, 17, 77, 57, 67, 40, 79, 22, 34, 71]}
+{discard:75}
+Entering move_result...
+Input:
+{game_id:29410}
+{move:next_player_turn}
+Output:
+
+Exiting move_result...
+
+Entering get_move...
+Input:
+{game_id:29410}
+{remaining_microseconds:1025032}
+{other_player_moves:[[1, {idx=7, move=take_discard}]]}
+{rack:[27, 36, 52, 3, 11, 55, 50, 9, 16, 31, 68, 17, 77, 57, 67, 40, 79, 22, 34, 71]}
+{discard:20}
+Entering move_result...
+Input:
+{game_id:29410}
+{move:next_player_turn}
+Output:
+
+Exiting move_result...
+
+Entering get_move...
+Input:
+{game_id:29410}
+{remaining_microseconds:1109595}
+{other_player_moves:[[1, {idx=15, move=take_discard}]]}
+{rack:[27, 36, 52, 3, 11, 55, 50, 9, 16, 31, 68, 17, 77, 57, 67, 40, 79, 22, 34, 71]}
+{discard:26}
+Entering move_result...
+Input:
+{reason:Too many failures}
+{game_id:29410}
+{move:move_ended_game}
+Output:
+
+Exiting move_result...
+
+Entering game_result...
+Input:
+{your_score:0}
+{reason:Too many failures}
+{game_id:29410}
+{other_score:150}
+Output:
+
+Exiting game_result...
+
+Game #: 4
+Score: 0
+Total Score: 0
+Avg. Score: 0
+Wins: 0
+Ties: 0
+Loses: 4

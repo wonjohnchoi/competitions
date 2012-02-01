@@ -1,0 +1,19 @@
+'''
+Created on Jan 6, 2012
+
+@author: wonjohnchoi
+'''
+def tokenize(file):
+    while True:
+        for token in input().split(' '):
+            yield token
+INT = lambda : int(next(tokens))
+DOUBLE = lambda : double(next(tokens))
+    for line in file:
+        for token in line.split(' '):
+            yield token
+output = open('%s.out'%problem, 'w')
+tokens = tokenize(input)
+
+OUT = lambda s: output.write(str(s)+'\n')
+INT = lambda : int(next(tokens))

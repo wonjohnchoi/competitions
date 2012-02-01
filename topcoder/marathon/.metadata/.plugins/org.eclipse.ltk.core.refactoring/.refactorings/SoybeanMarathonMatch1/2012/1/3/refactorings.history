@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename field &apos;yieldMax&apos; in &apos;EliteClassifier.Variety&apos; to &apos;maxYield&apos;&#x0A;- Original project: &apos;SoybeanMarathonMatch1&apos;&#x0A;- Original element: &apos;EliteClassifier.Variety.yieldMax&apos;&#x0A;- Renamed element: &apos;EliteClassifier.Variety.maxYield&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" delegate="false" deprecate="false" description="Rename field &apos;yieldMax&apos;" flags="589830" getter="false" id="org.eclipse.jdt.ui.rename.field" input="/src&lt;{EliteClassifier.java[EliteClassifier[Variety^yieldMax" name="maxYield" references="true" setter="false" stamp="1326938087989" textual="false" version="1.0"/>
+</session>

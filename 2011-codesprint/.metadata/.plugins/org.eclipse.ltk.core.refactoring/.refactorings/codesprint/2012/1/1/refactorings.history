@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;codesprint/fraud_prevention.py&apos; to &apos;coin_tosses&apos;" description="Rename resource &apos;fraud_prevention.py&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="fraud_prevention.py" name="coin_tosses" stamp="1325932949915" updateReferences="true"/>&#x0A;<refactoring comment="Rename resource &apos;codesprint/coin_tosses&apos; to &apos;coin_tosses.py&apos;" description="Rename resource &apos;coin_tosses&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="coin_tosses" name="coin_tosses.py" stamp="1325932956903" updateReferences="true"/>
+</session>

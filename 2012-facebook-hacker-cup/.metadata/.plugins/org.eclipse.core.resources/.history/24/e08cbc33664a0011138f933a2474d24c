@@ -1,0 +1,62 @@
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class SquishedStatus {
+    public static void main(String args[]) {
+        Scanner in = null;
+        try {
+            in = new Scanner(new FileReader("alphabetsoup.in"));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            System.exit(1);
+        }
+
+        PrintWriter out = null;
+        try {
+            out = new PrintWriter(new FileWriter("alphabetsoup.out"));
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.exit(1);
+        }
+
+        int t = in.nextInt();
+
+        for (int i = 0; i < t; i += 1) {
+            int max = in.nextInt();
+            String msg = in.next();
+            int[][] cache = new int[msg.length()][msg.length()];
+            for (int[] row : cache) {
+                Arrays.fill(row, -1);
+            }
+            int ways = getWay(cache, msg, 0, msg.length(), max);
+        }
+    }
+    
+    private static int getWay(int[][] cache, String msg, int sIdx, int eIdx, int max) {
+        if (cache[sIdx][eIdx] == -1) {
+            int sum = 0;
+            if (msg.charAt(0) == '0') {
+                cache[sIdx][eIdx] = 0;
+                break;
+            }
+            for (int i = sIdx + 1; i < eIdx; i += 1) {
+                int val = Integer.parseInt(msg.substring(sIdx, i));
+                
+                sum += getWay(cache, msg, sIdx, i, max);
+            }
+            int val = Integer.parseInt(msg.substring(sIdx, eIdx));
+            if (1 <= val && val <= max) {
+                sum += 1;
+            }
+        }
+        return cache[sIdx][eIdx];
+    }
+    
+    
+}

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename source folder &apos;FacebookHackerCup2012/src&apos; to &apos;qualification&apos;&#x0A;- Original project: &apos;FacebookHackerCup2012&apos;&#x0A;- Original element: &apos;FacebookHackerCup2012/src&apos;&#x0A;- Renamed element: &apos;src&apos;" description="Rename source folder &apos;src&apos;" id="org.eclipse.jdt.ui.rename.source.folder" input="/src" name="qualification" stamp="1327831904305" version="1.0"/>
+</session>

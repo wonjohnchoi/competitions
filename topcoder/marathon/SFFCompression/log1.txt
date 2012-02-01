@@ -1,0 +1,204 @@
+accessing bytesToInts...
+accessing compress
+ints: 25347978
+accessing intsToBytes...
+bytes: 101391912
+accessing zip
+bytes: 50825574
+accessing bytesToInts...
+ints: 12706396
+accessing decompress
+ints: 12706396
+accessing intsToBytes...
+true
+bytes: 50825574
+accessing unzip
+bytes: 101391912
+accessing bytesToInts...
+ints: 25347978
+time spent: 17535
+25347978 to 12706396
+66637.09326171875
+spe-95-233:bin wonjohnchoi$ java -Xmx4g SFFCompression
+accessing bytesToInts...
+accessing compress
+ints: 25347978
+accessing intsToBytes...
+bytes: 101391912
+accessing zip
+bytes: 50825574
+accessing bytesToInts...
+ints: 12706396
+accessing decompress
+ints: 12706396
+accessing intsToBytes...
+bytes: 50825574
+accessing unzip
+bytes: 101391912
+accessing bytesToInts...
+ints: 25347978
+time spent: 16560
+25347978 to 12706396
+67222.09326171875
+spe-95-233:bin wonjohnchoi$ java -Xmx4g SFFCompression
+accessing bytesToInts...
+accessing compress
+ints: 25347978
+accessing intsToBytes...
+bytes: 101391912
+accessing zip
+bytes: 50825574
+accessing bytesToInts...
+ints: 12706396
+accessing decompress
+ints: 12706396
+accessing intsToBytes...
+bytes: 50825574
+accessing unzip
+bytes: 101391912
+accessing bytesToInts...
+ints: 25347978
+time spent: 16977
+25347978 to 12706396
+1 : 66971.89326171875
+accessing bytesToInts...
+accessing compress
+ints: 25369314
+accessing intsToBytes...
+bytes: 101477256
+accessing zip
+bytes: 50412234
+accessing bytesToInts...
+ints: 12603061
+accessing decompress
+ints: 12603061
+accessing intsToBytes...
+bytes: 50412234
+accessing unzip
+bytes: 101477256
+accessing bytesToInts...
+ints: 25369314
+time spent: 17856
+25369314 to 12603061
+2 : 67205.42465820312
+accessing bytesToInts...
+accessing compress
+ints: 22072726
+accessing intsToBytes...
+bytes: 88290904
+accessing zip
+bytes: 44379627
+accessing bytesToInts...
+ints: 11094910
+accessing decompress
+ints: 11094910
+accessing intsToBytes...
+bytes: 44379627
+accessing unzip
+bytes: 88290904
+accessing bytesToInts...
+ints: 22072726
+time spent: 13888
+22072726 to 11094910
+6 : 58670.471484375
+accessing bytesToInts...
+accessing compress
+ints: 23611954
+accessing intsToBytes...
+bytes: 94447816
+accessing zip
+bytes: 47713169
+accessing bytesToInts...
+ints: 11928294
+accessing decompress
+ints: 11928294
+accessing intsToBytes...
+bytes: 47713169
+accessing unzip
+bytes: 94447816
+accessing bytesToInts...
+ints: 23611954
+time spent: 16479
+23611954 to 11928294
+7 : 61424.0013671875
+accessing bytesToInts...
+accessing compress
+ints: 22674992
+accessing intsToBytes...
+bytes: 90699968
+accessing zip
+bytes: 45464093
+accessing bytesToInts...
+ints: 11366025
+accessing decompress
+ints: 11366025
+accessing intsToBytes...
+bytes: 45464093
+accessing unzip
+bytes: 90699968
+accessing bytesToInts...
+ints: 22674992
+time spent: 14019
+22674992 to 11366025
+8 : 60613.05678710937
+accessing bytesToInts...
+accessing compress
+ints: 25068676
+accessing intsToBytes...
+bytes: 100274704
+accessing zip
+bytes: 52256090
+accessing bytesToInts...
+ints: 13064025
+accessing decompress
+ints: 13064025
+accessing intsToBytes...
+bytes: 52256090
+accessing unzip
+bytes: 100274704
+accessing bytesToInts...
+ints: 25068676
+time spent: 16463
+25068676 to 13064025
+9 : 63392.77495117187
+accessing bytesToInts...
+accessing compress
+ints: 25690982
+accessing intsToBytes...
+bytes: 102763928
+accessing zip
+bytes: 50393983
+accessing bytesToInts...
+ints: 12598499
+accessing decompress
+ints: 12598499
+accessing intsToBytes...
+bytes: 50393983
+accessing unzip
+bytes: 102763928
+accessing bytesToInts...
+ints: 25690982
+time spent: 15866
+25690982 to 12598499
+17 : 70390.57456054687
+accessing bytesToInts...
+accessing compress
+ints: 25943910
+accessing intsToBytes...
+bytes: 103775640
+accessing zip
+bytes: 50020557
+accessing bytesToInts...
+ints: 12505141
+accessing decompress
+ints: 12505141
+accessing intsToBytes...
+bytes: 50020557
+accessing unzip
+bytes: 103775640
+accessing bytesToInts...
+ints: 25943910
+time spent: 16256
+25943910 to 12505141
+18 : 72270.13657226562
+avg : 65117.29170532228

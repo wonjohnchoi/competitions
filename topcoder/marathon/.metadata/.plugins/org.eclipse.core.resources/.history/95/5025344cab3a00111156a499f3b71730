@@ -1,0 +1,7 @@
+'''
+Created on Jan 9, 2012
+
+@author: wonjohnchoi
+'''
+from django.contrib.auth import admin
+

@@ -1,0 +1,41 @@
+1326081832951	Rename resource 'DataTraining.csv.txt'
+1326081842276	Rename resource 'DataTraining_new.csv.txt'
+1326152285036	Rename resource 'DataTraining.csv.txt'
+1326152302695	Rename resource 'Locations.csv.txt'
+1326170820287	Rename resource 'EliteClassifier.java'
+1326171154500	Rename resource 'DataTraining-1.csv'
+1326239716018	Rename type 'EliteClassifier_old1'
+1326240380191	Delete element
+1326244529062	Move method
+1326253607682	Move compilation unit
+1326259507537	Delete element
+1326259650298	Delete element
+1326259737807	Copy compilation unit
+1326259746829	Rename type 'EliteClassifier'
+1326319344786	Copy compilation unit
+1326319356029	Rename type 'EliteClassifier7'
+1326319359707	Move compilation unit
+1326324569389	Rename method 'analyze'
+1326324684645	Rename method 'LOG'
+1326324698024	Rename method 'LOGLN'
+1326326860983	Rename field 'ExperimentID'
+1326333925592	Delete element
+1326345090112	Move compilation unit
+1326345101459	Rename type 'EliteClassifier'
+1326347046252	Rename field 'secton'
+1326350965327	Rename method 'avg'
+1326351176945	Rename field 'totalMM'
+1326493472979	Copy compilation unit
+1326493495013	Rename type 'EliteClassifier'
+1326511342920	Copy compilation unit
+1326511351031	Rename type 'EliteClassifier'
+1326522667297	Copy compilation unit
+1326522677165	Rename type 'EliteClassifier'
+1326523837028	Move compilation unit
+1326523844491	Rename type 'EliteClassifier'
+1326523847417	Copy compilation unit
+1326523861135	Rename type 'EliteClassifier11'
+1326523902314	Delete element
+1326523905261	Copy compilation unit
+1326523911042	Delete element
+1326523917870	Rename type 'EliteClassifier10'

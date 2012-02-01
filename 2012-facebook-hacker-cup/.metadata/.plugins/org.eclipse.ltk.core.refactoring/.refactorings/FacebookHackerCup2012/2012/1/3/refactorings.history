@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;FacebookHackerCup2012/billboards&apos; to &apos;billboards.in&apos;" description="Rename resource &apos;billboards&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="billboards" name="billboards.in" stamp="1327110066507" updateReferences="true"/>
+</session>

@@ -1,7 +1,0 @@
-Entering ping...
-Input
-ping
-Output:
-pong
-Exiting ping...
-

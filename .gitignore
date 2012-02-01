@@ -1,2 +1,5 @@
 *.sff
-.metadata
+.*
+!/.gitignore
+
+/codesprint/2011-2/.metadata

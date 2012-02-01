@@ -1,7 +1,0 @@
-package myserver;
-
-public class Test {
-    public static void main(String args[]) {
-        System.out.println("SY");
-    }
-}

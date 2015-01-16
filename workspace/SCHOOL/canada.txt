@@ -1,0 +1,119 @@
+# City saved on 2008/17/1@11:50:30
+
+# Window title
+Canada
+# first street, first avenue, num streets, num avenues
+0 0 12 12
+# intersection size
+54
+# things
+   becker.robots.Thing 0 1
+   becker.robots.Thing 1 0
+   becker.robots.Thing 2 0
+   becker.robots.Thing 3 0
+   becker.robots.Thing 3 1
+   becker.robots.Thing 4 0
+   becker.robots.Thing 5 1
+   becker.robots.Thing 7 0
+   becker.robots.Thing 7 1
+   becker.robots.Thing 8 1
+   becker.robots.Thing 9 0
+   becker.robots.Thing 9 1
+   becker.robots.Thing 0 3
+   becker.robots.Thing 0 4
+   becker.robots.Thing 0 6
+   becker.robots.Thing 1 2
+   becker.robots.Thing 1 3
+   becker.robots.Thing 1 4
+   becker.robots.Thing 1 5
+   becker.robots.Thing 1 7
+   becker.robots.Thing 2 2
+   becker.robots.Thing 2 4
+   becker.robots.Thing 2 6
+   becker.robots.Thing 3 4
+   becker.robots.Thing 3 6
+   becker.robots.Thing 4 2
+   becker.robots.Thing 4 3
+   becker.robots.Thing 4 4
+   becker.robots.Thing 4 6
+   becker.robots.Thing 4 7
+   becker.robots.Thing 5 5
+   becker.robots.Thing 5 7
+   becker.robots.Thing 6 4
+   becker.robots.Thing 6 6
+   becker.robots.Thing 7 7
+   becker.robots.Thing 7 3
+   becker.robots.Thing 7 2
+   becker.robots.Thing 8 3
+   becker.robots.Thing 8 4
+   becker.robots.Thing 8 6
+   becker.robots.Thing 9 3
+   becker.robots.Thing 9 4 
+   becker.robots.Thing 9 6
+
+
+
+   
+   becker.robots.Wall 0 0 West
+   becker.robots.Wall 1 0 West
+   becker.robots.Wall 2 0 West
+   becker.robots.Wall 3 0 West
+   becker.robots.Wall 4 0 West
+   becker.robots.Wall 5 0 West
+   becker.robots.Wall 6 0 West 
+   becker.robots.Wall 7 0 West
+   becker.robots.Wall 8 0 West
+   becker.robots.Wall 9 0 West
+
+
+   becker.robots.Wall 0 1 East
+   becker.robots.Wall 1 1 East
+   becker.robots.Wall 2 1 East
+   becker.robots.Wall 3 1 East
+   becker.robots.Wall 4 1 East
+   becker.robots.Wall 5 1 East
+   becker.robots.Wall 6 1 East 
+   becker.robots.Wall 7 1 East
+   becker.robots.Wall 8 1 East
+   becker.robots.Wall 9 1 East
+
+   becker.robots.Wall 0 2 East 
+   becker.robots.Wall 1 6 East
+   becker.robots.Wall 2 6 East
+   becker.robots.Wall 3 2 East
+   becker.robots.Wall 4 5 East 
+   becker.robots.Wall 5 2 East
+   becker.robots.Wall 6 2 East
+   becker.robots.Wall 7 7 East
+   becker.robots.Wall 8 7 East
+   becker.robots.Wall 9 2 East
+
+
+
+   becker.robots.Wall 1 3 North
+   becker.robots.Wall 1 4 North
+   becker.robots.Wall 1 5 North
+   becker.robots.Wall 1 6 North
+   becker.robots.Wall 4 3 North
+   becker.robots.Wall 4 4 North
+   becker.robots.Wall 4 5 North
+   becker.robots.Wall 7 3 North
+   becker.robots.Wall 7 4 North
+   becker.robots.Wall 7 5 North
+   becker.robots.Wall 7 6 North
+   becker.robots.Wall 7 7 North
+
+   becker.robots.Wall 2 3 South
+   becker.robots.Wall 2 4 South
+   becker.robots.Wall 2 5 South
+   becker.robots.Wall 2 6 South
+   becker.robots.Wall 4 3 South
+   becker.robots.Wall 4 4 South
+   becker.robots.Wall 4 5 South
+   becker.robots.Wall 8 3 South
+   becker.robots.Wall 8 4 South
+   becker.robots.Wall 8 5 South
+   becker.robots.Wall 8 6 South
+   becker.robots.Wall 8 7 South
+   becker.robots.Wall 9 2 South
+   

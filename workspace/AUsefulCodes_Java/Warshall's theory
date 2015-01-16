@@ -1,0 +1,5 @@
+Find the shortest distance/Set distance by number and not connected as 10000
+for(int j=0;j<99;j++)
+	for(int k=0;k<99;k++)
+		for(int l=0;l<99;l++)
+			nodes[j][l]=Math.min(nodes[j][l],nodes[j][k]+nodes[k][l]);

@@ -1,0 +1,42 @@
+'''
+Speaking in Tongues
+
+Input
+3
+ejp mysljylc kd kxveddknmc re jsicpdrysi
+rbcpc ypc rtcsra dkh wyfrepkym veddknkmkrkcd
+de kr kd eoya kw aej tysr re ujdr lkgc jv
+
+
+Output
+Case #1: our language is impossible to understand
+Case #2: there are twenty six factorial possibilities
+Case #3: so it is okay if you want to just give up
+
+Author: Wonjohn Choi
+Language: Python3
+'''
+
+
+#IO FILE NAMES
+inFile = 'A.in'
+outFile = 'A.out'
+
+#INPUT HELPER
+fin = open(inFile,'r')
+def getTokens():
+    while True:
+        ins = re.findall(r'\S+', next(fin))
+        for input in ins:
+            yield input
+tokens = getTokens()
+inStr = lambda: next(tokens) #inStr is same to next in Java
+inInt = lambda: int(next(tokens)) #inInt is same to nextInt in Java
+inFloat = lambda: float(next(tokens)) #inFloat is same to nextFloat in Java
+
+#OUTPUT HELPER
+fout = open(outFile,'w')
+out = lambda s: fout.write('%s'%str(s)) #out is same to print in Java
+outln = lambda s: fout.write('%s\n'%str(s)) #outln is same to println in Java
+
+

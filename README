@@ -1,1 +1,16 @@
 Repository for programming competition preparation and participation
+New Rule (2015-01-20): to keep track of list of problems solved (by myself and with solution),
+I set a rule so that each leaf directory contains a text file named SUMMARY.
+The file categories each file name on the directory to one of SOLVED_BY_MYSELF, UNDERSTOOD_WITH_SOLUTION, ATTEMPTED files.
+For example, a summary file looks like this
+====
+SOLVED_BY_MYSELF
+A.java
+B.java
+E.cpp
+UNDERSTOOD_WITH_SOLUTION
+C.py
+D.java
+ATTEMPTED
+F.java
+====

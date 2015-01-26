@@ -1,6 +1,7 @@
 import java.util.*;
 import java.io.*;
 
+// incorrect
 public class G {
     public static void main(String args[]) throws IOException {
         Scanner sc = new Scanner(new FileReader("G.in"));

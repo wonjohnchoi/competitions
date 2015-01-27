@@ -3,7 +3,7 @@ import java.io.*;
 
 public class D {
     public static void main(String args[]) throws IOException {
-        Scanner sc = new Scanner(new FileReader("D.in"));
+        Scanner sc = new Scanner(new FileReader("D2.in"));
         int T = sc.nextInt();
         while (T-- > 0) {
             double n, m, a, b, c, d, r;
@@ -21,16 +21,14 @@ public class D {
             ArrayList<ZT> zts = new ArrayList<ZT>();
             zts.add(zt);
 
-            int cnt = 0;
             int idx = -1;
-            while (cnt < 10) {
+            while (true) {
                 zt = zt.next();
                 idx = zts.indexOf(zt);
                 if (idx != -1) {
                     break;
                 }
                 zts.add(zt);
-                cnt += 1;
             }
             
             ZT found = zts.get(idx);

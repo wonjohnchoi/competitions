@@ -9,6 +9,9 @@ Solution
 @AUTHOR Wonjohn Choi (http://capcs.wordpress.com/)
 @LANG Python 3
 @RESULT 
+
+Correct on small
+Incorrect on large
 '''
 
 def solve():

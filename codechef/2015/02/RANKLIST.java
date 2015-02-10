@@ -7,17 +7,12 @@ public class RANKLIST {
         while (T-- > 0) {
             long n = sc.nextLong();
             long s = sc.nextLong();
-            int val = 1;
-            int numE = 1;
-            s -= val;
-            while (s > 0) {
-                if ((val + 1) * (n - numE) <= s) {
-                    val++;
+            for (long a = n; a >= 1; a--) {
+                if ((1 + a) * a / 2 + (n - a) <= s) {
+                    System.out.println(n - a);
+                    break;
                 }
-                numE++;
-                s -= val;
             }
-            System.out.println(n - val);
         }
     }
 }

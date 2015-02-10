@@ -7,8 +7,17 @@ public class RANKLIST {
         while (T-- > 0) {
             long n = sc.nextLong();
             long s = sc.nextLong();
-            int maxA = (int) ((2 * n + 1 - Math.sqrt(Math.pow(2 * n + 1, 2) - 8 * s)) / 2);
-            System.out.println(n - maxA);
+            int val = 1;
+            int numE = 1;
+            s -= val;
+            while (s > 0) {
+                if ((val + 1) * (n - numE) <= s) {
+                    val++;
+                }
+                numE++;
+                s -= val;
+            }
+            System.out.println(n - val);
         }
     }
 }

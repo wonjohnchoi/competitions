@@ -1,6 +1,6 @@
 import java.util.*;
 import java.io.*;
-// TIME_USED:
+// TIME_USED: 56:39
 public class A {
     public static void main(String args[]) {
         Scanner sc = new Scanner(System.in);

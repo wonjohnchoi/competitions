@@ -57,7 +57,7 @@ public class C {
                     boolean success = false;
                     for (int i = a.w + 200; i < a.e + 200; i++) {
                         if (a.s > hs[i]) {
-                            newHs[i] = a.s;
+                            newHs[i] = Math.max(a.s, newHs[i]);
                             success = true;
                         }
                     }

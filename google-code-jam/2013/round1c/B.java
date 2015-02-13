@@ -50,7 +50,7 @@ public class B {
                 best = best.parent;
                 }*/
 
-            /* worked for small
+            /* worked for small */
             String ans = "";
             String hMove = X > 0 ? "WE" : "EW";
             String vMove = Y > 0 ? "SN" : "NS";
@@ -59,10 +59,8 @@ public class B {
             }
             for (int y = 0; y < Math.abs(Y); y++) {
                 ans += vMove;
-                }*/
-
-            
-            // System.out.printf("Case #%d: %s\n", tc, ans);
+            }
+            System.out.printf("Case #%d: %s\n", tc, ans);
         }
     }
 }

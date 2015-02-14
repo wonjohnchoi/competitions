@@ -1,2 +1,44 @@
+# attacks: 6
+# attack rem: 5 # attack today: 1
+d(0), w(0), e(2), s(10)
+true
+# attack rem: 4 # attack today: 1
+d(2), w(3), e(5), s(8)
+true
+# attack rem: 3 # attack today: 1
+d(4), w(6), e(8), s(6)
+true
+# attack rem: 2 # attack today: 1
+d(10), w(2), e(3), s(8)
+true
+# attack rem: 1 # attack today: 1
+d(17), w(4), e(5), s(8)
+false
+# attack rem: 0 # attack today: 1
+d(24), w(6), e(7), s(8)
+true
 Case #1: 5
+# attacks: 8
+# attack rem: 7 # attack today: 1
+d(0), w(0), e(1), s(7)
+true
+# attack rem: 5 # attack today: 2
+d(1), w(0), e(5), s(10)
+true
+d(1), w(2), e(3), s(9)
+true
+# attack rem: 4 # attack today: 1
+d(2), w(4), e(5), s(11)
+true
+# attack rem: 2 # attack today: 2
+d(3), w(8), e(13), s(10)
+true
+d(3), w(0), e(5), s(1)
+false
+# attack rem: 1 # attack today: 1
+d(4), w(4), e(9), s(1)
+true
+# attack rem: 0 # attack today: 1
+d(5), w(8), e(13), s(1)
+false
 Case #2: 6

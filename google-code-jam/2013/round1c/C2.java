@@ -17,7 +17,6 @@ public class C {
             return d - o.d;
         }
     }
-
     public static void main(String args[]) {
         Scanner sc = new Scanner(System.in);
         int T = sc.nextInt();
@@ -39,32 +38,8 @@ public class C {
                 }
             }
             Collections.sort(attacks);
-            ArrayList<Integer> points = new ArrayList<Integer>();
-            for (Attack attack : attacks) {
-                for (int p : new int[] {attack.w, attack.e}) {
-                    points.add(p);
-                }                
-            }
-            Collections.sort(points);
-            int idx = 0;
-            int prev = Integer.MIN_VALUE;
-            // remove dups
-            while (idx < points.size()) {
-                if (prev == points.get(idx)) {
-                    points.remove(idx);
-                } else {
-                    prev = points.get(idx);
-                    idx++;
-                }
-            }
-            points.add(Integer.MIN_VALUE); // ex) MIN_VALUE -3 0 3 5. each value denotes a start of range. We want a one to one match of each range to an index.
-            points.add(Integer.MAX_VALUE); // so points.size() - 1 is # ranges.
-            // range at idx : points.get(idx) ~ points.get(idx + 1)
-            // idx of range starting with x : int idx = Collections.binarySearch(x)
-            // idx of range ending with y : int idx = Collections.binarySearch(y) - 1
-            int[] hs = new int[points.size() - 1];
             // System.out.println("# attacks: " + attacks.size());
-            
+            int[] hs = new int[401]; // hs[i] is the height of i - 200.
             int ans = 0;
             while (!attacks.isEmpty()) {
                 Attack a = attacks.remove(0);
@@ -80,9 +55,8 @@ public class C {
                     a = attacksToday.remove(0);
                     // System.out.println(a);
                     boolean success = false;
-                    for (int i = Collections.binarySearch(points, a.w);
-                         points.get(i + 1) <= a.e; i++) {
-                        if (hs[i] < a.s) {
+                    for (int i = a.w + 200; i < a.e + 200; i++) {
+                        if (a.s > hs[i]) {
                             newHs[i] = Math.max(a.s, newHs[i]);
                             success = true;
                         }

@@ -1,6 +1,20 @@
+Size of points: 8
+# attacks: 6
 Case #1: 5
+Size of points: 8
+# attacks: 7
 Case #2: 6
+Size of points: 6
+# attacks: 3
 Case #3: 3
+Size of points: 64
+# attacks: 33
 Case #4: 25
+Size of points: 2667
+# attacks: 345162
 Case #5: 1945
+Size of points: 1923
+# attacks: 63231
 Case #6: 693
+Size of points: 2000000
+# attacks: 1000000

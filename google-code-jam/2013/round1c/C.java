@@ -45,25 +45,19 @@ public class C {
                     points.add(p);
                 }                
             }
-            Collections.sort(points);
+            // System.out.println("# points deup before: " + points.size());
+            
             int idx = 0;
-            int prev = Integer.MIN_VALUE;
-            // remove dups
-            while (idx < points.size()) {
-                if (prev == points.get(idx)) {
-                    points.remove(idx);
-                } else {
-                    prev = points.get(idx);
-                    idx++;
-                }
-            }
+            points = new ArrayList<Integer>(new HashSet<Integer>(points));
+            Collections.sort(points);
+            System.out.println("Size of points: " + points.size());
             points.add(Integer.MIN_VALUE); // ex) MIN_VALUE -3 0 3 5. each value denotes a start of range. We want a one to one match of each range to an index.
             points.add(Integer.MAX_VALUE); // so points.size() - 1 is # ranges.
             // range at idx : points.get(idx) ~ points.get(idx + 1)
             // idx of range starting with x : int idx = Collections.binarySearch(x)
             // idx of range ending with y : int idx = Collections.binarySearch(y) - 1
             int[] hs = new int[points.size() - 1];
-            // System.out.println("# attacks: " + attacks.size());
+            System.out.println("# attacks: " + attacks.size());
             
             int ans = 0;
             while (!attacks.isEmpty()) {
@@ -74,17 +68,16 @@ public class C {
                         attacksToday.add(attacks.remove(0));
                 }
                 // System.out.println("# attack rem: " + attacks.size() + " # attack today: " + attacksToday.size());
-                int[] newHs = new int[hs.length];
-                System.arraycopy(hs, 0, newHs, 0, hs.length);
-                while (!attacksToday.isEmpty()) {
-                    a = attacksToday.remove(0);
+                // test success
+                for (int ai = 0; ai < attacksToday.size(); ai++) {
+                    a = attacksToday.get(ai);
                     // System.out.println(a);
                     boolean success = false;
                     for (int i = Collections.binarySearch(points, a.w);
                          points.get(i + 1) <= a.e; i++) {
                         if (hs[i] < a.s) {
-                            newHs[i] = Math.max(a.s, newHs[i]);
                             success = true;
+                            break;
                         }
                     }
                     if (success) {
@@ -92,7 +85,17 @@ public class C {
                     }
                     // System.out.println(success);
                 }
-                hs = newHs;
+
+                // apply
+                for (int ai = 0; ai < attacksToday.size(); ai++) {
+                    a = attacksToday.get(ai);
+                    for (int i = Collections.binarySearch(points, a.w);
+                         points.get(i + 1) <= a.e; i++) {
+                        if (hs[i] < a.s) {
+                            hs[i] = Math.max(a.s, hs[i]);
+                        }
+                    }
+                }
             }
             System.out.printf("Case #%d: %d\n", tc, ans);
         }

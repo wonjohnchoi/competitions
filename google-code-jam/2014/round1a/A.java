@@ -56,11 +56,6 @@ public class A {
                 to.get(0).add(sc.next());
             }
             int ans = find(from, to, 0);
-           
-            /*            for (int i = 0; i < 256; i++) {
-                String bin = Integer.toBinaryString(i);
-                test()
-                }*/
             String output;
             if (ans == Integer.MAX_VALUE) {
                 output = "NOT POSSIBLE";
@@ -70,23 +65,6 @@ public class A {
             System.out.printf("Case #%d: %s\n", tc, output);
         }
     }
-    /*    public static int find(ArrayList<String> from, ArrayList<String> to, int i) {
-        ArrayList<String> from0 = new ArrayList<String>();
-        ArrayList<String> from1 = new ArrayList<String>();
-        ArrayList<String> to0 = new ArrayList<String>();
-        ArrayList<String> to1 = new ArrayList<String>();
-        for (String s : from) {
-            if (s.charAt(i) == '0') from0.add(s);
-            else from1.add(s);
-        }
-        for (String s : to) {
-            if (s.charAt(i) == '0') to0.add(s);
-            else to1.add(s);
-        }
-        if (from0.size() == to0.size()) {
-            int 
-        }
-        }*/
     public static int find(ArrayList<ArrayList<String>> from, ArrayList<ArrayList<String>> to, int i) {
         int ans = Integer.MAX_VALUE;
         if (i == L) return 0;

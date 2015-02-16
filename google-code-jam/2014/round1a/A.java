@@ -91,6 +91,7 @@ public class A {
         int ans = Integer.MAX_VALUE;
         if (i == L) return 0;
         for (int k = 0; k < 2; k++) {
+            System.gc();
             ArrayList<ArrayList<String>> newFrom = new ArrayList<ArrayList<String>>();
             ArrayList<ArrayList<String>> newTo = new ArrayList<ArrayList<String>>();
             boolean fail = false;

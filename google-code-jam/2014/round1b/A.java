@@ -37,11 +37,11 @@ public class A {
     public static void main(String args[]) {
         Scanner sc = new Scanner(System.in);
         int T = sc.nextInt();
+        int MAXS = 101;
         for (int tc = 1; tc <= T; tc++) {
             int N = sc.nextInt();
-            int[] tot = new int[101];
-            char[] sym = new char[tot.length];
-            int[][] cnt = new int[N][tot.length];
+            char[] sym = new char[MAXS];
+            int[][] cnt = new int[N][MAXS];
             int SIZE = 0;
             boolean lost = false;
             for (int i = 0; i < N; i++) {
@@ -51,12 +51,10 @@ public class A {
                 for (char c : s.toCharArray()) {
                     if (prev == c) {
                         cnt[i][idx]++;
-                        tot[idx]++;
                     } else {
                         prev = c;
                         idx++;
                         cnt[i][idx]++;
-                        tot[idx]++;
                         if (i == 0) {
                             sym[idx] = c;
                             SIZE = idx + 1;
@@ -69,21 +67,23 @@ public class A {
                     lost = true;
                 }
             }
-            int[] avg = new int[tot.length];
-            for (int i = 0; i < tot.length; i++) {
-                avg[i] = (int) Math.round(((double) tot[i]) / N);
-            }
-            int numChanges = 0;
-            for (int i = 0; i < N; i++) {
-                for (int j = 0; j < tot.length; j++) {
-                    numChanges += Math.abs(cnt[i][j] - avg[j]);
+            int tot = 0;
+            for (int i = 0; i < SIZE; i++) {
+                int min = Integer.MAX_VALUE;
+                for (int k = 0; k < 200; k++) {
+                    int tmp = 0;
+                    for (int j = 0; j < N; j++) {
+                        tmp += Math.abs(cnt[j][i] - k);
+                    }
+                    min = Math.min(min, tmp);
                 }
+                tot += min;
             }
             String ans;
             if (lost) {
                 ans = "Fegla Won";
             } else {
-                ans = "" + numChanges;
+                ans = "" + tot;
             }
             System.out.printf("Case #%d: %s\n", tc, ans);
         }

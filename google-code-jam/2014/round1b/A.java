@@ -42,6 +42,7 @@ public class A {
             int[] tot = new int[101];
             char[] sym = new char[tot.length];
             int[][] cnt = new int[N][tot.length];
+            int SIZE = 0;
             boolean lost = false;
             for (int i = 0; i < N; i++) {
                 String s = sc.next();
@@ -58,10 +59,14 @@ public class A {
                         tot[idx]++;
                         if (i == 0) {
                             sym[idx] = c;
+                            SIZE = idx + 1;
                         } else if (sym[idx] != c) {
                             lost = true;
                         }
                     }
+                }
+                if (i != 0 && idx + 1 != SIZE) {
+                    lost = true;
                 }
             }
             int[] avg = new int[tot.length];
@@ -71,9 +76,6 @@ public class A {
             int numChanges = 0;
             for (int i = 0; i < N; i++) {
                 for (int j = 0; j < tot.length; j++) {
-                    if (tot[j] > 0 && cnt[i][j] == 0) {
-                        lost = true;
-                    }
                     numChanges += Math.abs(cnt[i][j] - avg[j]);
                 }
             }

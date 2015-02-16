@@ -4,4 +4,8 @@
 .metadata
 *~
 *.class
+tmp*
+Tmp*
+temp*
+Temp*
 

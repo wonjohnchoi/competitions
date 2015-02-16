@@ -17,7 +17,46 @@ public class C {
             return d - o.d;
         }
     }
-
+    public class Node {
+        Node left, right;
+        int from, to;
+        int minH;
+        int mid;
+        boolean isLeaf;
+        public Node(ArrayList<Integer> points, int from, int to) {
+            if (to - from <= 0) throws new Exception("Cannot happen.. this is crazyya!");
+            this.from = from;
+            this.to = to;
+            minH = 0;
+            left = right = null;
+            mid = (from + to) / 2;
+            if (to - from == 1) {
+                isLeaf = true;
+            }
+        }
+        public Node(ArrayList<Integer> points) {
+            this(points, 0, points.size() - 1);
+        }
+        public boolean testSuccess(int w, int e, int s) {
+            if (isLeaf) {
+                return s > minH;
+            }
+            if (w >= e) return false;
+            if (w < mid && mid < e) {
+                boolean leftOk = left.testSuccess(w, mid, s);
+                boolean rightOk = right.testSuccess(mid, e, s);
+                return leftOk || rightOk.
+            }
+            if (mid <= w) {
+                return right.testSuccess(w, e, s);
+            }
+            if (mid >= e)
+            return left.testSuccess(w, e, s);
+        }
+        public void applyFix(int w, int e, int s) {
+            if (isLeaf)
+        }
+    }
     public static void main(String args[]) {
         Scanner sc = new Scanner(System.in);
         int T = sc.nextInt();

@@ -79,6 +79,12 @@ public class C {
                 }
             }
         }
+        Node parent = node1.parent;
+        while (parent != null) {
+            if (isConnected(parent, node2, hist)) {
+                return true;
+            }
+        }
         return false;
     }
     public static String find(Node node) {

@@ -54,13 +54,16 @@ public class C {
         }
         return bestNode;
     }
-    public static boolean isConnected(Node node1, Node node2) {
-        for (Node node : node2.near) {
-            if (!node.visited) {
-                if (!isConnected(node1, node, new boolean[N])) {
-                    return false;
+    public static boolean isConnected(Node node1, Node node2, Node node3) {
+        while (node2 != node3) {
+            for (Node node : node2.near) {
+                if (!node.visited) {
+                    if (!isConnected(node1, node, new boolean[N])) {
+                        return false;
+                    }
                 }
             }
+            node2 = node2.parent;
         }
         return true;
     }
@@ -96,7 +99,7 @@ public class C {
                     bestParent = parent;
                     distant = true;
                 } else if (bestNodeP.code.compareTo(bestNode.code) < 0) {
-                    if (isConnected(bestNodeP, node)) {
+                    if (isConnected(bestNodeP, node, parent)) {
                         bestNode = bestNodeP;
                         bestParent = parent;
                         distant = true;

@@ -7,7 +7,7 @@ public class A {
         int T = sc.nextInt();
         for (int tc = 1; tc <= T; tc++) {
 
-            // out.printf("Case #%d: %?\n", tc, ?);
+            // out.printf("Case #%d: %s\n", tc, ans);
         }
     }
 }

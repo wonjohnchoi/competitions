@@ -17,24 +17,34 @@ public class B {
                 double ct = (V - 1) / 2.0 * D;
                 double e = P + ct;
                 double s = P - ct;
-                if (i != 0 && b > s) {
-                    double used;
-                    if (ct > t) {
-                        used = Math.min(ct - t, b - s);
-                        b -= used;
-                        t += used;
-                    } else if (ct < t) {
-                        used = Math.min(t - ct, b - s);
-                        s += used;
-                        e += used;
-                        ct += used;
-                    }
+                if (i != 0) {
                     if (b > s) {
-                        double need = (b - s) / 2.0;
-                        ct = t + need;
-                        s += need;
-                        e += need;
-                        b -= need;
+                        double used;
+                        if (ct > t) {
+                            used = Math.min(ct - t, b - s);
+                            b -= used;
+                            t += used;
+                        } else if (ct < t) {
+                            used = Math.min(t - ct, b - s);
+                            s += used;
+                            e += used;
+                            ct += used;
+                        }
+                        if (b > s) {
+                            used = (b - s) / 2.0;
+                            ct = t + used;
+                            s += used;
+                            e += used;
+                            b -= used;
+                        }
+                    } else if (b < s) {
+                        double used;
+                        if (ct < t) {
+                            used = Math.min(t - ct, s - b);
+                            s -= used;
+                            e -= used;
+                            ct += used;
+                        }
                     }
                 }
                 t = Math.max(t, ct);

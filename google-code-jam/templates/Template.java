@@ -7,7 +7,7 @@ public class Template {
         int T = sc.nextInt();
         for (int tc = 1; tc <= T; tc++) {
 
-            // out.printf("Case #%d: %s\n", tc, ans);
+            out.printf("Case #%d: %s\n", tc, ans);
         }
     }
 }

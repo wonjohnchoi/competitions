@@ -15,9 +15,14 @@ public class B {
             N = sc.nextInt();
             pixels = new int[N];
             for (int i = 0; i < N; i++) pixels[i] = sc.nextInt();
-            cache = new int[300 * 300];
-            Arrays.fill(cache, -1);
-            String ans = N == 0 ? "0" : find(pixels[0], 0) + "";
+            int minVal = Integer.MAX_VALUE;
+            for (int i = 0; i <= 255; i++) {
+                cache = new int[300 * 300];
+                Arrays.fill(cache, -1);
+                int val = N == 0 ? 0 : find(i, 0);
+                if (val < minVal) minVal = val;
+            }
+            String ans = minVal + "";
             // System.out.println(D + " " + I + " " + M + " " + N);
             out.printf("Case #%d: %s\n", tc, ans);
         }

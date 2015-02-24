@@ -16,9 +16,9 @@ public class B {
             pixels = new int[N];
             for (int i = 0; i < N; i++) pixels[i] = sc.nextInt();
             int minVal = Integer.MAX_VALUE;
+            cache = new int[300 * 300];
+            Arrays.fill(cache, -1);
             for (int i = 0; i <= 255; i++) {
-                cache = new int[300 * 300];
-                Arrays.fill(cache, -1);
                 int val = N == 0 ? 0 : find(i, 0);
                 if (val < minVal) minVal = val;
             }
@@ -33,17 +33,13 @@ public class B {
         if (cache[hash] == -1) {
             int res = Integer.MAX_VALUE;
             res = Math.min(res, find(lastVal, i + 1) + D);
-            if (Math.abs(lastVal - pixels[i]) <= M)
-                res = Math.min(res, find(pixels[i], i + 1));
-            else {
-                if (lastVal > pixels[i] + M) {
-                    int lastVal2 = Math.max(lastVal - M, 0);
-                    if (M != 0) res = Math.min(res, find(lastVal - M, i) + I);
-                    res = Math.min(res, find(lastVal - M, i + 1) + lastVal - M - pixels[i]);
-                } else {
-                    if (M != 0) res = Math.min(res, find(lastVal + M, i) + I);
-                    res = Math.min(res, find(lastVal + M, i + 1) + pixels[i] - lastVal - M);
-                }
+            for (int newLastVal = Math.max(0, lastVal - M); newLastVal <= Math.min(lastVal + M, 255); newLastVal++) {
+                res = Math.min(res, find(newLastVal, i + 1) + Math.abs(newLastVal - pixels[i]));
+            }            
+            if (lastVal > pixels[i] + M) {
+                if (M != 0) res = Math.min(res, find(lastVal - M, i) + I);
+            } else if (lastVal < pixels[i] - M) {
+                if (M != 0) res = Math.min(res, find(lastVal + M, i) + I);
             }
             cache[hash] = res;
         }

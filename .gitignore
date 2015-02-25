@@ -6,4 +6,5 @@
 *.class
 tmp*
 Tmp*
+*.pyc
 

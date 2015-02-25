@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
 'host'                : 'code.google.com',
-'user'                : 'wonjohn.choi@gmail.com',
+'user'                : 'your-name-here@gmail.com',
 'data_directory'      : './source',
 'input_name_format'   : '{problem}-{input}-{id}.in',
 'output_name_format'  : '{problem}-{input}-{id}.out',

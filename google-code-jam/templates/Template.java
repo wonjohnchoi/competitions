@@ -6,7 +6,7 @@ public class Template {
         Scanner sc = new Scanner(System.in);
         int T = sc.nextInt();
         for (int tc = 1; tc <= T; tc++) {
-
+            String ans = "";
             out.printf("Case #%d: %s\n", tc, ans);
         }
     }

@@ -8,4 +8,5 @@ touch $1.in &&
 sudo chown wonjohnchoi: $1.in &&
 sudo chmod 664 $1.in &&
 
+emacs -q $1.in &&
 emacs $1.java $1.in

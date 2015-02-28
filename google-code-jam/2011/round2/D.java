@@ -33,8 +33,8 @@ public class D {
             queue.add(nodes[0]);
             while (!queue.isEmpty()) {
                 Node node = queue.remove(0);
-                System.out.println(node.idx + " " + node.minThreaten + " " + node.minConquer);
-                out.println(node.near.size());
+                // System.out.println(node.idx + " " + node.minThreaten + " " + node.minConquer);
+                // out.println(node.near.size());
                 for (Node next : node.near) {
                     int newConquer;
                     int newThreaten;
@@ -43,7 +43,13 @@ public class D {
                         newThreaten = node.minThreaten;
                     } else {
                         newConquer = node.minConquer + 1;
-                        newThreaten = node.minThreaten - 1 + node.near.size() - 1;
+                        newThreaten = node.minThreaten - 1;
+                        for (Node nextNear : next.near) {
+                            if (nextNear != node
+                                && !node.near.contains(nextNear)) {
+                                newThreaten++;
+                            }
+                        }
                     }
                     if (next.minConquer == Integer.MAX_VALUE
                         || next.minConquer > newConquer

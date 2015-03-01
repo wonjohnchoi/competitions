@@ -23,7 +23,7 @@ public class C {
                         int newK = k;
                         int newChanges = 0;
                         boolean fail = false;
-                        for (int j = 0; j < word.length(); j++) {
+                        for (int j = 0; j < word.length() && !fail; j++) {
                             if (S.charAt(i + j) == word.charAt(j)) {
                                 newK--;
                             } else {

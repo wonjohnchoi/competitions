@@ -15,6 +15,16 @@ public class D {
     static long coord(int x, int y) {
         return x * 1000000 + y;
     }
+    static boolean check(Node node) {
+        if (node.above.size() == 0) {
+            return true;
+        }
+        boolean good  = true;
+        for (Node node2 : node.above) {
+            if (node2.below.size() < 2) good = false;
+        }
+        return good;
+    }
     public static void main(String args[]) {
         Scanner sc = new Scanner(System.in);
         String ans = "";
@@ -40,7 +50,7 @@ public class D {
             }
         }
         for (Node node : nodes) {
-            if (node.above.size() == 0) sky.below.add(node);
+            if (check(node)) sky.below.add(node);
         }
         int cnt = 0;
         int turn = 0;
@@ -48,17 +58,30 @@ public class D {
         while (cnt < N) {
             Node best = null;
             for (Node node : sky.below) {
+                // out.println(node.i + "in sky");
                 if (best == null) best = node;
                 else if (turn == 0 && node.i > best.i)
                     best = node;
                 else if (turn == 1 && node.i < best.i)
                     best = node;
             }
-            // System.out.println(best.i);
+            // System.out.println("removed: " + best.i);
             sky.below.remove(best);
             for (Node node : best.below) {
                 node.above.remove(best);
-                sky.below.add(node);
+            }
+            for (Node node : best.above) {
+                node.below.remove(best);
+            }
+            for (Node node : best.below) {
+                if (check(node))
+                    if (!sky.below.contains(node))
+                        sky.below.add(node);
+            }
+            int i = 0;
+            while (i < sky.below.size()) {
+                if (!check(sky.below.get(i))) sky.below.remove(i);
+                else i++;
             }
             cnt++;
             nums.add(best.i);

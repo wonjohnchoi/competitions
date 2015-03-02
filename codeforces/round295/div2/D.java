@@ -12,29 +12,30 @@ public class D {
             i = ii;
         }
     }
+    static long coord(int x, int y) {
+        return x * 1000000 + y;
+    }
     public static void main(String args[]) {
         Scanner sc = new Scanner(System.in);
         String ans = "";
         int N = sc.nextInt();
         ArrayList<Node> nodes = new ArrayList<Node>();
+        HashMap<Long, Node> coordToNode = new HashMap<Long, Node>();
         for (int i = 0; i < N; i++) {
             int x = sc.nextInt();
             int y = sc.nextInt();
-            nodes.add( new Node(x, y, i));
+            Node node = new Node(x, y, i);
+            nodes.add(node);
+            coordToNode.put(coord(x, y), node);
         }
         Node sky = new Node(-1, -1, -1);
-        Collections.sort(nodes, new Comparator<Node>() {
-                public int compare(Node n1, Node n2) {
-                    return n1.y - n2.y;
-                }
-            });
         for (int i = 0; i < N; i++) {
-            for (int j = i + 1; j < N; j++) {
-                if (nodes.get(j).y > nodes.get(i).y + 1) break;
-                if (nodes.get(j).y == nodes.get(i).y) continue;
-                if (nodes.get(j).x == nodes.get(i).x || nodes.get(j).x == nodes.get(i).x - 1 || nodes.get(j).x == nodes.get(i).x + 1) {
-                    nodes.get(j).below.add(nodes.get(i));
-                    nodes.get(i).above.add(nodes.get(j));
+            Node node = nodes.get(i);
+            for(int dx = -1; dx <= 1; dx++) {
+                Node child = coordToNode.get(coord(node.x + dx, node.y - 1));
+                if (child != null) {
+                    node.below.add(child);
+                    child.above.add(node);
                 }
             }
         }

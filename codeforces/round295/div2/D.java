@@ -12,7 +12,7 @@ public class D {
             i = ii;
         }
         long coord(int dx, int dy) {
-            return (x + dx) * 1000000 + (y + dy);
+            return (x + dx) * 1000000L + (y + dy);
         }
         boolean check() {
             if (above.size() == 0) {

@@ -25,47 +25,44 @@ public class B {
         {'v', '^'},
         {'^', 'v'}
     };
+    static boolean[][] visited;
     public static void main(String args[]) {
         Scanner sc = new Scanner(System.in);
         String ans = "";
         N = sc.nextInt();
         M = sc.nextInt();
         map = new char[N][];
+        visited = new boolean[N][M];
         for (int i = 0; i < N; i++) {
             String S = sc.next();
             map[i] = S.toCharArray();
         }
-        boolean fail = false;
-        loop : for (int i = 0; i < N; i++) {
+        for (int i = 0; i < N; i++) {
             for (int j = 0; j < M; j++) {
                 if (map[i][j] != '.') continue;
-                if (!fill(i, j)) {
-                    fail = true;
-                    break loop;
-                }
+                fill(i, j);
             }
         }
-        loop : for (int i = 0; i < N; i++) {
+        for (int i = 0; i < N; i++) {
             for (int j = 0; j < M; j++) {
                 if (map[i][j] == '.') {
-                    fail = true;
-                    break loop;
+                    out.println("Not unique");
+                    System.exit(0);
                 }
             }
         }
-        if (fail) out.println("Not unique");
-        else {
-            for (int i = 0; i < N; i++) {
-                for (int j = 0; j < M; j++) {
-                    out.print(map[i][j]);
-                }
-                out.println();
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < M; j++) {
+                out.print(map[i][j]);
             }
+            out.println();
         }
     }
-    static boolean fill(int x, int y) {
-        if (x < 0 || y < 0 || x >= N || y >= M) return true;
-        if (map[x][y] != '.') return true;
+    static void fill(int x, int y) {
+        if (x < 0 || y < 0 || x >= N || y >= M) return;
+        if (visited[x][y]) return;
+        visited[x][y] = true;
+        if (map[x][y] != '.') return;
         for (int i = 0; i < deltas.length; i++) {
             int[][] delta = deltas[i];
             int[] rest = rests[i];
@@ -82,16 +79,26 @@ public class B {
             if (!isOpen) {
                 if (x + rest[0] < 0 || y + rest[1] < 0 || x + rest[0] >= N || y + rest[1] >= M
                     || map[x + rest[0]][y + rest[1]] != '.')
-                    return false;
+                    {
+                        out.println("Not unique");
+                        System.exit(0);
+                    }
                 map[x][y] = sym[0];
                 map[x + rest[0]][y + rest[1]] = sym[1];
                 for (int[] fourSide : fourSideDelta) {
-                    if (!fill(x + rest[0] + fourSide[0], y + rest[1] + fourSide[1]))
-                        return false;
+                    int newX, newY;
+                    newX = x + rest[0] + fourSide[0];
+                    newY = y + rest[1] + fourSide[1];
+                    if (rangeCheck(newX, newY)) {
+                        visited[newX][newY] = false;
+                        fill(newX, newY);
+                    }
                 }
                 break;
             }
         }
-        return true;
+    }
+    static boolean rangeCheck(int x, int y) {
+        return 0 <= x && x < N && 0 <= y && y < M;
     }
 }

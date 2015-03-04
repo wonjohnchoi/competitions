@@ -1,5 +1,6 @@
 import java.util.*;
 import java.io.*;
+// http://codeforces.ru/contest/521/submission/10117526
 public class E {
     public static PrintStream out = System.out;
     static int N, M;

@@ -36,45 +36,63 @@ public class B2 {
         Scanner sc = new Scanner(System.in);
         N = sc.nextInt();
         M = sc.nextInt();
-        char[][] map = new char[N];
+        Node[][] map = new Node[N][M];
         int numDots = 0;
+        if (N == 2000 && M == 2000)
+            out.println("LINE41");
         for (int i = 0; i < N; i++) {
-            map[i] = sc.next().toCharArray();
+            String S = sc.next();
             for (int j = 0; j < M; j++) {
-                if (map[i][j] == '.') numDots++;
+                char sym = S.charAt(j);
+                if (S.charAt(j) == '.')
+                    map[i][j] = new Node(sym, i, j);
+                if (sym == '.') numDots++;
             }
         }
         boolean fail = false;
         int[][] deltas = new int[][]{{1, 0}, {0, 1}, {-1, 0}, {0, -1}};
-        HashMap<Integer> no
         ArrayList<Node> degreeOne = new ArrayList<Node>();
-        for (int i = 0; i < N; i++) {
+        if (N == 2000 && M == 2000)        out.println("LINE53");
+        loop : for (int i = 0; i < N; i++) {
             for (int j = 0; j < M; j++) {
-                if (map[i][j] != '.') continue;
-                Node node = new Node(map[i][j], i, j);
+                if (map[i][j] == null) continue;
                 for (int[] d : deltas) {
                     int i2 = d[0] + i;
                     int j2 = d[1] + j;
-                    if (inRange(i2, j2) && map[i2][j2] == '.') {
+                    if (inRange(i2, j2) && map[i2][j2] != null) {
                         map[i][j].near.add(map[i2][j2]);
                     }
                 }
                 // out.println("BEGINNING: " + i + " " + j + " " + map[i][j].near.size());
-                if (map[i][j].near.size() == 0) fail = true;
+                if (map[i][j].near.size() == 0) {
+                    fail = true;
+                    break loop;
+                }
                 else if(map[i][j].near.size() == 1) degreeOne.add(map[i][j]);
             }
         }
-        while (degreeOne.size() != 0) {
-            Node n1 = degreeOne.remove(0);
-            if (n1.near.size() != 1) continue; // removed by other pair.
-            Node n2 = n1.near.remove(0);
-            n1.setSym(n2);
-            n2.near.remove(n1);
-            numDots -= 2;
-            if (!updateNode(n1, degreeOne) || !updateNode(n2, degreeOne))
-                break;
-            n2.near.clear();
+        if (N == 2000 && M == 2000) {
+            out.println("LINE71");
+            out.println(degreeOne.size() + " SIZE OF DEGREEONE");
         }
+        int cnt = 0;
+        if (!fail)
+            while (degreeOne.size() != 0) {
+                Node n1 = degreeOne.remove(0);
+                if (n1.near.size() != 1) continue; // removed by other pair.
+                cnt++;
+                if (cnt % 100000 == 0 && N == 2000 && M == 2000)
+                    out.println(degreeOne.size() + " SIZE OF DEGREEONE");
+
+                Node n2 = n1.near.remove(0);
+                n1.setSym(n2);
+                n2.near.remove(n1);
+                numDots -= 2;
+                if (!updateNode(n2, degreeOne))
+                    break;
+            }
+        if (N == 2000 && M == 2000)
+            out.println("LINE83");
         if (numDots > 0) fail = true;
         if (fail) out.println("Not unique");
         else
@@ -89,11 +107,12 @@ public class B2 {
     static boolean updateNode(Node removed, ArrayList<Node> degreeOne) {
         for (Node node : removed.near) {
             // out.println(node.x + " " + node.y + " " + node.near.size());
-            node.near.remove(removed);
+            if (!node.near.remove(removed)) out.println("WTF");
+            int size = node.near.size();
             // out.println(node.x + " " + node.y + " " + node.near.size());
-            if (node.near.size() == 0) {
+            if (size == 0) {
                 return false;
-            } else if (node.near.size() == 1) {
+            } else if (size == 1) {
                 degreeOne.add(node);
             }
         }

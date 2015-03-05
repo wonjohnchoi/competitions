@@ -6,7 +6,7 @@ public class C {
     static long[] H, SN, SP; // height, sum negative, sum positive (all of size 2N)
     static int[][][] ST; // segment tree ({{max SN i, 2nd SN i}, {max SP i, 2nd SP i}})
     static int[][] query(int a, int b, int l, int r, int idx) {
-        if (b < l || a > r) return new int[][] {{-1, -1}, {-1, -1}};
+        if (b < l || a > r) return null;
         if (a <= l && r <= b) return ST[idx];
         int h = (l + r) / 2;
         int[][] st1 = query(a, b, l, h, 2 * idx + 1);
@@ -15,7 +15,7 @@ public class C {
     }
     static void set(int l, int r, int idx) {
         if (l == r) {
-            ST[idx] = new int[][] {{l, -1}, {l, -1}};
+            ST[idx] = new int[][] {{l}, {l}};
             return;
         }
         int h = (l + r) / 2;
@@ -24,32 +24,30 @@ public class C {
         ST[idx] = merge(ST[2 * idx + 1], ST[2 * idx + 2]);
     }
     static int[][] merge(int[][] st1, int[][] st2) {
-        int[][] st = {
-            {st1[0][0], st1[0][1], st2[0][0], st2[0][1]},
-            {st1[1][0], st1[1][1], st2[1][0], st2[1][1]}
-        };
-        // out.println("BEFORE: " + Arrays.toString(st[0]) + " " + Arrays.toString(st[1]));
-        long[][] SNP = new long[][] {SN, SP};
-        int[][] res = new int[2][];
-        for (int i = 0; i < 2; i++) {
-            int best = -1;
-            int best2 = -1;
-            for (int j = 0; j < 4; j++) {
-                if (st[i][j] == -1) continue;
-                long val = SNP[i][st[i][j]];
-                if (best == -1) best = st[i][j];
-                else if (SNP[i][best] < val) {
-                    best2 = best;
-                    best = st[i][j];
-                } else if (best2 == -1) best2 = st[i][j];
-                else if (SNP[i][best2] < val) {
-                    best2 = st[i][j];
-                }
-            }
-            res[i] = new int[] {best, best2};
+        if (st1 == null && st2 == null) return null;
+        if (st1 == null) return st2;
+        if (st2 == null) return st1;
+        return new int[][] {merge(st1[0], st2[0], SN), merge(st1[1], st2[1], SP)};
+    }
+    static int[] merge(int[] st1, int[] st2, final long[] S) {
+        Integer[] st = new Integer[st1.length + st2.length];
+        for (int i = 0; i < st1.length; i++) {
+            st[i] = st1[i];
         }
-        // out.println("AFTER: " + Arrays.toString(res[0]) + " " + Arrays.toString(res[1]));
-        return res;
+        for (int i = st1.length; i < st1.length + st2.length; i++) {
+            st[i] = st2[i - st1.length];
+        }
+        Arrays.sort(st, new Comparator<Integer>() {
+                public int compare(Integer a, Integer b) {
+                    if (a == b) return 0;
+                    if (a == -1) return 1;
+                    if (b == -1) return -1;
+                    if (S[b] > S[a]) return 1;
+                    if (S[a] > S[b]) return -1;
+                    return 0;
+                }
+            });
+        return new int[] {st[0], st[1]};
     }
     public static void main(String args[]) {
         Scanner sc = new Scanner(System.in);
@@ -58,12 +56,7 @@ public class C {
         H = new long[2 * N];
         SN = new long[2 * N];
         SP = new long[2 * N];
-        ST = new int[(int) Math.pow(2, (int) (Math.log(2 * N) / Math.log(2)) + 4)][2][2];
-        for (int i = 0; i < ST.length; i++) {
-            for (int j = 0; j < 2; j++) {
-                Arrays.fill(ST[i][j], -1);
-            }
-        }
+        ST = new int[(int) Math.pow(2, (int) (Math.log(2 * N) / Math.log(2)) + 4)][2][];
         long[] D = new long[2 * N];
         for (int i = 0; i < N; i++) {
             D[i] = sc.nextLong();
@@ -80,13 +73,6 @@ public class C {
             S += D[i];
         }
         set(0, 2 * N - 1, 0);
-        // out.println("H: " + Arrays.toString(H));
-        // out.println("D: " + Arrays.toString(D));
-        // out.println("SN: " + Arrays.toString(SN));
-        // out.println("SP: " + Arrays.toString(SP));
-        for (int i = 0; i < 32; i++) {
-            // out.println("ST: " + Arrays.toString(ST[i]));
-        }
         for (int i = 0; i < M; i++) {
             int a = sc.nextInt() - 1;
             int b = sc.nextInt() - 1;
@@ -104,8 +90,8 @@ public class C {
                 out.println(SN[res[0][0]] + SP[res[1][0]]);
             } else {
                 long best = -1;
-                if (res[0][1] != -1) best = Math.max(best, SN[res[0][1]] + SP[res[1][0]]);
-                if (res[1][1] != -1) best = Math.max(best, SN[res[0][0]] + SP[res[1][1]]);
+                if (res[0].length == 2) best = Math.max(best, SN[res[0][1]] + SP[res[1][0]]);
+                if (res[1].length == 2) best = Math.max(best, SN[res[0][0]] + SP[res[1][1]]);
                 out.println(best);
             }
         }

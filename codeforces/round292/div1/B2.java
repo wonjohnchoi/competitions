@@ -38,8 +38,6 @@ public class B2 {
         M = sc.nextInt();
         Node[][] map = new Node[N][M];
         int numDots = 0;
-        if (N == 2000 && M == 2000)
-            out.println("LINE41");
         for (int i = 0; i < N; i++) {
             String S = sc.next();
             for (int j = 0; j < M; j++) {
@@ -51,8 +49,7 @@ public class B2 {
         }
         boolean fail = false;
         int[][] deltas = new int[][]{{1, 0}, {0, 1}, {-1, 0}, {0, -1}};
-        ArrayList<Node> degreeOne = new ArrayList<Node>();
-        if (N == 2000 && M == 2000)        out.println("LINE53");
+        LinkedList<Node> degreeOne = new LinkedList<Node>();
         loop : for (int i = 0; i < N; i++) {
             for (int j = 0; j < M; j++) {
                 if (map[i][j] == null) continue;
@@ -71,19 +68,10 @@ public class B2 {
                 else if(map[i][j].near.size() == 1) degreeOne.add(map[i][j]);
             }
         }
-        if (N == 2000 && M == 2000) {
-            out.println("LINE71");
-            out.println(degreeOne.size() + " SIZE OF DEGREEONE");
-        }
-        int cnt = 0;
         if (!fail)
             while (degreeOne.size() != 0) {
                 Node n1 = degreeOne.remove(0);
                 if (n1.near.size() != 1) continue; // removed by other pair.
-                cnt++;
-                if (cnt % 100000 == 0 && N == 2000 && M == 2000)
-                    out.println(degreeOne.size() + " SIZE OF DEGREEONE");
-
                 Node n2 = n1.near.remove(0);
                 n1.setSym(n2);
                 n2.near.remove(n1);
@@ -91,8 +79,6 @@ public class B2 {
                 if (!updateNode(n2, degreeOne))
                     break;
             }
-        if (N == 2000 && M == 2000)
-            out.println("LINE83");
         if (numDots > 0) fail = true;
         if (fail) out.println("Not unique");
         else
@@ -104,7 +90,7 @@ public class B2 {
                 out.println();
             }
     }
-    static boolean updateNode(Node removed, ArrayList<Node> degreeOne) {
+    static boolean updateNode(Node removed, LinkedList<Node> degreeOne) {
         for (Node node : removed.near) {
             // out.println(node.x + " " + node.y + " " + node.near.size());
             if (!node.near.remove(removed)) out.println("WTF");
@@ -116,6 +102,7 @@ public class B2 {
                 degreeOne.add(node);
             }
         }
+        removed.near.clear();
         return true;
     }
     static boolean inRange(int i, int j) {

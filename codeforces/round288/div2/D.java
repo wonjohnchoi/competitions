@@ -74,8 +74,9 @@ public class D {
                 }
             }
         }
-        List<Node> stack = new ArrayList<>();
+        List<Node> stack = new LinkedList<>();
         dfs(nodes[start], stack);
+        if (stack.size() - 1 != N) NO();
         out.println("YES");
         for (int i = stack.size() - 1; i >= 0; i--) {
             if (i == stack.size() - 1) out.print(stack.get(i).s);

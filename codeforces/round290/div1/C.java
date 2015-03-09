@@ -81,11 +81,10 @@ public class C {
         int tot = 0;
         while (true) {
             LinkedList<E> path = findPath(source, sink);
-            out.println(path);
             if (path == null) break;
             int flow = 1;
             for (E e : path) {
-                out.println(e.v.idx + " " + e.u.idx + " " + e.flow + " " + e.capacity);
+                out.println(e.v.num + " " + e.u.num + " " + e.flow + " " + e.capacity);
                 e.flow += flow;
                 e.capacity -= flow;
                 if (e.v != source && e.u != sink) {

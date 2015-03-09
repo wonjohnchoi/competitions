@@ -30,7 +30,7 @@ public class D {
         return "" + chr1(b) + chr1(c);
     }
     public static void main(String args[]) {
-        Scanner sc = new Scanner(System.in);
+        InputReader sc = new InputReader(System.in);
         int N = sc.nextInt();
         Node[] nodes = new Node[62 * 62];
         for (int i = 0; i < nodes.length; i++) {
@@ -98,5 +98,32 @@ public class D {
     static void NO() {
         out.println("NO");
         System.exit(0);
+    }
+}
+class InputReader {
+    public BufferedReader reader;
+    public StringTokenizer tokenizer;
+    public InputReader(InputStream stream) {
+	reader = new BufferedReader(new InputStreamReader(stream), 32768);
+	tokenizer = null;
+    }
+    public String next() {
+	while (tokenizer == null || !tokenizer.hasMoreTokens()) {
+	    try {
+		tokenizer = new StringTokenizer(reader.readLine());
+	    } catch (IOException e) {
+		throw new RuntimeException(e);
+	    }
+	}
+	return tokenizer.nextToken();
+    }
+    public double nextDouble() {
+	return Double.parseDouble(next());
+    }
+    public long nextLong() {
+	return Long.parseLong(next());
+    }
+    public int nextInt() {
+	return Integer.parseInt(next());
     }
 }

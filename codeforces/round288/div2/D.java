@@ -5,6 +5,7 @@ public class D {
     static class Node {
         String s;
         LinkedList<Node> out = new LinkedList<>();
+        int start = 0;
         int inDegree = 0;
         Node(String s) {
             this.s = s;
@@ -73,27 +74,20 @@ public class D {
                 }
             }
         }
-        LinkedList<Node> stack = new LinkedList<>();
-        LinkedList<Node> circuit = new LinkedList<>();
-        dfs(nodes[start], stack, circuit);
+        List<Node> stack = new ArrayList<>();
+        dfs(nodes[start], stack);
         out.println("YES");
-        for (int i = circuit.size() - 1; i >= 0; i--) {
-            if (i == circuit.size() - 1) out.print(circuit.get(i).s);
-            else out.print(circuit.get(i).s.charAt(1));
+        for (int i = stack.size() - 1; i >= 0; i--) {
+            if (i == stack.size() - 1) out.print(stack.get(i).s);
+            else out.print(stack.get(i).s.charAt(1));
         }
         out.println();
     }
-    static void dfs(Node cur, LinkedList<Node> stack, LinkedList<Node> circuit) {
-        if (cur.out.size() == 0) {
-            circuit.add(cur);
-            if (stack.size() == 0) return;
-            dfs(stack.remove(stack.size() - 1), stack, circuit);
-        } else {
-            stack.add(cur);
-            while (!cur.out.isEmpty()) {
-                dfs(cur.out.remove(0), stack, circuit);
-            }
+    static void dfs(Node cur, List<Node> stack) {
+        while (cur.out.size() > cur.start) {
+            dfs(cur.out.get(cur.start++), stack);
         }
+        stack.add(cur);
     }
     static void NO() {
         out.println("NO");

@@ -4,7 +4,7 @@ public class E {
     public static PrintStream out = System.out;
     static long idx(int i, int j) {
         if (i > j) return idx(j, i);
-        return i * N + j;
+        return (long) i * N + j;
     }
     static class Node implements Comparable<Node> {
         ArrayList<Node> near = new ArrayList<>();

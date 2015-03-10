@@ -3,15 +3,11 @@ import java.io.*;
 public class Template {
     public static PrintStream out = System.out;
     public static InputReader in = new InputReader(System.in);
-    public static TYPE NAME() {
+    public static {
 
     }
     public static void main(String args[]) {
-        int tc = 1;
-        while (in.hasNext()) {
-            out.println("Case #" + tc + ": " + NAME());
-            tc++;
-        }
+
     }
 }
 class InputReader {

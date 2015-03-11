@@ -1,12 +1,14 @@
 import java.util.*;
 import java.io.*;
 public class F {
+    // http://codeforces.com/contest/490/submission/8819845
     public static PrintStream out = System.out;
     public static InputReader in = new InputReader(System.in);
-    static        List<List<Integer>> adj;
-
+    static List<List<Integer>> adj;
+    static int[] f, r;
+    static int N;
     public static void main(String args[]) {
-        int N = in.nextInt();
+        N = in.nextInt();
         r = new int[N];
         for (int i = 0; i < N; i++) {
             r[i] = in.nextInt();
@@ -22,27 +24,38 @@ public class F {
             adj.get(b).add(a);
         }
         int max = 0;
-        visited = new boolean[N];
+        f = new int[N];
+        Arrays.fill(f, Integer.MAX_VALUE);
         for (int i = 0; i < N; i++) {
-            max = Math.max(f(i, -1, r[i]), max);
+            max = Math.max(max, dfs(i, -1));
         }
         out.println(max);
     }
-    static int[] r;
-    static int f(int v, int p, int val) {
+    static int dfs(int v, int p) {
         // out.println(v + " " + p + " " + val);
-        visited[v] = true;
-        int ret = 0;
-        for (int w : adj.get(v)) {
-            if (!visited[w] && w != p && val < r[w]) {
-                // out.println(w + " " + r[w]);
-                ret = Math.max(f(w, v, r[w]), ret);
+        int ll = 0, rl = N - 1;
+        while (ll < rl) {
+            int mid = (ll + rl) / 2;
+            if (f[mid] > r[v]) {
+                rl = mid;
+            } else if (f[mid] < r[v]) {
+                ll = mid + 1;
+            } else {
+                ll = rl = mid;
             }
         }
-        visited[v] = false;
-        return ret + 1;
+        int tmp = f[ll];
+        f[ll] = r[v];
+        int len = ll + 1;
+        for (int w : adj.get(v)) {
+            if (w != p) {
+                // out.println(w + " " + r[w]);
+                len = Math.max(len, dfs(w, v));
+            }
+        }
+        f[ll] = tmp;
+        return len;
     }
-    static boolean[] visited;
 }
 class InputReader {
     public BufferedReader reader;

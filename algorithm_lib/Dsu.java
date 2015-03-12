@@ -1,24 +1,19 @@
 class Dsu {
     int[] p;
     int[] val;
-
     Dsu(int n) {
 	p = new int[n];
 	val = new int[n];
-        init();
     }
-
-    void init() {
+    void clear() { // call clear before usage of Dsu
 	for (int i = 0; i < p.length; i++) {
 	    p[i] = i;
 	    val[i] = 0;
 	}
     }
-
     int get(int x) {
 	return p[x] == x ? x : (p[x] = get(p[x]));
     }
-
     void unite(int x, int y) {
 	x = get(x);
 	y = get(y);

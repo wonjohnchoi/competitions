@@ -4,48 +4,31 @@ public class E {
     public static PrintStream out = System.out;
     public static InputReader in = new InputReader(System.in);
     public static void main(String args[]) {
-        int N, M;
-        N = in.nextInt();
-        M = in.nextInt();
-        long gcd = gcd(N, M);
-        int B, G;
-        long[] n = new long[N];
-        Arrays.fill(n, -1);
-        long[] m = new long[M];
-        Arrays.fill(m, -1);
-        B = in.nextInt();
-        for (int i = 0; i < B; i++) {
-            n[i] = in.nextLong();
-        }
-        G = in.nextInt();
-        for (int i = 0; i < G; i++) {
-            m[i] = in.nextLong();
-        }
-        int lastUnfilled = 0;
-        for (int i = N - 1; i >= 0; i--) {
-            if (n[i] == -1) {
-                lastUnfilled = i;
-                break;
-            }
-        }
-        for (int i = M - 1; i >= 0; i--) {
-            if (m[i] == -1) {
-                lastUnfilled = Math.max(lastUnfilled, i);
-                break;
-            }
-        }
+        long N, M;
+        N = in.nextLong();
+        M = in.nextLong();
         if (N > M) {
-            int tmp = N;
+            long tmp = N;
             N = M;
             M = tmp;
         } // N <= M
-
+        long gcd = gcd(N, M);
+        int B, G;
+        HashSet<Long> starts = new HashSet<Long>();
+        B = in.nextInt();
+        for (int i = 0; i < B; i++) {
+            starts.add(in.nextLong());
+        }
+        G = in.nextInt();
+        for (int i = 0; i < G; i++) {
+            starts.add(in.nextLong());
+        }
         long maxIdx = -1;
         for (int i = 0; i < gcd; i++) {
-            int j = i;
-            int idx = -1;
+            long j = i;
+            long idx = -1;
             while (true) {
-                if (contains(n, m, j)) {
+                if (starts.contains(j)) {
                     idx = j;
                     break;
                 }
@@ -59,8 +42,8 @@ public class E {
             j = idx;
             // out.println(idx + " " + M + " " + N);
             for (long k = idx; k < M * N / gcd + idx; k += N) {
-                int l = (int) (k % M);
-                if (contains(n, m, l)) {
+                long l = k % M;
+                if (starts.contains(l)) {
                     j = Math.min(j, l);
                 }
                 // out.println(j);
@@ -68,11 +51,7 @@ public class E {
                 j = j + N;
             }
         }
-        out.println(Math.max(lastUnfilled, maxIdx));
-    }
-    static boolean contains(long[] n, long[] m, int i) {
-        return (i < n.length && n[i] != -1)
-            || (i < m.length && m[i] != -1);
+        out.println(maxIdx);
     }
     static long gcd(long n, long m) {
         if (n < m) return gcd(m, n);

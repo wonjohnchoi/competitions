@@ -7,28 +7,35 @@ public class E {
         long N, M;
         N = in.nextLong();
         M = in.nextLong();
+        int B, G;
+        HashSet<Long> NN = new HashSet<Long>();
+        HashSet<Long> MM = new HashSet<Long>();
+        B = in.nextInt();
+        for (int i = 0; i < B; i++) {
+            NN.add(in.nextLong());
+        }
+        G = in.nextInt();
+        for (int i = 0; i < G; i++) {
+            MM.add(in.nextLong());
+        }
+        /*
         if (N > M) {
             long tmp = N;
             N = M;
             M = tmp;
         } // N <= M
+        */
+        long maxIdx = Math.max(maxIdx(N, M, NN, MM), maxIdx(M, N, MM, NN));
+        out.println(maxIdx);
+    }
+    static long maxIdx(long N, long M, HashSet<Long> NN, HashSet<Long> MM) {
+        long maxIdx = -2;
         long gcd = gcd(N, M);
-        int B, G;
-        HashSet<Long> starts = new HashSet<Long>();
-        B = in.nextInt();
-        for (int i = 0; i < B; i++) {
-            starts.add(in.nextLong());
-        }
-        G = in.nextInt();
-        for (int i = 0; i < G; i++) {
-            starts.add(in.nextLong());
-        }
-        long maxIdx = -1;
         for (int i = 0; i < gcd; i++) {
             long j = i;
             long idx = -1;
             while (true) {
-                if (starts.contains(j)) {
+                if (NN.contains(j) || MM.contains(j)) {
                     idx = j;
                     break;
                 }
@@ -43,15 +50,17 @@ public class E {
             // out.println(idx + " " + M + " " + N);
             for (long k = idx; k < M * N / gcd + idx; k += N) {
                 long l = k % M;
-                if (starts.contains(l)) {
+                if (NN.contains(l) || MM.contains(l)) {
                     j = Math.min(j, l);
                 }
                 // out.println(j);
-                maxIdx = Math.max(maxIdx, j);
+                if (!(MM.contains(l) && l == j)) {
+                    maxIdx = Math.max(maxIdx, j);
+                }
                 j = j + N;
             }
         }
-        out.println(maxIdx);
+        return maxIdx;
     }
     static long gcd(long n, long m) {
         if (n < m) return gcd(m, n);

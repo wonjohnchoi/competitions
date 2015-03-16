@@ -1,6 +1,6 @@
 import java.util.*;
 import java.io.*;
-public class Math {
+public class NumberTheory {
     public static int[][] comb(int n, int MOD) { // O(N^2)
 	int[][] comb = new int[n + 1][n + 1];
 	comb[0][0] = 1;

@@ -12,7 +12,7 @@ public class B {
         long[] acc = new long[N + 1];
         ans[N] = 1;
         acc[N] = 1;
-        List<Integer> idx = searchSubString(s, t);
+        List<Integer> idx = search(s, t);
         if (idx.size() == 0) {
             out.println(0);
             System.exit(0);
@@ -30,18 +30,14 @@ public class B {
         }
         // out.println("acc: " + Arrays.toString(acc));
         // out.println("ans: " + Arrays.toString(ans));
-        out.println(ans[0] - 1);
+        out.println((ans[0] - 1 + MOD) % MOD);
     }
-    static int[] preProcessPattern(char[] ptrn) {
+    static int[] preprocess(char[] ptrn) { // O(M)
 	int i = 0, j = -1;
-	int ptrnLen = ptrn.length;
-	int[] b = new int[ptrnLen + 1];
+	int[] b = new int[ptrn.length + 1];
 	b[i] = j;
-	while (i < ptrnLen) {
+	while (i < ptrn.length) {
 	    while (j >= 0 && ptrn[i] != ptrn[j]) {
-		// if there is mismatch consider the next widest border
-		// The borders to be examined are obtained in decreasing order from
-		//  the values b[i], b[b[i]] etc.
 		j = b[j];
 	    }
 	    i++;
@@ -50,36 +46,22 @@ public class B {
 	}
 	return b;
     }
-    /**
-     * Based on the pre processed array, search for the pattern in the text
-     *
-     * @param text
-     *            text over which search happens
-     * @param ptrn
-     *            pattern that is to be searched
-     */
-    static List<Integer> searchSubString(char[] text, char[] ptrn) {
+    static List<Integer> search(char[] text, char[] ptrn) { // O(N)
+        ArrayList<Integer> pos = new ArrayList<Integer>();
 	int i = 0, j = 0;
-	// pattern and text lengths
-	int ptrnLen = ptrn.length;
-	int txtLen = text.length;
-	// initialize new array and preprocess the pattern
-	int[] b = preProcessPattern(ptrn);
-        ArrayList<Integer> idx = new ArrayList<Integer>();
-	while (i < txtLen) {
+	int[] b = preprocess(ptrn);
+	while (i < text.length) {
 	    while (j >= 0 && text[i] != ptrn[j]) {
 		j = b[j];
 	    }
 	    i++;
 	    j++;
-	    // a match is found
-	    if (j == ptrnLen) {
-                idx.add(i - ptrnLen);
-		// out.println("found substring at index:" + (i - ptrnLen));
+	    if (j == ptrn.length) {
+                pos.add(i - ptrn.length);
 		j = b[j];
 	    }
 	}
-        return idx;
+        return pos;
     }
 }
 

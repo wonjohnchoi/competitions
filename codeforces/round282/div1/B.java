@@ -13,21 +13,24 @@ public class B {
         ans[N] = 1;
         acc[N] = 1;
         List<Integer> idx = searchSubString(s, t);
-        for (int i = N - 1; i >= 0; i--) {
-            int cur = 0;
-            int j  = Collections.binarySearch(idx, i);
-            if (j < 0) j = -(j + 1);
-            if (j == idx.size()) {
-                ans[i] = 0;
-            } else {
-                int k = idx.get(j);
-                ans[i] = (k - i + 1) * acc[k + t.length] % MOD;
-            }
-            acc[i] = acc[i + 1] + ans[i];
+        if (idx.size() == 0) {
+            out.println(0);
+            System.exit(0);
         }
-        out.println("acc: " + Arrays.toString(acc));
-        out.println("ans: " + Arrays.toString(ans));
-        out.println(ans[0]);
+        int idxPtr = idx.size() - 1;
+        for (int i = N - 1; i >= 0; i--) {
+            while (idxPtr >= 1 && idx.get(idxPtr - 1) >= i) idxPtr--;
+            if (idx.get(idxPtr) < i) {
+                ans[i] = ans[i + 1];
+            } else {
+                int k = idx.get(idxPtr);
+                ans[i] = (ans[i + 1] + acc[k + t.length]) % MOD;
+            }
+            acc[i] = (acc[i + 1] + ans[i]) % MOD;
+        }
+        // out.println("acc: " + Arrays.toString(acc));
+        // out.println("ans: " + Arrays.toString(ans));
+        out.println(ans[0] - 1);
     }
     static int[] preProcessPattern(char[] ptrn) {
 	int i = 0, j = -1;
@@ -72,7 +75,7 @@ public class B {
 	    // a match is found
 	    if (j == ptrnLen) {
                 idx.add(i - ptrnLen);
-		System.out.println("found substring at index:" + (i - ptrnLen));
+		// out.println("found substring at index:" + (i - ptrnLen));
 		j = b[j];
 	    }
 	}

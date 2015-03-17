@@ -15,7 +15,7 @@ public class SegmentTree {
         this.vals = null;
         this.size = size;
         ans = new int[size * 4 + 10];
-        Arrays.fill(ans, Integer.MAX_VALUE);
+        Arrays.fill(ans, EMPTY);
     }
     int unite(int val1, int val2) {
         return Math.min(val1, val2);
@@ -43,6 +43,17 @@ public class SegmentTree {
         int mid = (l + r) / 2;
         return unite(get(v * 2 + 1, l, mid, needL, needR),
                      get(v * 2 + 2, mid + 1, r, needL, needR));
+    }
+    // NEW. to use this lazy st, need to modify above get in a way that mixes ans[v] and unite(...).
+    void put(int v, int l, int r, int needL, int needR, int val) {
+        if (needL > r || needR < l) return;
+        if (needL <= l && needR >= r) {
+            ans[v] = val;
+            return;
+        }
+        int mid = (l + r) / 2;
+        put(v * 2 + 1, l, mid, needL, needR, val);
+        put(v * 2 + 2, mid + 1, r, needL, needR, val);
     }
     void put(int i, int tl, int tr, int pos, int val) { // O(log N)
 	if (tl == tr) {

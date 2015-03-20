@@ -8,39 +8,38 @@ import java.util.*;
 // Comparable findMax( )  --> Return largest item
 // boolean isEmpty( )     --> Return true if empty; else false
 // void makeEmpty( )      --> Remove all items
-// void printTree( )      --> Print tree in sorted order
 // http://users.cis.fiu.edu/~weiss/dsaajava2/code/Treap.java
-public class Treap<AnyType extends Comparable<? super AnyType>> {
-    TreapNode<AnyType> root;
-    TreapNode<AnyType> nullNode;
+public class Treap {
+    TreapNode<Node> root;
+    TreapNode<Node> nullNode;
     public Treap() {
-	nullNode = new TreapNode<AnyType>(null);
+	nullNode = new TreapNode<Node>(null);
 	nullNode.left = nullNode.right = nullNode;
 	nullNode.priority = Integer.MAX_VALUE;
 	root = nullNode;
     }
-    public void insert(AnyType x) {
+    public void insert(Node x) {
 	root = insert(x, root);
     }
-    public void remove(AnyType x) {
+    public void remove(Node x) {
 	root = remove(x, root);
     }
-    public AnyType findMin() {
+    public Node findMin() {
 	if(isEmpty()) throw new RuntimeException("Treap is empty");
-	TreapNode<AnyType> ptr = root;
+	TreapNode<Node> ptr = root;
 	while(ptr.left != nullNode)
 	    ptr = ptr.left;
 	return ptr.element;
     }
-    public AnyType findMax() {
+    public Node findMax() {
 	if(isEmpty()) throw new RuntimeException("Treap is empty");
-	TreapNode<AnyType> ptr = root;
+	TreapNode<Node> ptr = root;
 	while(ptr.right != nullNode)
 	    ptr = ptr.right;
 	return ptr.element;
     }
-    public boolean contains(AnyType x) {
-	TreapNode<AnyType> current = root;
+    public boolean contains(Node x) {
+	TreapNode<Node> current = root;
 	nullNode.element = x;
         while (true) {
             int compareResult = x.compareTo(current.element);
@@ -58,15 +57,9 @@ public class Treap<AnyType extends Comparable<? super AnyType>> {
     public boolean isEmpty() {
 	return root == nullNode;
     }
-    public void printTree() {
-	if(isEmpty())
-	    System.out.println("Empty tree");
-	else
-	    printTree(root);
-    }
-    private TreapNode<AnyType> insert(AnyType x, TreapNode<AnyType> t) {
+    private TreapNode<Node> insert(Node x, TreapNode<Node> t) {
 	if( t == nullNode )
-	    return new TreapNode<AnyType>( x, nullNode, nullNode );
+	    return new TreapNode<Node>( x, nullNode, nullNode );
 	int compareResult = x.compareTo( t.element );
 	if( compareResult < 0 ) {
             t.left = insert( x, t.left );
@@ -79,7 +72,7 @@ public class Treap<AnyType extends Comparable<? super AnyType>> {
         }
 	return t;
     }
-    private TreapNode<AnyType> remove( AnyType x, TreapNode<AnyType> t ) {
+    private TreapNode<Node> remove( Node x, TreapNode<Node> t ) {
         if( t != nullNode ) {
             int compareResult = x.compareTo( t.element );
             if( compareResult < 0 )
@@ -100,75 +93,73 @@ public class Treap<AnyType extends Comparable<? super AnyType>> {
         }
 	return t;
     }
-    private void printTree( TreapNode<AnyType> t )
+    private TreapNode<Node> rotateWithLeftChild( TreapNode<Node> k2 )
     {
-	if( t != t.left )
-	    {
-		printTree( t.left );
-		System.out.println( t.element.toString( ) );
-		printTree( t.right );
-	    }
-    }
-    private TreapNode<AnyType> rotateWithLeftChild( TreapNode<AnyType> k2 )
-    {
-	TreapNode<AnyType> k1 = k2.left;
+	TreapNode<Node> k1 = k2.left;
 	k2.left = k1.right;
 	k1.right = k2;
 	return k1;
     }
-    private TreapNode<AnyType> rotateWithRightChild( TreapNode<AnyType> k1 )
+    private TreapNode<Node> rotateWithRightChild( TreapNode<Node> k1 )
     {
-	TreapNode<AnyType> k2 = k1.right;
+	TreapNode<Node> k2 = k1.right;
 	k1.right = k2.left;
 	k2.left = k1;
 	return k2;
     }
-    private static class TreapNode<AnyType>
+    private static class TreapNode<Node>
     {
-        AnyType element;      // The data in the node
-        TreapNode<AnyType> left;         // Left child
-        TreapNode<AnyType> right;        // Right child
+        Node element;      // The data in the node
+        TreapNode<Node> left;         // Left child
+        TreapNode<Node> right;        // Right child
         int priority;     // Priority
 	private static Random randomObj = new Random();
 	// Constructors
-	TreapNode( AnyType theElement ) {
+	TreapNode( Node theElement ) {
             this( theElement, null, null );
         }
-	TreapNode( AnyType theElement, TreapNode<AnyType> lt, TreapNode<AnyType> rt ) {
+	TreapNode( Node theElement, TreapNode<Node> lt, TreapNode<Node> rt ) {
             element  = theElement;
             left     = lt;
             right    = rt;
             priority = randomObj.nextInt();
         }
     }
+    static class Node implements Comparable<Node> {
+        int val;
+        Node(int val) {
+            this.val = val;
+        }
+        public int compareTo(Node n) {
+            return Integer.compare(val, n.val);
+        }
+    }
     // Test program
     public static void main( String [ ] args )
     {
-	Treap<Integer> t = new Treap<Integer>( );
+	Treap t = new Treap( );
 	final int NUMS = 40000;
 	final int GAP  =   307;
 
 	System.out.println( "Checking... (no bad output means success)" );
 
 	for( int i = GAP; i != 0; i = ( i + GAP ) % NUMS )
-	    t.insert( i );
+	    t.insert(new Node(i));
 	System.out.println( "Inserts complete" );
 
 	for( int i = 1; i < NUMS; i+= 2 )
-	    t.remove( i );
+	    t.remove(new Node(i));
 	System.out.println( "Removes complete" );
 
-	if( NUMS < 40 )
-	    t.printTree( );
-	if( t.findMin( ) != 2 || t.findMax( ) != NUMS - 2 )
+	if( t.findMin().val != 2 || t.findMax().val != NUMS - 2 )
 	    System.out.println( "FindMin or FindMax error!" );
 
 	for( int i = 2; i < NUMS; i+=2 )
-	    if( !t.contains( i ) )
+	    if( !t.contains(new Node(i)) )
 		System.out.println( "Error: find fails for " + i );
 
 	for( int i = 1; i < NUMS; i+=2 )
-	    if( t.contains( i ) )
+	    if( t.contains(new Node(i)) )
 		System.out.println( "Error: Found deleted item " + i );
     }
 }

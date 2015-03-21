@@ -1,0 +1,31 @@
+started dfs from 0 to 4
+dfs: 4 0
+dfs: 2 4
+2 increased from 1
+dfs: 1 4
+3 increased from 1
+started dfs from 0 to 5
+dfs: 5 0
+started dfs from 0 to 3
+dfs: 3 0
+started dfs from 1 to 4
+dfs: 4 1
+dfs: 0 4
+2 increased from 1
+started dfs from 2 to 4
+dfs: 4 2
+started dfs from 3 to 0
+dfs: 0 3
+started dfs from 5 to 0
+dfs: 0 5
+1 3
+1 1
+1 1
+1 1
+2 1
+initally.. 14.0
+12.5
+12.0
+11.0
+9.5
+8.5

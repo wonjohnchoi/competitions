@@ -1,0 +1,16 @@
+started dfs from 0 to 2
+dfs: 2 0
+dfs: 1 2
+2 increased from 1
+started dfs from 1 to 2
+dfs: 2 1
+dfs: 0 2
+2 increased from 1
+1 2
+1 2
+initally.. 16.0
+14.0
+12.0
+8.0
+6.0
+4.0

@@ -5,36 +5,51 @@ public class C {
     public static InputReader in = new InputReader(System.in);
     static long MOD = (long) 1e9 + 7;
     static class Node {
+        static Node EMPTY_LEAF = new Node(0);
         int i;
         List<Node> children = new ArrayList<Node>();
         Node(int i) {
             this.i = i;
         }
+        long _ans = -3;
+        long _size = -3;
         long ans() {
+            if (_ans != -3) return _ans;
             if (children.size() == 0) {
-                if (i == -2) return 0;
+                if (this == EMPTY_LEAF) return 0;
                 return i;
             }
-            int digits = 0;
+            long digits = 0;
             long ret = 0;
             for (int i = children.size() - 1; i >= 0; i--) {
                 Node node = children.get(i);
-                ret = (ret + node.ans() * tenPow[digits]) % MOD;
+                ret = (ret + (node.ans() * modPow(digits)) % MOD) % MOD;
                 digits += node.size();
+                digits %= MOD - 1;
             }
+            _ans = ret;
             return ret;
         }
-        int size() {
+        long size() {
+            if (_size != -3) return _size;
             if (children.size() == 0) {
-                if (i == -2) return 0;
+                if (this == EMPTY_LEAF) return 0;
                 return 1;
             }
             int ret = 0;
             for (int i = 0; i < children.size(); i++) {
                 ret += children.get(i).size();
+                ret %= MOD - 1;
             }
+            _size = ret;
             return ret;
         }
+    }
+    static long modPow(long digits) {
+        if (digits == 0) return 1;
+        if (digits % 2 == 1) return 10L * modPow(digits - 1) % MOD;
+        long c = modPow(digits / 2);
+        return c * c % MOD;
     }
     static long[] tenPow = new long[200001];
     public static void main(String args[]) {
@@ -60,7 +75,7 @@ public class C {
                     nd.children.add(get((int) Q.charAt(j) - '0'));
                 }
                 if (Q.length() == 3) {
-                    nd.children.add(new Node(-2));
+                    nd.children.add(Node.EMPTY_LEAF);
                 }
             }
         }

@@ -1,7 +1,7 @@
 import java.util.*;
 import java.io.*;
 public class A2 {
-    public static PrintStream out = System.out;
+    public static PrintWriter out = new PrintWriter(System.out);
     public static InputReader in = new InputReader(System.in);
     static class Node implements Comparable<Node> {
         int size, i;
@@ -47,6 +47,7 @@ public class A2 {
             sc.add(new Node(p2 - p, p));
             out.println((long) sv.last().size * sh.last().size);
         }
+        out.close();
     }
 }
 class InputReader {

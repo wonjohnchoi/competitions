@@ -2,7 +2,7 @@ import java.util.*;
 import java.io.*;
 public class E2 {
     // solution from http://codeforces.ru/contest/521/submission/10117526
-    public static PrintStream out = System.out;
+    public static PrintWriter out = new PrintWriter(System.out);
     static boolean[] marked;
     static int[][] cycleV;
     static int[] dist;
@@ -49,6 +49,7 @@ public class E2 {
         printV(ans1);
         printV(ans2);
         printV(ans3);
+        out.close();
         System.exit(0);
     }
     static void printV(List<Integer> ans) {
@@ -108,5 +109,6 @@ public class E2 {
         parent = new int[N];
         dfs(0);
         out.println("NO");
+        out.close();
     }
 }

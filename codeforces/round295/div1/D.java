@@ -1,7 +1,7 @@
 import java.util.*;
 import java.io.*;
 public class D {
-    public static PrintStream out = System.out;
+    public static PrintWriter out = new PrintWriter(System.out);
     static class Item {
         long t, b;
         int idx, i;
@@ -112,5 +112,6 @@ public class D {
             ans += finals.get(i).idx;
         }
         out.printf("%s\n", ans);
+        out.close();
     }
 }

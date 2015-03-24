@@ -32,21 +32,19 @@ public class A2 {
         for (int i = 0; i < N; i++) {
             String s = in.next();
             int p = in.nextInt();
+            TreeSet<Node> sc;
+            TreeSet<Integer> tc;
             if (s.equals("H")) {
-                int p2 = th.higher(p);
-                int p1 = th.lower(p);
-                th.add(p);
-                sh.remove(new Node(p2 - p1, p1));
-                sh.add(new Node(p - p1, p1));
-                sh.add(new Node(p2 - p, p));
+                sc = sh; tc = th;
             } else {
-                int p2 = tv.higher(p);
-                int p1 = tv.lower(p);
-                tv.add(p);
-                sv.remove(new Node(p2 - p1, p1));
-                sv.add(new Node(p - p1, p1));
-                sv.add(new Node(p2 - p, p));
+                sc = sv; tc = tv;
             }
+            int p2 = tc.higher(p);
+            int p1 = tc.lower(p);
+            tc.add(p);
+            sc.remove(new Node(p2 - p1, p1));
+            sc.add(new Node(p - p1, p1));
+            sc.add(new Node(p2 - p, p));
             out.println((long) sv.last().size * sh.last().size);
         }
     }

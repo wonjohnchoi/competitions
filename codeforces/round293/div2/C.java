@@ -16,13 +16,10 @@ public class C {
             a2[aa] = i;
         }
         long tot = 0;
-        int pid = 0;
         for (int i = 0; i < M; i++) {
             int b = in.nextInt() - 1;
             int j = a2[b];
-            int npid = j / K;
-            tot += Math.abs(pid - npid) + 1;
-            pid = npid;
+            tot += j / K + 1;
             if (j != 0) {
                 // swap
                 int tmp = a[j];

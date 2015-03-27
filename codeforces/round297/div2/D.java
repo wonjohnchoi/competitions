@@ -4,6 +4,8 @@ public class D {
     public static PrintWriter out = new PrintWriter(System.out);
     public static InputReader in = new InputReader(System.in);
     static class Dim implements Comparable<Dim> {
+        boolean visited = false;
+        List<Dim> near = new ArrayList<Dim>();
         int minX, minY, maxX, maxY;
         Dim(int minX, int minY, int maxX, int maxY) {
             this.minX = minX;
@@ -50,43 +52,21 @@ public class D {
                 }
             }
         }
-        Collections.sort(dims);
-        ArrayList<Dim> ndims = new ArrayList<>();
-        while (!dims.isEmpty())
-            for (Iterator<Dim> it = dims.iterator(); it.hasNext(); ) {
-                Dim d = it.next();
-                it.remove();
-                while (it.hasNext()) {
-                    Dim d2 = it.next();
-                    if (d2.minX > d.maxX) break;
-                    if (d.intersect(d2)) {
-                        d.merge(d2);
-                        it.remove();
-                    }
-                }
-                ndims.add(d);
-            }
-        dims = ndims;
-        /*        while (true) {
-            boolean merged = false;
-            List<Dim> nDims = new ArrayList<Dim>();
-            outer : for (int i = 0; i < dims.size(); i++) {
-                for (int j = i + 1; j < dims.size(); j++) {
-                    if (dims.get(i).intersect(dims.get(j))) {
-                        dims.get(j).merge(dims.get(i));
-                        merged = true;
-                        continue outer;
-                    }
-                }
-                nDims.add(dims.get(i));
-            }
-            if (!merged) break;
-            dims = nDims;
-            }*/
         for (int i = 0; i < dims.size(); i++) {
-            for (int x = dims.get(i).minX; x <= dims.get(i).maxX ; x++) {
-                for (int y = dims.get(i).minY; y <= dims.get(i).maxY ; y++) {
-                    board[y][x] = '.';
+            for (int j = 0; j < dims.size(); j++) {
+                if (dims.get(i).intersect(dims.get(j))) {
+                    dims.get(i).near.add(dims.get(j));
+                }
+            }
+        }
+        for (int i = 0; i < dims.size(); i++) {
+            Dim d = dims.get(i);
+            if (!d.visited) {
+                dfs2(d);
+                for (int x = d.minX; x <= d.maxX ; x++) {
+                    for (int y = d.minY; y <= d.maxY ; y++) {
+                        board[y][x] = '.';
+                    }
                 }
             }
         }
@@ -94,6 +74,18 @@ public class D {
             out.println(new String(board[i]));
         }
         out.close();
+    }
+    static Dim dfs2(Dim cur) {
+        cur.visited = true;
+        for (Dim nd : cur.near) {
+            if (!nd.visited) {
+                Dim nr = dfs2(nd);
+                if (cur.intersect(nr)) {
+                    cur.merge(nr);
+                }
+            }
+        }
+        return cur;
     }
     static int[][] deltas = new int[][] {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
     static void dfs(int i, int j, Dim[][] dim, char[][] board, Dim cdim) {

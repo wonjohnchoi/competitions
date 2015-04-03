@@ -9,26 +9,40 @@ public class B {
         A = in.nextLong();
         B = in.nextLong();
         long need = 6L * N;
-        outer : while (true) {
-            if (need <= A * B) {
-                out.println(A * B);
-                out.println(A + " " + B);
-                break;
-            }
-            for (long i = 1; i * i <= need ; i++) {
-                long j = need / i;
-                boolean a = i >= A && j >= B;
-                boolean b = i >= B && j >= A;
-                if (need % i == 0 && (a || b)) {
-                    out.println(need);
-                    if (a) out.println(i + " " + j);
-                    else out.println(j + " " + i);
-                    break outer;
-                }
-            }
-            need++;
+        if (need <= A * B) {
+            print(A, B, false);
         }
+        boolean swapped = false;
+        if (A > B) {
+            long tmp = A;
+            A = B;
+            B = tmp;
+            swapped = true;
+        }
+        long bestI, bestJ, best;
+        bestI = bestJ = best = -1;
+        for (long i = A; i * i <= need; i++) {
+            long j = need / i;
+            while (j * i < need) j++;
+            if (j < B) continue;
+            if (best == -1 || best > j * i) {
+                best = i * j;
+                bestI = i;
+                bestJ = j;
+            }
+        }
+        print(bestI, bestJ, swapped);
+    }
+    static void print(long a, long b, boolean swapped) {
+        if (swapped) {
+            long tmp = a;
+            a = b;
+            b = tmp;
+        }
+        out.println(a * b);
+        out.println(a + " " + b);
         out.close();
+        System.exit(0);
     }
 }
 class InputReader {

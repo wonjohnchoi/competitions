@@ -1,10 +1,13 @@
 import java.util.*;
 import java.io.*;
 public class Template {
-    public static PrintWriter out = new PrintWriter(System.out);
-    public static InputReader in = new InputReader(System.in);
-    public static void main(String args[]) {
+    static void solve() {
 
+    }
+    static PrintWriter out = new PrintWriter(System.out);
+    static InputReader in = new InputReader(System.in);
+    public static void main(String args[]) {
+        solve();
         out.close();
     }
 }

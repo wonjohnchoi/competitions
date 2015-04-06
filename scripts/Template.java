@@ -35,7 +35,7 @@ class InputReader {
 	return Long.parseLong(next());
     }
     /*
-    public int nextInt() {
+    public int DONTUSEnextInt() {
 	return Integer.parseInt(next());
         }*/
 }

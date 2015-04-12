@@ -16,17 +16,12 @@ public class B {
             }
             int tot = Integer.MAX_VALUE;
             int time = 0;
-            while (true) {
-                int max = pq.poll();
-                // out.println(max);
-                tot = Math.min(time + max, tot);
-                if (max == 1) break;
-                time++;
-                int a = max / 2;
-                int b = max - a;
-                pq.add(a);
-                pq.add(b);
-                if (a < 0 || b < 0) throw new RuntimeException("WTF");
+            for (int i = 1; i <= 1000; i++) {
+                int val = i;
+                for (int j = 0; j < D; j++) {
+                    val += (p[j] - 1) / i;
+                }
+                tot = Math.min(tot, val);
             }
             ans = tot + "";
             // out.println("INPUT: " + Arrays.toString(p));

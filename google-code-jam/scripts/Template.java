@@ -3,12 +3,14 @@ import java.io.*;
 public class Template {
     public static PrintWriter out = new PrintWriter(System.out);
     public static InputReader in = new InputReader(System.in);
-    public static void main(String args[]) {
-        int TC = in.nextInt();
-        for (int tc = 1; tc <= TC; tc++) {
-            String ans = "";
+    static int TC;
+    static String solve(int tc) {
 
-            out.printf("Case #%d: %s\n", tc, ans);
+    }
+    public static void main(String args[]) {
+        TC = in.nextInt();
+        for (int tc = 1; tc <= TC; tc++) {
+            out.printf("Case #%d: %s\n", tc, solve(tc));
         }
         out.close();
     }

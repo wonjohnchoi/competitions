@@ -6,6 +6,10 @@ public class Template {
     }
     static PrintWriter out = new PrintWriter(System.out);
     static InputReader in = new InputReader(System.in);
+    static void d(Object o) {
+        out.println(o);
+        out.flush();
+    }
     public static void main(String args[]) {
         solve();
         out.close();

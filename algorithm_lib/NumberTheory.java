@@ -23,6 +23,9 @@ public class NumberTheory {
         }
         return inverse;
     }
+    static long inverse2(long a, long MOD) {
+        return a == 1 ? 1 : (long) (MOD - MOD / a) * inverse2(MOD % a) % MOD;
+    }
     public static void main(String args[]) {
 	int[][] comb = comb(100, 100000000);
 	System.out.println(comb[5][2]); // 10

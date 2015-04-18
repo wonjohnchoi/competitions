@@ -14,6 +14,10 @@ public class Template {
         }
         out.close();
     }
+    static void d(Object o) {
+        out.println(o);
+        out.flush();
+    }
 }
 class InputReader {
     public BufferedReader reader;

@@ -1,14 +1,11 @@
-class Dsu {
+public class Dsu {
     int[] p;
     int[] val;
     Dsu(int n) {
 	p = new int[n];
 	val = new int[n];
-    }
-    void clear() { // call clear before usage of Dsu
 	for (int i = 0; i < p.length; i++) {
 	    p[i] = i;
-	    val[i] = 0;
 	}
     }
     int get(int x) {

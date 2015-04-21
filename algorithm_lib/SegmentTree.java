@@ -7,7 +7,7 @@ public class SegmentTree {
     int size;
     SegmentTree(int[] vals) {
         this.vals = vals;
-        this.size = vals.length - 1;
+        this.size = vals.length;
         ans = new int[size * 4 + 10];
         build(0, 0, size - 1);
     }

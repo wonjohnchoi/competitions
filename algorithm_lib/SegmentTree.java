@@ -47,7 +47,7 @@ public class SegmentTree {
     // NEW. to use this lazy st, need to modify above get in a way that mixes ans[v] and unite(...).
     void put(int v, int l, int r, int needL, int needR, int val) {
         if (needL > r || needR < l) return;
-        if (needL <= l && needR >= r) {
+        if (needL <= l && r <= needR) {
             ans[v] = val;
             return;
         }
@@ -55,17 +55,17 @@ public class SegmentTree {
         put(v * 2 + 1, l, mid, needL, needR, val);
         put(v * 2 + 2, mid + 1, r, needL, needR, val);
     }
-    void put(int i, int tl, int tr, int pos, int val) { // O(log N)
-	if (tl == tr) {
-	    ans[i] = val;
+    void put(int v, int l, int r, int need, int val) { // O(log N)
+	if (l == r) {
+	    ans[v] = val;
 	    return;
 	}
-	int m = (tl + tr) / 2;
-	if (pos <= m)
-	    put(2 * i + 1, tl, m, pos, val);
+	int m = (l + r) / 2;
+	if (need <= m)
+	    put(2 * v + 1, l, m, need, val);
 	else
-	    put(2 * i + 2, m + 1, tr, pos, val);
-	ans[i] = unite(ans[2 * i + 1], ans[2 * i + 2]);
+	    put(2 * v + 2, m + 1, r, need, val);
+	ans[v] = unite(ans[2 * v + 1], ans[2 * v + 2]);
     }
     void put(int pos, int val) {
 	put(0, 0, size - 1, pos, val);

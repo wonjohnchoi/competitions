@@ -21,7 +21,7 @@ public class C {
             lines.add(new Line(i - 1, i - 1, i));
         }
         Line seeker = new Line(-1, -1, -1);
-        SegmentTree st = new SegmentTree(N);
+        Node st = new Node(N);
         List<Line> rem = new ArrayList<>();
         for (int i = 0; i < M; i++) {
             int t = in.nextInt();
@@ -67,57 +67,59 @@ public class C {
         solve();
         out.close();
     }
-static class SegmentTree {
-    long[] add, sum;
-    int size;
-    SegmentTree(int size) {
-        this.size = size;
-        add = new long[size * 4 + 10];
-        sum = new long[size * 4 + 10];
+static class Node {
+    Node left, right;
+    long lazyVal = 0;
+    long sum = 0;
+    int l, r;
+    public Node(int size) {
+        this(0, size - 1);
     }
-    long get(int needL, int needR) {
-        return get(0, 0, size - 1, needL, needR);
+    public Node(int l, int r) {
+	this.l = l;
+	this.r = r;
+	if (r > l) {
+	    int mid = (l + r) >> 1;
+	    left = new Node(l, mid);
+	    right = new Node(mid + 1, r);
+	}
     }
-    long get(int v, int l, int r, int needL, int needR) { // O(log N)
-        //out.println("get: " + l + " " + r + " " + needL + " " + needR);
-        if (needL > r || needR < l) {
+    // lazy put
+    void put(int ql, int qr, int qval) {
+	if (l > qr || ql > r) return;
+	if (ql <= l && r <= qr) {
+            lazyVal += qval;
+	    return;
+	}
+        left.lazyVal += lazyVal;
+        right.lazyVal += lazyVal;
+        lazyVal = 0;
+        left.put(ql, qr, qval);
+        right.put(ql, qr, qval);
+        sum = left.getSum() + right.getSum();
+    }
+    long getSum() {
+        return lazyVal * (r - l + 1) + sum;
+    }
+    long get(int ql, int qr) {
+	if (l > qr || ql > r) {
             return 0;
-        }
-        if (needL <= l && needR >= r) {
-            return getSum(v, l, r);
-        }
-        add[v * 2 + 1] += add[v];
-        add[v * 2] += add[v];
-        add[v] = 0;
-        int mid = (l + r) / 2;
-        long ret = get(v * 2 + 1, l, mid, needL, needR)
-            + get(v * 2 + 2, mid + 1, r, needL, needR);
-        sum[v] = getSum(v * 2 + 1, l, mid) + getSum(v * 2 + 2, mid + 1, r);
-        return ret;
-    }
-    void put(int needL, int needR, int val) {
-        put(0, 0, size - 1, needL, needR, val);
-    }
-    long getSum(int v, int l, int r) {
-        return sum[v] + (r - l + 1) * add[v];
-    }
-    long put(int v, int l, int r, int needL, int needR, int val) {
-        // out.println("put: " + l + " " + r + " " + needL + " " + needR + " " + val);
-        if (needL > r || needR < l) return 0;
-        if (needL <= l && needR >= r) {
-            add[v] += val;
-            return getSum(v, l, r);
-        }
-        add[v * 2 + 1] += add[v];
-        add[v * 2] += add[v];
-        add[v] = 0;
-        int mid = (l + r) / 2;
-        long ret = put(v * 2 + 1, l, mid, needL, needR, val)
-            + put(v * 2 + 2, mid + 1, r, needL, needR, val);
-        sum[v] = getSum(v * 2 + 1, l, mid) + getSum(v * 2 + 2, mid + 1, r);
+	}
+	if (ql <= l && r <= qr) {
+	    return getSum();
+	}
+        left.lazyVal += lazyVal;
+        right.lazyVal += lazyVal;
+        lazyVal = 0;
+        long ret = 0;
+        ret = left.get(ql, qr)
+            + right.get(ql, qr);
+        sum = left.getSum() + right.getSum();
         return ret;
     }
 }
+
+
 }
 class InputReader {
     public BufferedReader reader;

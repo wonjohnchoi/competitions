@@ -127,14 +127,16 @@ public class SegmentTree {
         System.out.println(st2.get(0, 0)); // 10
         System.out.println(st2.get(3, 4)); // -6
         System.out.println(st2.get(4, 4)); // Long.MAX_VALUE
-		
+
     }
 }
 class Node {
     Node left, right;
     long val = Long.MAX_VALUE;
     int l, r;
-    
+    public Node(int size) {
+        this(0, size - 1);
+    }
     public Node(int l, int r) {
 	this.l = l;
 	this.r = r;
@@ -155,7 +157,7 @@ class Node {
 	right.put(qq, qval);
 	val = Math.min(left.val, right.val);
     }
-    // ranged put
+    // lazy put
     void put(int ql, int qr, int qval) {
 	if (l > qr || ql > r) return;
 	if (ql <= l && r <= qr) {
@@ -170,7 +172,6 @@ class Node {
 	right.add(ql, qr, qval);
 	sum = left.getSum() + right.getSum();*/
     }
-    
     long get(int ql, int qr) {
 	if (l > qr || ql > r) {
 	    return Long.MAX_VALUE;

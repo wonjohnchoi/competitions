@@ -8,5 +8,9 @@ touch $1.in &&
 sudo chown wonjohnchoi: $1.in &&
 sudo chmod 664 $1.in &&
 
+touch $1"2.in".in &&
+sudo chown wonjohnchoi: $1"2.in".in &&
+sudo chmod 664 $1"2.in".in &&
+
 emacs -q $1"2.in" $1.in &&
 emacs $1.java $1.in

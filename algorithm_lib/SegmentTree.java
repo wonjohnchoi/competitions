@@ -97,5 +97,94 @@ public class SegmentTree {
         System.out.println(st.get(0, 0)); // 10
         System.out.println(st.get(3, 4)); // -6
         System.out.println(st.get(4, 4)); // Integer.MAX_VALUE
+
+	System.out.println("\nTesting Node ST...");
+        Node st2 = new Node(0, vals.length - 1); // MINIMUM RANGE QUERY
+	for (int i = 0; i < vals.length; i++) {
+	    st2.put(i, vals[i]);
+	}
+        System.out.println(st2.get(0, 3)); // -9
+        System.out.println(st2.get(1, 3)); // -9
+        System.out.println(st2.get(2, 3)); // 4
+        System.out.println(st2.get(3, 3)); // 5
+        System.out.println(st2.get(0, vals.length - 1)); // -9
+        System.out.println(st2.get(4, 6)); // -3
+	st2.put(1, 5);
+        System.out.println(st2.get(0, 3)); // 4
+        System.out.println(st2.get(1, 3)); // 4
+        System.out.println(st2.get(2, 3)); // 4
+        System.out.println(st2.get(3, 3)); // 5
+        System.out.println(st2.get(0, vals.length - 1)); // -3
+        System.out.println(st2.get(4, 6)); // -3
+        st2 = new Node(0, 9);
+        st2.put(0, 10);
+        st2.put(1, -5);
+        st2.put(2, 9);
+        st2.put(3, -6);
+        System.out.println(st2.get(0, 3)); // -6
+        System.out.println(st2.get(0, 2)); // -5
+        System.out.println(st2.get(0, 1)); // -5
+        System.out.println(st2.get(0, 0)); // 10
+        System.out.println(st2.get(3, 4)); // -6
+        System.out.println(st2.get(4, 4)); // Long.MAX_VALUE
+		
+    }
+}
+class Node {
+    Node left, right;
+    long val = Long.MAX_VALUE;
+    int l, r;
+    
+    public Node(int l, int r) {
+	this.l = l;
+	this.r = r;
+	if (r > l) {
+	    int mid = (l + r) >> 1;
+	    left = new Node(l, mid);
+	    right = new Node(mid + 1, r);
+	}
+    }
+    void put(int qq, int qval) {
+	if (l > qq || qq > r) return;
+	// System.out.println(l + " " + r + " " + qq + " " + qval);
+	if (l == r) {
+	    val = qval;
+	    return;
+	}
+	left.put(qq, qval);
+	right.put(qq, qval);
+	val = Math.min(left.val, right.val);
+    }
+    // ranged put
+    void put(int ql, int qr, int qval) {
+	if (l > qr || ql > r) return;
+	if (ql <= l && r <= qr) {
+	    // add += qval
+	    return;
+	}
+	/*
+	left.add += add;
+	right.add += add;
+	add = 0;
+	left.add(ql, qr, qval);
+	right.add(ql, qr, qval);
+	sum = left.getSum() + right.getSum();*/
+    }
+    
+    long get(int ql, int qr) {
+	if (l > qr || ql > r) {
+	    return Long.MAX_VALUE;
+	}
+	if (ql <= l && r <= qr) {
+	    return val;
+	}
+	/*
+	left.add += add;
+	right.add += add;
+	add = 0;
+	long ret = left.get(ql, qr) + right.get(ql, qr);
+	sum = left.getSum() + right.getSum();
+	return ret;*/
+	return Math.min(left.get(ql, qr), right.get(ql, qr));
     }
 }

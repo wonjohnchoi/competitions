@@ -21,36 +21,25 @@ public class D {
         }
         return c[r][h];
         }*/
-    static int get2(boolean first) {
+    static int get2() {
         int[] c = new int[R + 1];
-        for (int h = 1000; h >= 0; h--) {
-            int[] nc = new int[c.length];
-            for (int r = 0; r < c.length; r++) {
-                if (R < r) nc[r] = 0;
-                else if (G < (long) (1 + h) * h / 2 - r) nc[r] = 0;
-                else if (!first && h == H) nc[r] = 1;
+        for (int h = H; h >= 0; h--) {
+            int tot = (1 + h) * h / 2;
+            for (int r = Math.max(0, tot - G); r < c.length; r++) {
+                if (h == H) c[r] = 1;
                 else {
-                    int res = first ? h : 0;
-                    if (h != 1000) {
-                        for (int nr : new int[] {r + (h + 1), r}) {
-                            if (R < nr) continue;
-                            int nres = c[nr];
-                            if (first) res = Math.max(res, nres);
-                            else res = (res + nres) % MOD;
-                        }
-                    }
-                    nc[r] = res;
+                    if (R >= r + h + 1)
+                        c[r] = (c[r] + c[r + h + 1]) % MOD;
                 }
             }
-            c = nc;
         }
         return c[0];
     }
     static void solve() {
         R = in.nextInt();
         G = in.nextInt();
-        H = get2(true);
-        out.println(get2(false));
+        H = (int) ((Math.sqrt(1 + 8 * (R + G)) - 1) / 2);
+        out.println(get2());
     }
     static PrintWriter out = new PrintWriter(System.out);
     static InputReader in = new InputReader(System.in);

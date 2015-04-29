@@ -2,31 +2,55 @@ import java.util.*;
 import java.io.*;
 public class D {
     static int R, G;
-    static long H;
-    static long[][] c = new long[200001][1000];
-    static long MOD = (long) 1e9 + 7;
-    static long get(int r, int h, boolean first) {
+    static int H;
+    static int MOD = (int) 1e9 + 7;
+    /* This uses too much memory
+    static int[][] c = new int[200001][1000];
+    static int get(int r, int h, boolean first) {
         if (R < r) return 0;
         if (G < (long) (1 + h) * h / 2 - r) return 0;
         if (!first && h == H) return 1;
         if (c[r][h] == -1) {
-            long res = first ? h : 0;
+            int res = first ? h : 0;
             for (int nr : new int[] {r + (h + 1), r}) {
-                long nres = get(nr, h + 1, first);
+                int nres = get(nr, h + 1, first);
                 if (first) res = Math.max(res, nres);
                 else res = (res + nres) % MOD;
             }
             c[r][h] = res;
         }
         return c[r][h];
+        }*/
+    static int get2(boolean first) {
+        int[] c = new int[R + 1];
+        for (int h = 1000; h >= 0; h--) {
+            int[] nc = new int[c.length];
+            for (int r = 0; r < c.length; r++) {
+                if (R < r) nc[r] = 0;
+                else if (G < (long) (1 + h) * h / 2 - r) nc[r] = 0;
+                else if (!first && h == H) nc[r] = 1;
+                else {
+                    int res = first ? h : 0;
+                    if (h != 1000) {
+                        for (int nr : new int[] {r + (h + 1), r}) {
+                            if (R < nr) continue;
+                            int nres = c[nr];
+                            if (first) res = Math.max(res, nres);
+                            else res = (res + nres) % MOD;
+                        }
+                    }
+                    nc[r] = res;
+                }
+            }
+            c = nc;
+        }
+        return c[0];
     }
     static void solve() {
         R = in.nextInt();
         G = in.nextInt();
-        for (int i = 0; i < c.length; i++) Arrays.fill(c[i], -1);
-        H = get(0, 0, true);
-        for (int i = 0; i < c.length; i++) Arrays.fill(c[i], -1);
-        out.println(get(0, 0, false));
+        H = get2(true);
+        out.println(get2(false));
     }
     static PrintWriter out = new PrintWriter(System.out);
     static InputReader in = new InputReader(System.in);

@@ -1,6 +1,54 @@
 import java.util.*;
 import java.io.*;
 public class E {
+    static class BinaryIndexedTree {
+        int length;
+        int logLength;
+        int[] c;
+        BinaryIndexedTree(int n) {
+            logLength = Integer.SIZE - Integer.numberOfLeadingZeros(n);
+            length = 1 << logLength;
+            c = new int[length + 1];
+        }
+        void add(int x, int num) {
+            if (!(x >= 1 && x <= length)) throw new AssertionError();
+            for (; x <= length; x += Integer.lowestOneBit(x)) {
+                c[x] += num;
+            }
+        }
+        void insert(int x) {
+            add(x, 1);
+        }
+        void remove(int x) {
+            add(x, -1);
+        }
+        int sum(int x) {
+            if (!(x >= 0 && x <= length)) throw new AssertionError();
+            int sum = 0;
+            for (; x > 0; x -= Integer.lowestOneBit(x)) {
+                sum += c[x];
+            }
+            return sum;
+        }
+        int sum(int l, int r) {
+            return sum(r) - sum(l - 1);
+        }
+        int rank(int x) {
+            return sum(x - 1) + 1;
+        }
+        int select(int k) {
+            int ans = 0;
+            for (int i = logLength; i >= 0; i--) {
+                ans += (1 << i);
+                if (c[ans] < k) {
+                    k -= c[ans];
+                } else {
+                    ans -= (1 << i);
+                }
+            }
+            return ans + 1;
+        }
+    }
     static void solve() {
         int N = in.nextInt();
         HashMap<Integer, Integer> posToNum = new HashMap<>();
@@ -21,7 +69,28 @@ public class E {
         List<Integer> keys = new ArrayList<>();
         keys.addAll(posToNum.keySet());
         Collections.sort(keys);
-
+        HashMap<Integer, Integer> numToPos = new HashMap<>();
+        for (int i = 0; i < keys.size(); i++) {
+            int pos = keys.get(i);
+            int val = posToNum.get(pos);
+            numToPos.put(val, pos);
+        }
+        HashMap<Integer, Integer> keyToIdx = new HashMap<>();
+        for (int i = 0; i < keys.size(); i++) {
+            keyToIdx.put(keys.get(i), i);
+        }
+        BinaryIndexedTree bit = new BinaryIndexedTree(keys.size());
+        int[][] cnt = new int[keys.size()][2];
+        for (int i = 0; i < keys.size(); i++) {
+            int pos = keys.get(i);
+            int val = posToNum.get(pos);
+            int posI = i + 1;
+            int valI = keyToIdx.get(val) + 1;
+            cnt[i][0] = bit.sum(posI);
+            cnt[i][1] = bit.sum(valI);
+            out.println(cnt[i][0] + " " + cnt[i][1]);
+            bit.insert(valI);
+        }
         /*
         int[][][] cnt = new int[keys.size()][2][2];
         TreeSet<Integer> before = new TreeSet<>();
@@ -40,12 +109,16 @@ public class E {
             }*/
         long tot = 0;
         for (int i = 0; i < keys.size(); i++) {
-            int val = posToNum.get(keys.get(i));
             int pos = keys.get(i);
-            // int val2 = posToNum.get(val);
-            //int j = Collections.binarySearch(keys, val);
-            tot += Math.abs(pos - val);
-
+            int val = posToNum.get(pos);
+            int posI = i + 1;
+            int valI = keyToIdx.get(val) + 1;
+            int a = Math.max(pos - val, 0);
+            int b = Math.max(i - 1, 0) - cnt[i][0];
+            int c = cnt[i][1] - cnt[valI - 1][0];
+            tot += a + b + c;
+            out.println(pos + " " + val);
+            out.println(a + " " + b + " " + c);
             /*
             if (pos == val) {
                 tot += cnt[i][0][1] + cnt[i][1][0];

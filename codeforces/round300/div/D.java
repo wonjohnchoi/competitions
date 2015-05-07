@@ -17,47 +17,24 @@ public class D {
     static boolean rangeCheck(int x, int y) {
         return 0 <= x && x < N && 0 <= y && y < N;
     }
-    static boolean check2(char[][] b, int x, int y) {
-        return !rangeCheck(x, y) || b[x][y] == 'x' || b[x][y] == 'o';
-    }
-    static boolean check(char[][] b, int dx, int dy, int x, int y) {
-        boolean ret = true;
-        ret &= check2(b, x + dx, y + dy);
-        ret &= check2(b, x + dx, y - dy);
-        ret &= check2(b, x - dx, y + dy);
-        ret &= check2(b, x - dx, y - dy);
-        ret &= check2(b, x + dy, y + dx);
-        ret &= check2(b, x + dy, y - dx);
-        ret &= check2(b, x - dy, y + dx);
-        ret &= check2(b, x - dy, y - dx);
-        return ret;
-    }
     static void solve() {
         N = in.nextInt();
         char[][] b = new char[N][N];
-        int[] oc = new int[2];
         for (int i = 0; i < N; i++) {
             b[i] = in.next().toCharArray();
-            for (int j = 0; j < N; j++) {
-                if (b[i][j] == 'o') {
-                    oc[0] = i;
-                    oc[1] = j;
-                }
-            }
         }
         TreeSet<Pair> ts = null;
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < N; j++) {
                 if (b[i][j] == 'o') {
                     TreeSet<Pair> ts2 = new TreeSet<>();
-                    for (int k = i; k < i + N; k++) {
-                        for (int l = j; l < j + N; l++) {
-                            if (k >= N || l >= N || b[k][l] == 'x' || b[k][l] == 'o') {
+                    for (int k = i - N + 1; k < i + N; k++) {
+                        for (int l = j - N + 1; l < j + N; l++) {
+                            if (!rangeCheck(k, l) || b[k][l] == 'x' || b[k][l] == 'o') {
                                 int dx = k - i;
                                 int dy = l - j;
-                                if (check(b, dx, dy, i, j))
-                                    // out.println(i + " " + j + " " + dx + " " + dy);
-                                    ts2.add(new Pair(dx, dy));
+                                // out.println(i + " " + j + " " + dx + " " + dy);
+                                ts2.add(new Pair(dx, dy));
                             }
                         }
                     }
@@ -116,13 +93,14 @@ public class D {
             for (int j = 0; j < b.length; j++) {
                 if (b[i][j] == 'o') {
                     put(b, i + dx, j + dy);
+                    /*
                     put(b, i + dx, j - dy);
                     put(b, i - dx, j + dy);
                     put(b, i - dx, j - dy);
                     put(b, i + dy, j + dx);
                     put(b, i + dy, j - dx);
                     put(b, i - dy, j + dx);
-                    put(b, i - dy, j - dx);
+                    put(b, i - dy, j - dx);*/
                 }
             }
         }

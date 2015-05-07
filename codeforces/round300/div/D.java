@@ -27,20 +27,27 @@ public class D {
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < N; j++) {
                 if (b[i][j] == 'o') {
-                    TreeSet<Pair> ts2 = new TreeSet<>();
-                    for (int k = i - N + 1; k < i + N; k++) {
-                        for (int l = j - N + 1; l < j + N; l++) {
-                            if (!rangeCheck(k, l) || b[k][l] == 'x' || b[k][l] == 'o') {
-                                int dx = k - i;
-                                int dy = l - j;
-                                // out.println(i + " " + j + " " + dx + " " + dy);
-                                ts2.add(new Pair(dx, dy));
+                    if (ts == null) {
+                        ts = new TreeSet<>();
+                        for (int k = i - N + 1; k < i + N; k++) {
+                            for (int l = j - N + 1; l < j + N; l++) {
+                                if (!rangeCheck(k, l) || b[k][l] == 'x' || b[k][l] == 'o') {
+                                    int dx = k - i;
+                                    int dy = l - j;
+                                    // out.println(i + " " + j + " " + dx + " " + dy);
+                                    ts.add(new Pair(dx, dy));
+                                }
                             }
                         }
-                    }
-                    if (ts == null) ts = ts2;
-                    else {
-                        ts.retainAll(ts2);
+                    } else {
+                        for (Iterator<Pair> it = ts.iterator(); it.hasNext(); ) {
+                            Pair p = it.next();
+                            int x = i + p.x;
+                            int y = j + p.y;
+                            if (rangeCheck(x, y) && b[x][y] == '.') {
+                                it.remove();
+                            }
+                        }
                     }
                 }
             }

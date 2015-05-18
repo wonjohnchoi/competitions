@@ -1,0 +1,9 @@
+b : 0 0
+removing .. 0 1
+b : 1 100
+removing .. 1 2
+removing .. 1 3
+b : 2 300
+removing .. 2 3
+b : 3 400
+400

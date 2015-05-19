@@ -24,7 +24,7 @@ public class D {
             int a, b;
             a = in.nextInt();
             b = in.nextInt();
-            out.println(f[b] - f[a - 1]);
+            out.println(add(f[b] - f[a - 1], MOD));
         }
     }
     static PrintWriter out = new PrintWriter(System.out);

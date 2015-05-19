@@ -7,6 +7,11 @@ public class C {
     }
     static boolean c(double[][] aa, int ii) {
 	if (ii == 4) {
+            for (int i = 0; i < 4; i++) {
+                for (int j = i + 1; j < 4; j++) {
+                    if (aa[i][0] == aa[j][0] && aa[i][1] == aa[j][1]) return false;
+                }
+            }
 	    for (int i = 0; i < 4; i++) {
 		int j = (i + 1) % 4;
 		int k = (j + 1) % 4;
@@ -17,10 +22,10 @@ public class C {
 		y2 = aa[k][1] - aa[j][1];
 		if (eq(x, 0) && eq(y, 0)) return false;
 		if (eq(x2, 0) && eq(y2, 0)) return false;
-		if (!eq(x * x2, y * y2)) return false;
+		if (!eq(x * x2, -y * y2)) return false;
 		if (!eq(x * x + y * y, x2 * x2 + y2 * y2)) return false;
 	    }
-	    return true;
+            return true;
 	}
 	for (int j = ii; j < 4; j++) {
 	    double[] bb = aa[ii];

@@ -6,6 +6,37 @@ public class C {
 	return Math.abs(a - b) <= EPSILON;
     }
     static boolean c(double[][] aa, int ii) {
+        double[] vals = new double[6];
+        double[] cnts = new double[6];
+        int i = 0;
+        for (int j = 0; j < 4; j++) {
+            outer : for (int k = j + 1; k < 4; k++) {
+                double x = aa[j][0] - aa[k][0];
+                double y = aa[j][1] - aa[k][1];
+                double dist = x * x + y * y;
+                for (int l = 0; l < i; l++) {
+                    if (eq(dist, vals[l])) {
+                        cnts[l]++;
+                        continue outer;
+                    }
+                }
+                cnts[i] = 1;
+                vals[i++] = dist;
+            }
+        }
+        if (i != 2) return false;
+        int j = 0;
+        int k = 1;
+        if (vals[0] > vals[1]) {
+            j = 1;
+            k = 0;
+        }
+        return cnts[j] == 4 && cnts[k] == 2 && eq(vals[j] * 2, vals[k]);
+    }
+    // initial attempt of c
+    // this does not work
+    // also approach of c is better than that of c2
+    static boolean c2(double[][] aa, int ii) {
 	if (ii == 4) {
             for (int i = 0; i < 4; i++) {
                 for (int j = i + 1; j < 4; j++) {
